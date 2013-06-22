@@ -3,7 +3,6 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean
 from database import Base
 
-import hashlib
 import json
 import datetime
 from random import sample, randrange
