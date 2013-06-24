@@ -111,7 +111,7 @@ findFriendByNickname.methods = ['POST']
 
 
 def requestFriend():
-    result = {'type': ProtocolTypes.RequestFriends}
+    result = {'type': ProtocolTypes.RequestFriend}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -217,7 +217,7 @@ getWaitingFriends.methods = ['POST']
 
 
 def acceptFriend():
-    result = {'type': ProtocolTypes.AcceptFriends}
+    result = {'type': ProtocolTypes.AcceptFriend}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])

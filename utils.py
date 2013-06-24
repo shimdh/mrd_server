@@ -32,8 +32,8 @@ class ProtocolTypes(object):
         FindFriendByNickname, GetInventories, SetInventories,
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
-        GetOwnCostumeBases, SetOwnCostumeBases, RequestFriends, GetWaitingFriends,
-        AcceptFriends,
+        GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
+        AcceptFriend,
     ) = range(100, 127)
 
 
