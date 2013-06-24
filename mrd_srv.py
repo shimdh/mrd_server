@@ -5,6 +5,7 @@ from database import db_session
 import serverconfig
 
 import view_users
+import view_costumes
 import view_infos
 import view_characters
 import view_friends
@@ -63,6 +64,14 @@ app.add_url_rule(
     '/get_maillist', 'get_maillist', view_mails.getMailList)
 app.add_url_rule(
     '/delete_mails', 'delete_mails', view_mails.deleteMails)
+app.add_url_rule(
+    '/set_owncostumes', 'set_owncostumes', view_costumes.setOwnCostumes)
+app.add_url_rule(
+    '/get_owncostumes', 'get_owncostumes', view_costumes.getOwnCostumes)
+app.add_url_rule(
+    '/set_owncostumebases', 'set_owncostumebases', view_costumes.setOwnCostumes)
+app.add_url_rule(
+    '/get_owncostumebases', 'get_owncostumebases', view_costumes.getOwnCostumes)
 
 
 @app.route('/hello')

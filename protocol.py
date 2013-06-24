@@ -23,5 +23,6 @@ class ProtocolTypes(object):
         GetCharacter, CheckGameVersion, AddFriend, GetFriendsList,
         FindFriendByNickname, GetInventories, SetInventories,
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
-        GetGiftMail, GetMailList, DeleteMails,
-    ) = range(100, 120)
+        GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
+        GetOwnCostumeBases, SetOwnCostumeBases,
+    ) = range(100, 124)
