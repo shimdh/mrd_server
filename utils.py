@@ -5,7 +5,6 @@ import datetime
 from database import db_session
 from sqlalchemy import exc
 
-
 class ResultCodes(object):
     """docstring for ResultCodes"""
     (
@@ -19,7 +18,8 @@ class ResultCodes(object):
         NoData,
         GameVersionError,
         DBInputError,
-    ) = range(100, 110)
+        DataExist,
+    ) = range(100, 111)
 
     AccessError = 200
 
@@ -31,8 +31,9 @@ class ProtocolTypes(object):
         GetCharacter, CheckGameVersion, AddFriend, GetFriendsList,
         FindFriendByNickname, GetInventories, SetInventories,
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
-        GetGiftMail, GetMailList, DeleteMails,
-    ) = range(100, 120)
+        GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
+        GetOwnCostumeBases, SetOwnCostumeBases, RequestFriends, WaitingFriends,
+    ) = range(100, 126)
 
 
 def checkSessionId(got_session_id):

@@ -72,6 +72,8 @@ app.add_url_rule(
     '/set_owncostumebases', 'set_owncostumebases', view_costumes.setOwnCostumebases)
 app.add_url_rule(
     '/get_owncostumebases', 'get_owncostumebases', view_costumes.getOwnCostumebases)
+app.add_url_rule(
+                 '/request_friends', 'request_friends', view_friends.requestFriends)
 
 
 @app.route('/hello')

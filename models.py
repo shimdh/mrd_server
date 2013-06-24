@@ -49,6 +49,8 @@ class User(Base):
     resurrect = Column(Text())
     clothes = Column(Text())
     friends = Column(Text())
+    request_friends = Column(Text())
+    waiting_friends = Column(Text())
     inventories = Column(Text())
     session_id = Column(String(100))
     session_date = Column(DateTime())

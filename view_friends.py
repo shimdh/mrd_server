@@ -111,3 +111,47 @@ def findFriendByNickname():
     return str(json.dumps(result))
 
 findFriendByNickname.methods = ['POST']
+
+
+def requestFriends():
+    result = {'type': ProtocolTypes.RequestFriends}
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id', 'request_friends']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                got_friends = {}
+                if (got_user.request_friends is None) or (got_user.request_friends == ''):
+                    got_friends['request_friends'] = [got_data['request_friends']]
+                    got_user.friends = json.dumps(got_friends)
+                    db_session.add(got_user)
+                    try:
+                        db_session.commit()
+                    except exc.SQLAlchemyError:
+                        result['result'] = ResultCodes.DBInputError
+                else:
+                    got_friends = json.loads(got_user.friends)
+
+                    if got_friends:
+                        if got_data['request_friends'] in got_friends:
+                            result['result'] = ResultCodes.DataExist
+                        else:
+                            got_friends['request_friends'].append(got_data['request_friends'])
+                            got_user.friends = json.dumps(got_friends)
+                            db_session.add(got_user)
+                            try:
+                                db_session.commit()
+                            except exc.SQLAlchemyError:
+                                result['result'] = ResultCodes.DBInputError
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
