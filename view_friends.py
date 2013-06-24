@@ -141,7 +141,7 @@ def requestFriends():
                             result['result'] = ResultCodes.DataExist
                         else:
                             got_friends['request_friends'].append(got_data['request_friends'])
-                            got_user.friends = json.dumps(got_friends)
+                            got_user.request_friends = json.dumps(got_friends)
                             db_session.add(got_user)
                             try:
                                 db_session.commit()
@@ -153,5 +153,7 @@ def requestFriends():
         result['result'] = ResultCodes.AccessError
 
     return str(json.dumps(result))
+
+requestFriends.methods = ['POST']
 
 
