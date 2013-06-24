@@ -69,9 +69,9 @@ app.add_url_rule(
 app.add_url_rule(
     '/get_owncostumes', 'get_owncostumes', view_costumes.getOwnCostumes)
 app.add_url_rule(
-    '/set_owncostumebases', 'set_owncostumebases', view_costumes.setOwnCostumes)
+    '/set_owncostumebases', 'set_owncostumebases', view_costumes.setOwnCostumebases)
 app.add_url_rule(
-    '/get_owncostumebases', 'get_owncostumebases', view_costumes.getOwnCostumes)
+    '/get_owncostumebases', 'get_owncostumebases', view_costumes.getOwnCostumebases)
 
 
 @app.route('/hello')
