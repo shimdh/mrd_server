@@ -44,6 +44,7 @@ class User(Base):
     character = Column(Text())
     slots = Column(Text())
     stats = Column(Text())
+    costumes = Column(Text())
     resurrect = Column(Text())
     clothes = Column(Text())
     friends = Column(Text())
@@ -70,6 +71,31 @@ class User(Base):
             "waypoint": 0
         }
         return temp_resurrect
+    
+
+class Costumebase(Base):
+    __tablename__ = 'costumebases'
+    id = Column(Integer, primary_key=True)
+    index = Column(String(10), unique=True)
+    cash_count = Column(Integer)
+    duration = Column(Integer)
+    weapon_index = Column(String(10))
+    helmet_index = Column(String(10))
+    armor_index = Column(String(10))
+    cloak_index = Column(String(10))
+    
+    def __init__(self, index, cash_count, duration, weapon_index, helmet_index, armor_index, cloak_index):
+        self.index = index
+        self.cash_count = cash_count
+        self.duration = duration
+        self.weapon_index = weapon_index
+        self.helmet_index = helmet_index
+        self.armor_index = armor_index
+        self.cloak_index = cloak_index
+        
+    def __repr__(self):
+        return '<Costumebase %s>' % (self.index)
+         
 
 
 class Zone(Base):

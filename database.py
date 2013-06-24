@@ -21,7 +21,8 @@ def init_db():
     if not models.Info.query.first():
         temp_info = models.Info('1.0.0', '1.0.0')
         db_session.add(temp_info)
-        db_session.commit()
+        db_session.commit()       
+    
 
 
 def del_db():
@@ -30,6 +31,9 @@ def del_db():
 
     users = Table('users', Base.metadata)
     users.drop(engine)
+    
+    costumebases = Table('costumebases', Base.metadata)
+    costumebases.drop(engine)
 
     zones = Table('zones', Base.metadata)
     zones.drop(engine)
