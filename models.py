@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Date
 from database import Base
 
 import json
@@ -48,10 +48,7 @@ class User(Base):
     own_costumebases = Column(Text())
     resurrect = Column(Text())
     clothes = Column(Text())
-    friends = Column(Text())
     friendship_point = Column(Integer())
-    request_friends = Column(Text())
-    waiting_friends = Column(Text())
     inventories = Column(Text())
     cashes = Column(Integer(), default=0)
     session_id = Column(String(100))
@@ -76,7 +73,54 @@ class User(Base):
             "waypoint": 0
         }
         return temp_resurrect
-    
+
+
+class Character(Base):
+    __tablename__ = 'characters'
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    name = Column(String(20))
+    level = Column(String(10))
+    color_r = Column(String(5))
+    color_g = Column(String(5))
+    color_b = Column(String(5))
+    gender = Column(String(1))
+    hp = Column(String(20))
+    weapon_level = Column(String(10))
+    body_type = Column(String(30))
+    hair_type = Column(String(30))
+    cloak_type = Column(String(30))
+    weapon_exp = Column(String(10))
+    face_type = Column(String(50))
+    weapon_type = Column(String(50))
+    exp = Column(String(10))
+
+    def __init__(self, user_id, name):
+        self.user_id = user_id
+        self.name = name
+
+    def __repr__(self):
+        return '<Character %s>' % self.name
+
+
+
+class Friend(Base):
+    __tablename__ = 'friends'
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    friend_id = Column(Integer())
+    requested = Column(Boolean(), default=True)
+    accepted = Column(Boolean(), default=False)
+    friendship_received_date = Column(Date())
+    friendship_sent_date = Column(Date())
+
+    def __init__(self, user_id, friend_id):
+        self.user_id = user_id
+        self.friend_id = friend_id
+
+    def __repr__(self):
+        return '<Friend %s>' % (self.user_id)
+
 
 class Costumebase(Base):
     __tablename__ = 'costumebases'
@@ -88,7 +132,7 @@ class Costumebase(Base):
     helmet_index = Column(String(10))
     armor_index = Column(String(10))
     cloak_index = Column(String(10))
-    
+
     def __init__(self, index, cash_count, duration, weapon_index, helmet_index, armor_index, cloak_index):
         self.index = index
         self.cash_count = cash_count
@@ -97,10 +141,9 @@ class Costumebase(Base):
         self.helmet_index = helmet_index
         self.armor_index = armor_index
         self.cloak_index = cloak_index
-        
+
     def __repr__(self):
         return '<Costumebase %s>' % (self.index)
-         
 
 
 class Zone(Base):

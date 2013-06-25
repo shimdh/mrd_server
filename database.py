@@ -44,21 +44,6 @@ def init_db():
       
 
 def del_db():
-    infos = Table('infos', Base.metadata)
-    infos.drop(engine)
+    Base.metadata.drop_all(bind=engine)
 
-    users = Table('users', Base.metadata)
-    users.drop(engine)
-    
-    costumebases = Table('costumebases', Base.metadata)
-    costumebases.drop(engine)
-
-    zones = Table('zones', Base.metadata)
-    zones.drop(engine)
-
-    notices = Table('notices', Base.metadata)
-    notices.drop(engine)
-
-    mails = Table('mails', Base.metadata)
-    mails.drop(engine)
 
