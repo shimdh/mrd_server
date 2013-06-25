@@ -93,8 +93,8 @@ def getFriendsList():
 getFriendsList.methods = ['POST']
 
 
-def findFriendByNickname():
-    result = {'type': ProtocolTypes.FindFriendByNickname}
+def findFriendByName():
+    result = {'type': ProtocolTypes.FindFriendByName}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -121,7 +121,7 @@ def findFriendByNickname():
 
     return str(json.dumps(result))
 
-findFriendByNickname.methods = ['POST']
+findFriendByName.methods = ['POST']
 
 
 def requestFriend():

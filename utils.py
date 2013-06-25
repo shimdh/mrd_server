@@ -30,7 +30,7 @@ class ProtocolTypes(object):
     (
         RegisterUser, LoginUser, CreateCharacter, GetNotice,
         GetCharacter, CheckGameVersion, AddFriend, GetFriendsList,
-        FindFriendByNickname, GetInventories, SetInventories,
+        FindFriendByName, GetInventories, SetInventories,
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
         GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
