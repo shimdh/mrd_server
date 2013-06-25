@@ -44,6 +44,8 @@ def init_db():
       
 
 def del_db():
+    import models
+
     Base.metadata.drop_all(bind=engine)
 
 
