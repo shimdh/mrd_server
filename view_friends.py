@@ -71,7 +71,16 @@ def getFriendsList():
                     if len(got_friends) == 0:
                         result['result'] = ResultCodes.NoData
                     else:
-                        result['friends'] = json.dumps(got_friends)
+                        friends_info = list()
+                        for friend_nickname in got_friends:
+                            tmp_friend = User.query.filter_by(nickname=friend_nickname).first()
+                            if tmp_friend:
+                                dict_friend = dict()
+                                dict_friend['name'] = tmp_friend.name
+                                tmp_stat = json.loads(tmp_friend.stats)
+                                dict_friend['level'] = tmp_stat['level']
+                                friends_info.append(dict_friend)
+                        result['friends'] = json.dumps(friends_info)
         else:
             result['result'] = ResultCodes.InputParamError
     else:
