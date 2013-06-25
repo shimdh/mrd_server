@@ -34,10 +34,10 @@ def setStats():
                     made_stat = Stat(got_user.id)
                     made_stat.exp = got_stat['exp']
                     made_stat.level = got_stat['level']
-                    made_stat.hp = got_data['hp']
-                    made_stat.weapon_level = got_data['weapon_level']
-                    made_stat.weapon_exp = got_data['weapon_exp']
-                    made_stat.visited_zone_no = got_data['visited_zone_no']
+                    made_stat.hp = got_stat['hp']
+                    made_stat.weapon_level = got_stat['weapon_level']
+                    made_stat.weapon_exp = got_stat['weapon_exp']
+                    made_stat.visited_zone_no = got_stat['visited_zone_no']
 
                     db_session.add(made_stat)
 
