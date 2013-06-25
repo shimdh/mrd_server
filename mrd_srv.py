@@ -77,6 +77,8 @@ app.add_url_rule(
     '/get_waitingfriends', 'get_waitingfriends', view_friends.getWaitingFriends)
 app.add_url_rule(
     '/accept_friend', 'accept_friend', view_friends.acceptFriend)
+app.add_url_rule(
+    '/get_friendinfo', 'get_friendinfo', view_friends.getFriendInfo)
 
 
 @app.route('/hello')

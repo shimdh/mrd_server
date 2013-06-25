@@ -5,7 +5,7 @@ from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
 import json
 
 from database import db_session
-from models import User, Friend
+from models import User, Friend, Character
 from sqlalchemy import exc
 
 
@@ -235,3 +235,48 @@ def acceptFriend():
 acceptFriend.methods = ['POST']
 
 
+def getFriendInfo():
+    result = {'type': ProtocolTypes.GetFriendInfo}
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id', 'friend_id']
+        if checkContainKeys(from_keys, got_data):
+            if (got_data['friend_id'] is None) or (got_data['friend_id'] == ''):
+                result['result'] = ResultCodes.InputParamError
+            else:
+                result['result'], got_user = checkSessionId(got_data['session_id'])
+
+                if got_user:
+                    find_friend_character = Character.query.filter_by(id=got_data['friend_id']).first()
+                    if find_friend_character:
+                        send_friend_info = dict()
+                        send_friend_info['user_id'] = got_data['friend_id']
+                        send_friend_info['name'] = find_friend_character.name
+                        send_friend_info['level'] = find_friend_character.level
+                        send_friend_info['body_type'] = find_friend_character.body_type
+                        send_friend_info['cloak_type'] = find_friend_character.cloak_type
+                        send_friend_info['color_r'] = find_friend_character.color_r
+                        send_friend_info['color_g'] = find_friend_character.color_g
+                        send_friend_info['color_b'] = find_friend_character.color_b
+                        send_friend_info['exp'] = find_friend_character.exp
+                        send_friend_info['face_type'] = find_friend_character.face_type
+                        send_friend_info['hp'] = find_friend_character.hp
+                        send_friend_info['gender'] = find_friend_character.gender
+                        send_friend_info['hair_type'] = find_friend_character.hair_type
+                        send_friend_info['weapon_exp'] = find_friend_character.weapon_exp
+                        send_friend_info['weapon_level'] = find_friend_character.weapon_level
+                        send_friend_info['weapon_type'] = find_friend_character.weapon_type
+
+                        result['friend_info'] = json.dumps(send_friend_info)
+                    else:
+                        result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+getFriendInfo.methods = ['POST']
