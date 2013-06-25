@@ -105,7 +105,7 @@ class Character(Base):
 
 class Stat(Base):
     __tablename__ = 'stats'
-    id = Column(Integer(), default=True)
+    id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
     exp = Column(Integer())
     level = Column(Integer())
