@@ -10,7 +10,7 @@ from random import sample, randrange
 SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'
 
 
-def get_sesseion_id(nickname):
+def get_session_id(nickname):
     return nickname + ''.join(sample(SESS_CHARS, randrange(5, 20)))
 
 

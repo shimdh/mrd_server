@@ -5,6 +5,7 @@ import datetime
 from database import db_session
 from sqlalchemy import exc
 
+
 class ResultCodes(object):
     """docstring for ResultCodes"""
     (

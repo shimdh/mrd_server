@@ -6,7 +6,7 @@ import json
 import datetime
 
 from database import db_session
-from models import User, get_sesseion_id
+from models import User, get_session_id
 from sqlalchemy import exc
 
 
@@ -61,7 +61,7 @@ def login():
                     nickname=got_data['nickname'],
                     password=got_data['password']).first()
                 if got_user:
-                    got_user.session_id = get_sesseion_id(got_user.nickname)
+                    got_user.session_id = get_session_id(got_user.nickname)
                     got_user.session_date = datetime.datetime.now()
                     got_user.login_date = datetime.datetime.now()
                     db_session.add(got_user)
