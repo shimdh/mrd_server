@@ -64,25 +64,23 @@ def getFriendsList():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if (got_user.friends is None) or (got_user.friends == ''):
-                    result['result'] = ResultCodes.NoData
+                find_friends = Friend.query.filter_by(
+                    user_id=got_user.id, requested=True, accepted=True).all()
+                if find_friends:
+                    friends_info = list()
+                    for find_friend in find_friends:
+                        got_friend = User.query.filter_by(id=find_friend.friend_id).first()
+                        if got_friend:
+                            tmp_friend_info = dict()
+                            tmp_friend_info['user_id'] = got_friend.id
+                            tmp_friend_info['name'] = got_friend.name
+                            tmp_friend_info['last_login'] = got_friend.login_date.strftime("%Y,%m,%d")
+
+                            friends_info.append(tmp_friend_info)
+
+                    result['friends'] = json.dumps(friends_info)
                 else:
-                    got_friends = json.loads(got_user.friends)
-                    if len(got_friends) == 0:
-                        result['result'] = ResultCodes.NoData
-                    else:
-                        friends_info = list()
-                        for got_friend in got_friends:
-                            tmp_friend = User.query.filter_by(nickname=got_friend['nickname']).first()
-                            if tmp_friend:
-                                dict_friend = dict()
-                                dict_friend['name'] = tmp_friend.name
-                                tmp_stat = json.loads(tmp_friend.stats)
-                                dict_friend['level'] = tmp_stat['level']
-                                dict_friend['login_date'] = tmp_friend.login_date. strftime("%Y,%m,%d")
-                                dict_friend['received_friendship']
-                                friends_info.append(dict_friend)
-                        result['friends'] = json.dumps(friends_info)
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -105,11 +103,16 @@ def findFriendByName():
 
             if got_user:
                 got_user_lists = db_session.query(User).filter(
-                    User.nickname.like('%' + got_data['friend_nickname'] + '%')).all()
+                    User.name.like('%' + got_data['friend_nickname'] + '%')).all()
                 if got_user_lists:
                     send_user_lists = []
                     for got_user_list in got_user_lists:
-                        send_user_lists.append(got_user_list.nickname)
+                        tmp_friend = dict()
+                        tmp_friend['user_id'] = got_user_list.id
+                        tmp_friend['name'] = got_user_list.name
+                        tmp_friend['last_login'] = got_user_list.login_date.strftime("%Y,%m,%d")
+
+                        send_user_lists.append(tmp_friend)
 
                     result['searched_list'] = json.dumps(send_user_lists)
                 else:
