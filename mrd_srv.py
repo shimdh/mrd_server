@@ -3,6 +3,7 @@
 from flask import Flask
 from database import db_session
 import serverconfig
+import view_events
 
 import view_users
 import view_costumes
@@ -79,6 +80,9 @@ app.add_url_rule(
     '/accept_friend', 'accept_friend', view_friends.acceptFriend)
 app.add_url_rule(
     '/get_friendcharacterinfo', 'get_friendcharacterinfo', view_friends.getFriendCharacterInfo)
+app.add_url_rule(
+    '/add_completedevent', 'add_completedevent', view_events.addCompletedEvent
+)
 
 
 @app.route('/hello')
