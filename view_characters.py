@@ -19,6 +19,7 @@ def createCharacter():
             result['result'], got_user = checkSessionId(got_data['session_id'])
             if got_user:
                 got_character = got_data['character']
+                got_user.name = got_character['name']
                 got_user.character = json.dumps(got_character)
                 db_session.add(got_user)
                 try:

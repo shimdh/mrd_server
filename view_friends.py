@@ -72,13 +72,15 @@ def getFriendsList():
                         result['result'] = ResultCodes.NoData
                     else:
                         friends_info = list()
-                        for friend_nickname in got_friends:
-                            tmp_friend = User.query.filter_by(nickname=friend_nickname).first()
+                        for got_friend in got_friends:
+                            tmp_friend = User.query.filter_by(nickname=got_friend['nickname']).first()
                             if tmp_friend:
                                 dict_friend = dict()
                                 dict_friend['name'] = tmp_friend.name
                                 tmp_stat = json.loads(tmp_friend.stats)
                                 dict_friend['level'] = tmp_stat['level']
+                                dict_friend['login_date'] = tmp_friend.login_date. strftime("%Y,%m,%d")
+                                dict_friend['received_friendship']
                                 friends_info.append(dict_friend)
                         result['friends'] = json.dumps(friends_info)
         else:
@@ -236,33 +238,55 @@ def acceptFriend():
 
         from_keys = ['session_id', 'accept_friend']
         if checkContainKeys(from_keys, got_data):
-            result['result'], got_user = checkSessionId(got_data['session_id'])
+            if (got_data['accept_friend'] is None) or (got_data['accept_friend'] == ''):
+                result['result'] = ResultCodes.InputParamError
+            else:
+                result['result'], got_user = checkSessionId(got_data['session_id'])
 
-            if got_user:                
-                if (got_user.waiting_friends is None) or (got_user.waiting_friends == ''):
-                    result['result'] = ResultCodes.NoData
-                else:
-                    waited_friends = json.loads(got_user.waiting_friends)
-                    if len(waited_friends) == 0:
+                if got_user:
+                    if (got_user.waiting_friends is None) or (got_user.waiting_friends == ''):
                         result['result'] = ResultCodes.NoData
                     else:
-                        waited_friends.remove(result['accept_friend'])
-                        if (got_user.friends is None) or (got_user.friends == ''):
-                            got_user.friends = json.dumps(list(result['accept_friend']))
-                            db_session.add(got_user)
+                        waited_friends = json.loads(got_user.waiting_friends)
+                        if len(waited_friends) == 0:
+                            result['result'] = ResultCodes.NoData
                         else:
-                            tmp_friends = json.loads(got_user.friends)
-                            if len(tmp_friends) == 0:
-                                got_user.friends = json.dumps(list(result['accept_friend']))
+                            waited_friends.remove(result['accept_friend'])
+                            if (got_user.friends is None) or (got_user.friends == ''):
+                                tmp_friend = User.query.filter_by(nickname=result['accept_friend']).first()
+                                tmp_friend_info = dict()
+                                tmp_friend_info['nickname'] = tmp_friend.nickname
+                                tmp_friend_info['friendship_received_date'] = ''
+                                tmp_friend_info['friendship_sent_date'] = ''
+
+                                got_user.friends = json.dumps(list(tmp_friend_info))
                                 db_session.add(got_user)
                             else:
-                                tmp_friends.append(result['accept_friend'])
-                                got_user.friends = json.dumps(tmp_friends)
-                                db_session.add(got_user)
-                        try:
-                            db_session.commit()
-                        except exc.SQLAlchemyError:
-                            result['result'] = ResultCodes.DBInputError
+                                tmp_friends = json.loads(got_user.friends)
+                                if len(tmp_friends) == 0:
+                                    tmp_friend = User.query.filter_by(nickname=result['accept_friend']).first()
+                                    tmp_friend_info = dict()
+                                    tmp_friend_info['nickname'] = tmp_friend.nickname
+                                    tmp_friend_info['friendship_received_date'] = ''
+                                    tmp_friend_info['friendship_sent_date'] = ''
+
+                                    got_user.friends = json.dumps(list(tmp_friend_info))
+                                    db_session.add(got_user)
+                                else:
+                                    tmp_friend = User.query.filter_by(nickname=result['accept_friend']).first()
+                                    tmp_friend_info = dict()
+                                    tmp_friend_info['nickname'] = tmp_friend.nickname
+                                    tmp_friend_info['friendship_received_date'] = ''
+                                    tmp_friend_info['friendship_sent_date'] = ''
+
+                                    tmp_friends.append(tmp_friend_info)
+                                    got_user.friends = json.dumps(tmp_friends)
+                                    db_session.add(got_user)
+                            try:
+                                db_session.commit()
+                            except exc.SQLAlchemyError:
+                                result['result'] = ResultCodes.DBInputError
+
                     
         else:
             result['result'] = ResultCodes.InputParamError
