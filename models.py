@@ -151,6 +151,21 @@ class OwnCostume(Base):
         return '<OwnCostume %s>' % self.costume_index
 
 
+class CompletedEvent(Base):
+    __tablename__ = 'completed_events'
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    event_index = Column(String(20))
+    created_datetime = Column(DateTime(), default=datetime.datetime.now())
+
+    def __init__(self, user_id, event_index):
+        self.user_id = user_id
+        self.event_index = event_index
+
+    def __repr__(self):
+        return '<CompletedEvent %s>' % self.event_index
+
+
 class Friend(Base):
     __tablename__ = 'friends'
     id = Column(Integer(), primary_key=True)
