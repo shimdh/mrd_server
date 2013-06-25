@@ -103,6 +103,53 @@ class Character(Base):
         return '<Character %s>' % self.name
 
 
+class Stat(Base):
+    __tablename__ = 'stats'
+    id = Column(Integer(), default=True)
+    user_id = Column(Integer())
+    exp = Column(Integer())
+    level = Column(Integer())
+    hp = Column(Integer())
+    weapon_level = Column(Integer())
+    weapon_exp = Column(Integer())
+    visited_zone_no = Column(Integer())
+
+    def __init__(self, user_id):
+        self.user_id = user_id
+
+    def __repr__(self):
+        return '<Stat %d>' % self.user_id
+
+
+class OwnCostumebase(Base):
+    __tablename__ = 'own_costumebases'
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    costumebase_index = Column(String(10))
+    created_datetime = Column(DateTime(), default=datetime.datetime.now())
+
+    def __init__(self, user_id, costumebase_index):
+        self.user_id = user_id
+        self.costumebase_index = costumebase_index
+
+    def __repr__(self):
+        return '<OwnCostumebase %s>' % self.costumebase_index
+
+
+class OwnCostume(Base):
+    __tablename__ = 'own_costumes'
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    costume_index = Column(String(10))
+    created_datetime = Column(DateTime(), default=datetime.datetime.now())
+
+    def __init__(self, user_id, costume_index):
+        self.user_id = user_id
+        self.costume_index = costume_index
+
+    def __repr__(self):
+        return '<OwnCostume %s>' % self.costume_index
+
 
 class Friend(Base):
     __tablename__ = 'friends'
