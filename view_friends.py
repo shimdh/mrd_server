@@ -30,11 +30,15 @@ def addFriend():
                         result['result'] = ResultCodes.DBInputError
                 else:
                     got_friends = json.loads(got_user.friends)
-
                     if got_friends:
-                        got_friends.append(got_data['friend_nickname'])
-                        got_user.friends = json.dumps(got_friends)
-                        db_session.add(got_user)
+                        if len(got_friends) == 0:
+                            got_friends = list(got_data['friend_nickname'])
+                            got_user.friends = json.dumps(got_friends)
+                            db_session.add(got_user)
+                        else:
+                            got_friends.append(got_data['friend_nickname'])
+                            got_user.friends = json.dumps(got_friends)
+                            db_session.add(got_user)
                         try:
                             db_session.commit()
                         except exc.SQLAlchemyError:
