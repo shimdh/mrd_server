@@ -235,8 +235,8 @@ def acceptFriend():
 acceptFriend.methods = ['POST']
 
 
-def getFriendInfo():
-    result = {'type': ProtocolTypes.GetFriendInfo}
+def getFriendCharacterInfo():
+    result = {'type': ProtocolTypes.GetFriendCharacterInfo}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -279,4 +279,4 @@ def getFriendInfo():
 
     return str(json.dumps(result))
 
-getFriendInfo.methods = ['POST']
+getFriendCharacterInfo.methods = ['POST']

@@ -34,7 +34,7 @@ class ProtocolTypes(object):
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
         GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
-        AcceptFriend, GetFriendInfo,
+        AcceptFriend, GetFriendCharacterInfo,
     ) = range(100, 128)
 
 
