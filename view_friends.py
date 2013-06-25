@@ -20,9 +20,8 @@ def addFriend():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_friends = {}
                 if (got_user.friends is None) or (got_user.friends == ''):
-                    got_friends['friend_nickname'] = [got_data['friend_nickname']]
+                    got_friends = list(got_data['friend_nickname'])
                     got_user.friends = json.dumps(got_friends)
                     db_session.add(got_user)
                     try:
@@ -33,7 +32,7 @@ def addFriend():
                     got_friends = json.loads(got_user.friends)
 
                     if got_friends:
-                        got_friends['friend_nickname'].append(got_data['friend_nickname'])
+                        got_friends.append(got_data['friend_nickname'])
                         got_user.friends = json.dumps(got_friends)
                         db_session.add(got_user)
                         try:
