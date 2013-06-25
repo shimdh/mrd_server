@@ -20,7 +20,7 @@ class ResultCodes(object):
         GameVersionError,
         DBInputError,
         DataExist,
-    ) = range(100, 11)
+    ) = range(100, 111)
 
     AccessError = 200
 
