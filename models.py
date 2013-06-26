@@ -209,7 +209,7 @@ class Costumebase(Base):
 class Fishing(Base):
     __tablename__ = 'fishing'
     id = Column(Integer(), primary_key=True)
-    zone_no = Column(Integer())
+    zone_index = Column(Integer())
     no_item = Column(Float())
     general_ship_index = Column(String(10))
     general_ship_rate = Column(Float())
@@ -255,11 +255,11 @@ class Fishing(Base):
     item_count_13 = Column(Integer())
     item_rate_13 = Column(Float())
 
-    def __init__(self, zone_no):
-        self.zone_no = zone_no
+    def __init__(self, zone_index):
+        self.zone_index = zone_index
 
     def __repr__(self):
-        return '<Fishing %s>' % self.zone_no
+        return '<Fishing %s>' % self.zone_index
 
 
 class PirateShip(Base):

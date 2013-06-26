@@ -39,7 +39,7 @@ def init_db():
         db_session.commit()
 
     if models.Fishing.query.count() == 0:
-        temp_fishing_1 = models.Fishing(5)
+        temp_fishing_1 = models.Fishing('ZON_021')
         temp_fishing_1.no_item = 0
         temp_fishing_1.general_ship_index = 'MOB_Y01'
         temp_fishing_1.general_ship_rate = 8
