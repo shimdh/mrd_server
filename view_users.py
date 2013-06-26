@@ -21,19 +21,24 @@ def register():
             if got_data['nickname'] == '' or got_data['password'] == '':
                 result["result"] = ResultCodes.InputParamError
             else:
-                if User.query.filter_by(nickname=got_data['nickname']).first():
-                    result['result'] = ResultCodes.NicknameExist
+                if len(got_data['nickname']) < 4:
+                    result['result'] = ResultCodes.ShortNickname
+                elif len(got_data['password']) < 4:
+                    result['result'] = ResultCodes.ShortPassword
                 else:
-                    user_data = User(
-                        got_data['nickname'],
-                        got_data['password']
-                    )
-                    db_session.add(user_data)
-                    try:
-                        db_session.commit()
-                        result["result"] = ResultCodes.Success
-                    except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError
+                    if User.query.filter_by(nickname=got_data['nickname']).first():
+                        result['result'] = ResultCodes.NicknameExist
+                    else:
+                        user_data = User(
+                            got_data['nickname'],
+                            got_data['password']
+                        )
+                        db_session.add(user_data)
+                        try:
+                            db_session.commit()
+                            result["result"] = ResultCodes.Success
+                        except exc.SQLAlchemyError:
+                            result["result"] = ResultCodes.DBInputError
         else:
             result["result"] = ResultCodes.InputParamError
     else:

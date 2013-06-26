@@ -20,7 +20,9 @@ class ResultCodes(object):
         GameVersionError,
         DBInputError,
         DataExist,
-    ) = range(100, 111)
+        ShortNickname,
+        ShortPassword
+    ) = range(100, 113)
 
     AccessError = 200
 
