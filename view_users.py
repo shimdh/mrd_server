@@ -26,6 +26,16 @@ def register():
                 elif len(got_data['password']) < 4:
                     result['result'] = ResultCodes.ShortPassword
                 else:
+                    if len(
+                            [e for e in got_data['nickname'] if e.isalnum()]
+                    ) != len(
+                            got_data['nickname']
+                    ) or len(
+                            [e for e in got_data['password'] if e.isalnum()]
+                    ) != len(got_data['password']):
+                        pass
+                    else:
+                        pass
                     if User.query.filter_by(nickname=got_data['nickname']).first():
                         result['result'] = ResultCodes.NicknameExist
                     else:
