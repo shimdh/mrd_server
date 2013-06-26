@@ -1,22 +1,6 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
-import serverconfig
-import view_users
+from gevent.wsgi import WSGIServer
+from mrd_srv import app
 
-
-app = Flask(__name__)
-
-
-def index():
-    return 'Hello World'
-
-index.methods = ['GET']
-
-
-app.add_url_rule('/register', 'register', view_users.register)
-app.add_url_rule('/', 'index', index)
-
-if __name__ == '__main__':
-    app.debug = True
-    # app.run(host='0.0.0.0')
-    app.run(host=serverconfig.HOST, port=serverconfig.PORT)
+http_server = WSGIServer(('', 5000), app)
+http_server.serve_forever()
