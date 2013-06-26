@@ -56,11 +56,9 @@ class User(Base):
     registered_date = Column(DateTime(), default=datetime.datetime.now())
     login_date = Column(DateTime())
 
-    def __init__(self, nickname, name, password, email):
+    def __init__(self, nickname, password):
         self.nickname = nickname
-        self.name = name
         self.password = password
-        self.email = email
 
         self.resurrect = json.dumps(self.initResurrect())
 
