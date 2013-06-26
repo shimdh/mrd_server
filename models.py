@@ -110,7 +110,7 @@ class Stat(Base):
     hp = Column(Integer())
     weapon_level = Column(Integer())
     weapon_exp = Column(Integer())
-    visited_zone_no = Column(Integer())
+    visited_zone_no = Column(String(10))
 
     def __init__(self, user_id):
         self.user_id = user_id
@@ -124,6 +124,7 @@ class OwnCostumebase(Base):
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
     costumebase_index = Column(String(10))
+    lastdate_from_gotcash = Column(DateTime(), default=datetime.datetime.now())
     created_datetime = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, costumebase_index):
@@ -209,7 +210,7 @@ class Costumebase(Base):
 class Fishing(Base):
     __tablename__ = 'fishing'
     id = Column(Integer(), primary_key=True)
-    zone_index = Column(Integer())
+    zone_index = Column(String(10))
     no_item = Column(Float())
     general_ship_index = Column(String(10))
     general_ship_rate = Column(Float())
@@ -267,6 +268,7 @@ class PirateShip(Base):
 
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
+    type = Column(String(1), default='g')
     hp = Column(Integer())
     died = Column(Boolean(), default=False)
     created_datetime = Column(DateTime(), default=datetime.datetime.now())

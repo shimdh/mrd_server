@@ -6,10 +6,11 @@ import json
 
 from database import db_session
 from sqlalchemy import exc
+from models import OwnCostume, OwnCostumebase
 
 
 def setOwnCostumes():
-    result = {'type': ProtocolTypes.SetSlots}
+    result = {'type': ProtocolTypes.SetOwnCostumes}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -18,12 +19,19 @@ def setOwnCostumes():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_user.own_costumes = json.dumps(got_data['own_costumes'])
-                db_session.add(got_user)
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError                
+                if got_data['own_costumes'] == '' or got_data['own_costumes'] == None:
+                    result['result'] = ResultCodes.InputParamError
+                else:
+                    for got_costume_index in got_data['own_costumes']:
+                        find_costume = OwnCostume.query.filter_by(
+                            user_id=got_user.id, costume_index=got_costume_index).first()
+                        if not find_costume:
+                            temp_costume = OwnCostume(got_user.id, got_costume_index)
+                            db_session.add(temp_costume)
+                    try:
+                        db_session.commit()
+                    except exc.SQLAlchemyError:
+                        result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -36,7 +44,7 @@ setOwnCostumes.methods = ['POST']
 
 
 def getOwnCostumes():
-    result = {'type': ProtocolTypes.GetSlots}
+    result = {'type': ProtocolTypes.GetOwnCostumes}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -45,10 +53,14 @@ def getOwnCostumes():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if (got_user.own_costumes is None) or (got_user.own_costumes == ''):
-                    result['result'] = ResultCodes.NoData
+                find_own_costumes = OwnCostume.query.filter_by(user_id=got_user.id).all()
+                if find_own_costumes:
+                    found_own_costume_indexes = list()
+                    for find_own_costume in find_own_costumes:
+                        found_own_costume_indexes.append(find_own_costume.costume_index)
+                    result['own_costumes'] = json.dumps(found_own_costume_indexes)
                 else:
-                    result['own_costumes'] = got_user.own_costumes
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -60,7 +72,7 @@ getOwnCostumes.methods = ['POST']
 
 
 def setOwnCostumebases():
-    result = {'type': ProtocolTypes.SetSlots}
+    result = {'type': ProtocolTypes.SetOwnCostumeBases}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -69,12 +81,19 @@ def setOwnCostumebases():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_user.own_costumebases = json.dumps(got_data['own_costumebases'])
-                db_session.add(got_user)
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError                
+                if got_data['own_costumebases'] == '' or got_data['own_costumebases'] == None:
+                    result['result'] = ResultCodes.InputParamError
+                else:
+                    for got_costumebase_index in got_data['own_costumebases']:
+                        find_costumebase = OwnCostumebase.query.filter_by(
+                            user_id=got_user.id, costumebase_index=got_costumebase_index).first()
+                        if not find_costumebase:
+                            temp_costumebase = OwnCostumebase(got_user.id, got_costumebase_index)
+                            db_session.add(temp_costumebase)
+                    try:
+                        db_session.commit()
+                    except exc.SQLAlchemyError:
+                        result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -87,7 +106,7 @@ setOwnCostumebases.methods = ['POST']
 
 
 def getOwnCostumebases():
-    result = {'type': ProtocolTypes.GetSlots}
+    result = {'type': ProtocolTypes.GetOwnCostumeBases}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -96,10 +115,18 @@ def getOwnCostumebases():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if (got_user.own_costumebases is None) or (got_user.own_costumebases == ''):
-                    result['result'] = ResultCodes.NoData
+                find_own_costumebases = OwnCostumebase.query.filter_by(user_id=got_user.id).all()
+                if find_own_costumebases:
+                    found_own_costumebase_list = list()
+                    for find_own_costumebase in find_own_costumebases:
+                        temp_costumebase_dict = dict()
+                        temp_costumebase_dict['costumebase_index'] = find_own_costumebase.costumebase_index
+                        temp_costumebase_dict['lastdate_from_gotcash'] = find_own_costumebase.lastdate_from_gotcash.strftime(
+                            "%Y,%m,%d")
+                        found_own_costumebase_list.append(temp_costumebase_dict)
+                    result['own_costumebases'] = json.dumps(found_own_costumebase_list)
                 else:
-                    result['own_costumebases'] = got_user.own_costumebases
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -110,4 +137,67 @@ def getOwnCostumebases():
 getOwnCostumebases.methods = ['POST']
 
 
+def addOwnCostume():
+    result = {'type': ProtocolTypes.AddOwnCostume}
 
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id', 'own_costume']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                if got_data['own_costume'] == '' or got_data['own_costume'] == None:
+                    result['result'] = ResultCodes.InputParamError
+                else:
+                    find_costume = OwnCostume.query.filter_by(
+                        user_id=got_user.id, costume_index=got_data['own_costume']).first()
+                    if not find_costume:
+                        temp_costume = OwnCostume(got_user.id, got_data['own_costume'])
+                        db_session.add(temp_costume)
+                    try:
+                        db_session.commit()
+                    except exc.SQLAlchemyError:
+                        result["result"] = ResultCodes.DBInputError
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+addOwnCostume.methods = ['POST']
+
+
+def addOwnCostumeBase():
+    result = {'type': ProtocolTypes.AddOwnCostumeBase}
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id', 'own_costumebase']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                if got_data['own_costumebase'] == '' or got_data['own_costumebase'] == None:
+                    result['result'] = ResultCodes.InputParamError
+                else:
+                    find_costumebase = OwnCostumebase.query.filter_by(
+                        user_id=got_user.id, costumebase_index=got_data['own_costumebase']).first()
+                    if not find_costumebase:
+                        temp_costumebase = OwnCostumebase(got_user.id, got_data['own_costumebase'])
+                        db_session.add(temp_costumebase)
+                    try:
+                        db_session.commit()
+                    except exc.SQLAlchemyError:
+                        result["result"] = ResultCodes.DBInputError
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+addOwnCostumeBase.methods = ['POST']

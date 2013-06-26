@@ -34,8 +34,9 @@ class ProtocolTypes(object):
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
         GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
-        AcceptFriend, GetFriendCharacterInfo, AddCompletedEvent,
-    ) = range(100, 129)
+        AcceptFriend, GetFriendCharacterInfo, AddCompletedEvent, GetFishing,
+        AddOwnCostume, AddOwnCostumeBase,
+    ) = range(100, 132)
 
 
 def checkSessionId(got_session_id):

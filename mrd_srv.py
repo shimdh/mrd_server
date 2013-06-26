@@ -4,6 +4,7 @@ from flask import Flask
 from database import db_session
 import serverconfig
 import view_events
+import view_fishing
 
 import view_users
 import view_costumes
@@ -82,6 +83,15 @@ app.add_url_rule(
     '/get_friendcharacterinfo', 'get_friendcharacterinfo', view_friends.getFriendCharacterInfo)
 app.add_url_rule(
     '/add_completedevent', 'add_completedevent', view_events.addCompletedEvent
+)
+app.add_url_rule(
+    '/get_fishing', 'get_fishing', view_fishing.getFishing
+)
+app.add_url_rule(
+    '/add_owncostume', 'add_owncostume', view_costumes.addOwnCostume
+)
+app.add_url_rule(
+    '/add_owncostumebase', 'add_owncostumebase', view_costumes.addOwnCostumeBase
 )
 
 
