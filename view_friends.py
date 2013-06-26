@@ -15,34 +15,35 @@ def addFriend():
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
 
-        from_keys = ['session_id', 'friend_nickname']
+        from_keys = ['session_id', 'name']
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if (got_user.friends is None) or (got_user.friends == ''):
-                    got_friends = list(got_data['friend_nickname'])
-                    got_user.friends = json.dumps(got_friends)
-                    db_session.add(got_user)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result['result'] = ResultCodes.DBInputError
-                else:
-                    got_friends = json.loads(got_user.friends)
-                    if got_friends:
-                        if len(got_friends) == 0:
-                            got_friends = list(got_data['friend_nickname'])
-                            got_user.friends = json.dumps(got_friends)
-                            db_session.add(got_user)
-                        else:
-                            got_friends.append(got_data['friend_nickname'])
-                            got_user.friends = json.dumps(got_friends)
-                            db_session.add(got_user)
-                        try:
-                            db_session.commit()
-                        except exc.SQLAlchemyError:
-                            result['result'] = ResultCodes.DBInputError
+                pass
+                # if (got_user.friends is None) or (got_user.friends == ''):
+                #     got_friends = list(got_data['name'])
+                #     got_user.friends = json.dumps(got_friends)
+                #     db_session.add(got_user)
+                #     try:
+                #         db_session.commit()
+                #     except exc.SQLAlchemyError:
+                #         result['result'] = ResultCodes.DBInputError
+                # else:
+                #     got_friends = json.loads(got_user.friends)
+                #     if got_friends:
+                #         if len(got_friends) == 0:
+                #             got_friends = list(got_data['name'])
+                #             got_user.friends = json.dumps(got_friends)
+                #             db_session.add(got_user)
+                #         else:
+                #             got_friends.append(got_data['name'])
+                #             got_user.friends = json.dumps(got_friends)
+                #             db_session.add(got_user)
+                #         try:
+                #             db_session.commit()
+                #         except exc.SQLAlchemyError:
+                #             result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
