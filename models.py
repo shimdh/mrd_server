@@ -279,7 +279,7 @@ class PirateShip(Base):
 
 
 class AttackedShipUser(Base):
-    __tablename__ = 'attack_ship_users'
+    __tablename__ = 'attacked_ship_users'
 
     id = Column(Integer(), primary_key=True)
     ship_id = Column(Integer())
