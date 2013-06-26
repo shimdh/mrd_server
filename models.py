@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Date
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Date, Float
 from database import Base
 
 import json
@@ -206,6 +206,96 @@ class Costumebase(Base):
         return '<Costumebase %s>' % (self.index)
 
 
+class Fishing(Base):
+    __tablename__ = 'fishing'
+    id = Column(Integer(), primary_key=True)
+    zone_no = Column(Integer())
+    no_item = Column(Float())
+    general_ship_index = Column(String(10))
+    general_ship_rate = Column(Float())
+    special_ship_index = Column(String(10))
+    special_ship_rate = Column(Float())
+    item_index_1 = Column(String(10))
+    item_count_1 = Column(Integer())
+    item_rate_1 = Column(Float())
+    item_index_2 = Column(String(10))
+    item_count_2 = Column(Integer())
+    item_rate_2 = Column(Float())
+    item_index_3 = Column(String(10))
+    item_count_3 = Column(Integer())
+    item_rate_3 = Column(Float())
+    item_index_4 = Column(String(10))
+    item_count_4 = Column(Integer())
+    item_rate_4 = Column(Float())
+    item_index_5 = Column(String(10))
+    item_count_5 = Column(Integer())
+    item_rate_5 = Column(Float())
+    item_index_6 = Column(String(10))
+    item_count_6 = Column(Integer())
+    item_rate_6 = Column(Float())
+    item_index_7 = Column(String(10))
+    item_count_7 = Column(Integer())
+    item_rate_7 = Column(Float())
+    item_index_8 = Column(String(10))
+    item_count_8 = Column(Integer())
+    item_rate_8 = Column(Float())
+    item_index_9 = Column(String(10))
+    item_count_9 = Column(Integer())
+    item_rate_9 = Column(Float())
+    item_index_10 = Column(String(10))
+    item_count_10 = Column(Integer())
+    item_rate_10 = Column(Float())
+    item_index_11 = Column(String(10))
+    item_count_11 = Column(Integer())
+    item_rate_11 = Column(Float())
+    item_index_12 = Column(String(10))
+    item_count_12 = Column(Integer())
+    item_rate_12 = Column(Float())
+    item_index_13 = Column(String(10))
+    item_count_13 = Column(Integer())
+    item_rate_13 = Column(Float())
+
+    def __init__(self, zone_no):
+        self.zone_no = zone_no
+
+    def __repr__(self):
+        return '<Fishing %s>' % self.zone_no
+
+
+class PirateShip(Base):
+    __tablename__ = 'pirate_ships'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    hp = Column(Integer())
+    died = Column(Boolean(), default=False)
+    created_datetime = Column(DateTime(), default=datetime.datetime.now())
+
+    def __init__(self, user_id):
+        self.user_id = user_id
+
+
+    def __repr__(self):
+        return '<PirateShip %s>' % self.user_id
+
+
+class AttackedShipUser(Base):
+    __tablename__ = 'attack_ship_users'
+
+    id = Column(Integer(), primary_key=True)
+    ship_id = Column(Integer())
+    user_id = Column(Integer())
+    attack_point = Column(Integer())
+
+    def __init__(self, ship_id, user_id):
+        self.ship_id = ship_id
+        self.user_id = user_id
+
+
+    def __repr__(self):
+        return '<AttackedShipUser %s>' % self.ship_id
+
+
 class Zone(Base):
     """docstring for Zone"""
     __tablename__ = 'zones'
@@ -270,24 +360,6 @@ class Zone(Base):
         return temp_fishing
 
 
-class Notice(Base):
-    """docstring for Notice"""
-    __tablename__ = 'notices'
-
-    id = Column(Integer, primary_key=True)
-    title = Column(String(50))
-    content = Column(Text())
-    opened = Column(Boolean(), default=False)
-    modified_date = Column(DateTime(), default=datetime.datetime.now())
-
-    def __init__(self, title, content):
-        self.title = title
-        self.content = content
-
-    def __repr__(self):
-        return "<Notice('%s')>" % (self.title)
-
-
 class Mail(Base):
     """docstring for Mail"""
     __tablename__ = 'mails'
@@ -307,3 +379,20 @@ class Mail(Base):
 
     def __repr__(self):
         return "<Mail('%s')>" % (self.title)
+
+class Notice(Base):
+    """docstring for Notice"""
+    __tablename__ = 'notices'
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String(50))
+    content = Column(Text())
+    opened = Column(Boolean(), default=False)
+    modified_date = Column(DateTime(), default=datetime.datetime.now())
+
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content
+
+    def __repr__(self):
+        return "<Notice('%s')>" % (self.title)

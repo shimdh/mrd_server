@@ -31,16 +31,62 @@ def init_db():
         temp_costumebase_5 = models.Costumebase('COB_X01', 1, 1, 'COS_X01', 'COS_X02', 'COS_X03', 'COS_X04')
         temp_costumebase_6 = models.Costumebase('COB_X05', 1, 1, 'COS_X05', 'COS_X06', 'COS_X07', 'COS_X08')
         temp_costumebase_7 = models.Costumebase('COB_X09', 1, 1, 'COS_X09', 'COS_X10', 'COS_X11', 'COS_X12')
+
+        db_session.add_all(
+            [temp_costumebase_1, temp_costumebase_2, temp_costumebase_3, temp_costumebase_4,
+             temp_costumebase_5, temp_costumebase_6, temp_costumebase_7])
         
-        db_session.add(temp_costumebase_1)
-        db_session.add(temp_costumebase_2)
-        db_session.add(temp_costumebase_3)
-        db_session.add(temp_costumebase_4)
-        db_session.add(temp_costumebase_5)
-        db_session.add(temp_costumebase_6)
-        db_session.add(temp_costumebase_7)
-        
-        db_session.commit()      
+        db_session.commit()
+
+    if models.Fishing.query.count() == 0:
+        temp_fishing_1 = models.Fishing(5)
+        temp_fishing_1.no_item = 0
+        temp_fishing_1.general_ship_index = 'MOB_Y01'
+        temp_fishing_1.general_ship_rate = 8
+        temp_fishing_1.special_ship_index = 'MOB_Z01'
+        temp_fishing_1.special_ship_rate = 2
+        temp_fishing_1.item_index_1 = 'WUS_001'
+        temp_fishing_1.item_count_1 = 1
+        temp_fishing_1.item_rate_1 = 13
+        temp_fishing_1.item_index_2 = 'SKS_A01'
+        temp_fishing_1.item_count_2 = 1
+        temp_fishing_1.item_rate_2 = 18
+        temp_fishing_1.item_index_3 = 'SKS_P01'
+        temp_fishing_1.item_count_3 = 1
+        temp_fishing_1.item_rate_3 = 28
+        temp_fishing_1.item_index_4 = 'WUS_001'
+        temp_fishing_1.item_count_4 = 2
+        temp_fishing_1.item_rate_4 = 5
+        temp_fishing_1.item_index_5 = 'SKS_A01'
+        temp_fishing_1.item_count_5 = 2
+        temp_fishing_1.item_rate_5 = 5
+        temp_fishing_1.item_index_6 = 'SKS_P01'
+        temp_fishing_1.item_count_6 = 2
+        temp_fishing_1.item_rate_6 = 5
+        temp_fishing_1.item_index_7 = 'WUS_001'
+        temp_fishing_1.item_count_7 = 3
+        temp_fishing_1.item_rate_7 = 2
+        temp_fishing_1.item_index_8 = 'SKS_A01'
+        temp_fishing_1.item_count_8 = 3
+        temp_fishing_1.item_rate_8 = 2
+        temp_fishing_1.item_index_9 = 'SKS_P01'
+        temp_fishing_1.item_count_9 = 3
+        temp_fishing_1.item_rate_9 = 2
+        temp_fishing_1.item_index_10 = ''
+        temp_fishing_1.item_count_10 = 0
+        temp_fishing_1.item_rate_10 = 0
+        temp_fishing_1.item_index_11 = 'ETC_006'
+        temp_fishing_1.item_count_11 = 1
+        temp_fishing_1.item_rate_11 = 5
+        temp_fishing_1.item_index_12 = 'ETC_006'
+        temp_fishing_1.item_count_12 = 2
+        temp_fishing_1.item_rate_12 = 4
+        temp_fishing_1.item_index_13 = 'ETC_006'
+        temp_fishing_1.item_count_13 = 3
+        temp_fishing_1.item_rate_13 = 1
+
+        db_session.add(temp_fishing_1)
+        db_session.commit()
       
 
 def del_db():
