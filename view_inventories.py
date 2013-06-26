@@ -27,7 +27,7 @@ def getInventories():
                         if len(got_inventories) == 0:
                             result['result'] = ResultCodes.NoData
                         else:
-                            result['inventories'] = json.dumps(got_inventories)
+                            result['inventories'] = got_user.inventories
                     else:
                         result['result'] = ResultCodes.NoData
         else:
