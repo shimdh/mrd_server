@@ -33,22 +33,22 @@ def register():
                     ) or len(
                             [e for e in got_data['password'] if e.isalnum()]
                     ) != len(got_data['password']):
-                        pass
+                        ResultCodes.InputParamError
                     else:
-                        pass
-                    if User.query.filter_by(nickname=got_data['nickname']).first():
-                        result['result'] = ResultCodes.NicknameExist
-                    else:
-                        user_data = User(
-                            got_data['nickname'],
-                            got_data['password']
-                        )
-                        db_session.add(user_data)
-                        try:
-                            db_session.commit()
-                            result["result"] = ResultCodes.Success
-                        except exc.SQLAlchemyError:
-                            result["result"] = ResultCodes.DBInputError
+                        if User.query.filter_by(nickname=got_data['nickname']).first():
+                            result['result'] = ResultCodes.NicknameExist
+                        else:
+                            user_data = User(
+                                got_data['nickname'],
+                                got_data['password']
+                            )
+                            db_session.add(user_data)
+                            try:
+                                db_session.commit()
+                                result["result"] = ResultCodes.Success
+                            except exc.SQLAlchemyError:
+                                result["result"] = ResultCodes.DBInputError
+
         else:
             result["result"] = ResultCodes.InputParamError
     else:
