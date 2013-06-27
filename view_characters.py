@@ -25,6 +25,7 @@ def createCharacter():
                     result['result'] = ResultCodes.DataExist
                 else:
                     got_character = got_data['character']
+                    got_user.name = got_character['name']
                     user_character = Character(got_user.id, got_character['name'])
                     user_character.level = got_character['level']
                     user_character.body_type = got_character['body_type']
@@ -41,6 +42,7 @@ def createCharacter():
                     user_character.weapon_level = got_character['weapon_level']
                     user_character.weapon_type = got_character['weapon_type']
 
+                    db_session.add(got_user)
                     db_session.add(user_character)
                     try:
                         db_session.commit()
