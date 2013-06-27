@@ -381,6 +381,11 @@ def receiveFriendShipPoint():
                         find_me.friendship_received_date = datetime.datetime.now()
 
                         db_session.add(find_me)
+
+                        if not got_user.friendship_point:
+                            got_user.friendship_point = 0
+                        got_user.friendship_point += 1
+                        db_session.add(got_user)
                         try:
                             db_session.commit()
                         except exc.SQLAlchemyError:

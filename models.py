@@ -45,7 +45,7 @@ class User(Base):
     slots = Column(Text())
     resurrect = Column(Text())
     clothes = Column(Text())
-    friendship_point = Column(Integer())
+    friendship_point = Column(Integer(), default=0)
     inventories = Column(Text())
     cashes = Column(Integer(), default=0)
     session_id = Column(String(100))
