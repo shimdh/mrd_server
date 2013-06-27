@@ -26,13 +26,10 @@ def register():
                 elif len(got_data['password']) < 4:
                     result['result'] = ResultCodes.ShortPassword
                 else:
-                    if len(
-                            [e for e in got_data['nickname'] if e.isalnum()]
-                    ) != len(
-                            got_data['nickname']
-                    ) or len(
-                            [e for e in got_data['password'] if e.isalnum()]
-                    ) != len(got_data['password']):
+                    import re
+                    if (
+                        not re.match("^[A-Za-z0-9_-]*$", got_data['nickname'])
+                    ) and (not re.match("^[A-Za-z0-9_-]*$", got_data['password'])):
                         ResultCodes.InputParamError
                     else:
                         if User.query.filter_by(nickname=got_data['nickname']).first():
