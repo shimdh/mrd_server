@@ -11,7 +11,10 @@ from sqlalchemy import exc
 
 
 def register():
-    result = {'type': ProtocolTypes.RegisterUser}
+    result = dict(
+        type=ProtocolTypes.RegisterUser,
+        result=ResultCodes.Success
+    )
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -42,7 +45,6 @@ def register():
                             db_session.add(user_data)
                             try:
                                 db_session.commit()
-                                result["result"] = ResultCodes.Success
                             except exc.SQLAlchemyError:
                                 result["result"] = ResultCodes.DBInputError
 
@@ -57,7 +59,10 @@ register.methods = ['POST']
 
 
 def login():
-    result = {'type': ProtocolTypes.LoginUser}
+    result = dict(
+        type=ProtocolTypes.LoginUser,
+        result=ResultCodes.Success
+    )
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -74,7 +79,6 @@ def login():
                     try:
                         db_session.commit()
                         result['session_id'] = got_user.session_id
-                        result['result'] = ResultCodes.Success
                     except exc.SQLAlchemyError:
                         result['result'] = ResultCodes.DBInputError
                 else:
