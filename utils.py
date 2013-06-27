@@ -37,8 +37,8 @@ class ProtocolTypes(object):
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
         GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
         AcceptFriend, GetFriendCharacterInfo, AddCompletedEvent, GetFishing,
-        AddOwnCostume, AddOwnCostumeBase,
-    ) = range(100, 132)
+        AddOwnCostume, AddOwnCostumeBase, SendFriendShipPoint,
+    ) = range(100, 133)
 
 
 def checkSessionId(got_session_id):
@@ -66,4 +66,4 @@ def checkSessionId(got_session_id):
 
 
 def checkContainKeys(my_list, my_dict):
-    return len([x for x in my_list if x in my_dict]) > 0
+    return len([x for x in my_list if x in my_dict and my_dict[x]]) == len(my_dict)

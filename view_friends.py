@@ -7,6 +7,7 @@ import json
 from database import db_session
 from models import User, Friend, Character
 from sqlalchemy import exc
+import datetime
 
 
 def addFriend():
@@ -311,3 +312,46 @@ def getFriendCharacterInfo():
     return str(json.dumps(result))
 
 getFriendCharacterInfo.methods = ['POST']
+
+
+def sendFriendShipPoint():
+    result = dict(
+        type=ProtocolTypes.SendFriendShipPoint,
+        result=ResultCodes.Success
+    )
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id', 'friend_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_friend = Friend.query.filter_by(
+                    user_id=got_user.id, friend_id=got_data['friend_id']).first()
+                if find_friend:
+                    if find_friend.friendship_sent_date.strftime(
+                            "%Y,%m,%d") == datetime.datetime.now().strftime(
+                            "%Y,%m,%d") or find_friend.friendship_received_date.strftime(
+                            "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                        result['result'] = ResultCodes.InputParamError
+                    else:
+                        find_friend.friendship_sent_date = datetime.datetime.now()
+
+                        db_session.add(find_friend)
+                        try:
+                            db_session.commit()
+                        except exc.SQLAlchemyError:
+                            result['result'] = ResultCodes.DBInputError
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+sendFriendShipPoint.methods = ['POST']

@@ -93,6 +93,9 @@ app.add_url_rule(
 app.add_url_rule(
     '/add_owncostumebase', 'add_owncostumebase', view_costumes.addOwnCostumeBase
 )
+app.add_url_rule(
+    '/send_friendshippoint', 'send_friendshippoint', view_friends.sendFriendShipPoint
+)
 
 
 @app.route('/hello')
