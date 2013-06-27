@@ -72,10 +72,14 @@ def getFriendsList():
                     for find_friend in find_friends:
                         got_friend = User.query.filter_by(id=find_friend.friend_id).first()
                         if got_friend:
-                            tmp_friend_info = dict()
-                            tmp_friend_info['user_id'] = got_friend.id
-                            tmp_friend_info['name'] = got_friend.name
-                            tmp_friend_info['last_login'] = got_friend.login_date.strftime("%Y,%m,%d")
+                            tmp_friend_info = dict(
+                                user_id=got_friend.id,
+                                name=got_friend.name,
+                                last_login=got_friend.login_date.strftime("%Y,%m,%d")
+                                )
+                            # tmp_friend_info['user_id'] = got_friend.id
+                            # tmp_friend_info['name'] = got_friend.name
+                            # tmp_friend_info['last_login'] = got_friend.login_date.strftime("%Y,%m,%d")
 
                             friends_info.append(tmp_friend_info)
 
@@ -108,10 +112,14 @@ def findFriendByName():
                 if got_user_lists:
                     send_user_lists = []
                     for got_user_list in got_user_lists:
-                        tmp_friend = dict()
-                        tmp_friend['user_id'] = got_user_list.id
-                        tmp_friend['name'] = got_user_list.name
-                        tmp_friend['last_login'] = got_user_list.login_date.strftime("%Y,%m,%d")
+                        tmp_friend = dict(
+                            user_id=got_user_list.id,
+                            name=got_user_list.name,
+                            last_login=got_user_list.login_date.strftime("%Y,%m,%d")
+                        )
+                        # tmp_friend['user_id'] = got_user_list.id
+                        # tmp_friend['name'] = got_user_list.name
+                        # tmp_friend['last_login'] = got_user_list.login_date.strftime("%Y,%m,%d")
 
                         send_user_lists.append(tmp_friend)
 
@@ -175,15 +183,20 @@ def getWaitingFriends():
                 if find_friends:
                     friends_data = list()
                     for find_friend in find_friends:
-                        tmp_friend = dict()
-                        tmp_friend[id] = find_friend.user_id
                         friend_data = User.query.filter_by(id=find_friend.user_id).first()
                         if friend_data:
-                            tmp_friend['name'] = friend_data.name
-                            tmp_friend['nickname'] = friend_data.nickname
-                            tmp_friend['last_login'] = tmp_friend.login_date.strftime("%Y,%m,%d")
+                            tmp_friend = dict(
+                                id=find_friend.user_id,
+                                name=friend_data.name,
+                                nickname=friend_data.nickname,
+                                last_login=tmp_friend.login_date.strftime("%Y,%m,%d")
+                            )
+                            # tmp_friend[id] = find_friend.user_id
+                            # tmp_friend['name'] = friend_data.name
+                            # tmp_friend['nickname'] = friend_data.nickname
+                            # tmp_friend['last_login'] = tmp_friend.login_date.strftime("%Y,%m,%d")
 
-                        friends_data.append(tmp_friend)
+                            friends_data.append(tmp_friend)
 
                         if len(friends_data) == 0:
                             result['result'] = ResultCodes.NoData
@@ -252,23 +265,40 @@ def getFriendCharacterInfo():
                 if got_user:
                     find_friend_character = Character.query.filter_by(id=got_data['friend_id']).first()
                     if find_friend_character:
-                        send_friend_info = dict()
-                        send_friend_info['user_id'] = got_data['friend_id']
-                        send_friend_info['name'] = find_friend_character.name
-                        send_friend_info['level'] = find_friend_character.level
-                        send_friend_info['body_type'] = find_friend_character.body_type
-                        send_friend_info['cloak_type'] = find_friend_character.cloak_type
-                        send_friend_info['color_r'] = find_friend_character.color_r
-                        send_friend_info['color_g'] = find_friend_character.color_g
-                        send_friend_info['color_b'] = find_friend_character.color_b
-                        send_friend_info['exp'] = find_friend_character.exp
-                        send_friend_info['face_type'] = find_friend_character.face_type
-                        send_friend_info['hp'] = find_friend_character.hp
-                        send_friend_info['gender'] = find_friend_character.gender
-                        send_friend_info['hair_type'] = find_friend_character.hair_type
-                        send_friend_info['weapon_exp'] = find_friend_character.weapon_exp
-                        send_friend_info['weapon_level'] = find_friend_character.weapon_level
-                        send_friend_info['weapon_type'] = find_friend_character.weapon_type
+                        send_friend_info = dict(
+                            user_id=got_data['friend_id'],
+                            name=find_friend_character.name,
+                            level=find_friend_character.level,
+                            body_type=find_friend_character.body_type,
+                            cloak_type=find_friend_character.cloak_type,
+                            color_r=find_friend_character.color_r,
+                            color_g=find_friend_character.color_g,
+                            color_b=find_friend_character.color_b,
+                            exp=find_friend_character.exp,
+                            face_type=find_friend_character.face_type,
+                            hp=find_friend_character.hp,
+                            gender=find_friend_character.gender,
+                            hair_type=find_friend_character.hair_type,
+                            weapon_exp=find_friend_character.weapon_exp,
+                            weapon_level=find_friend_character.weapon_level,
+                            weapon_type=find_friend_character.weapon_type,
+                        )
+                        # send_friend_info['user_id'] = got_data['friend_id']
+                        # send_friend_info['name'] = find_friend_character.name
+                        # send_friend_info['level'] = find_friend_character.level
+                        # send_friend_info['body_type'] = find_friend_character.body_type
+                        # send_friend_info['cloak_type'] = find_friend_character.cloak_type
+                        # send_friend_info['color_r'] = find_friend_character.color_r
+                        # send_friend_info['color_g'] = find_friend_character.color_g
+                        # send_friend_info['color_b'] = find_friend_character.color_b
+                        # send_friend_info['exp'] = find_friend_character.exp
+                        # send_friend_info['face_type'] = find_friend_character.face_type
+                        # send_friend_info['hp'] = find_friend_character.hp
+                        # send_friend_info['gender'] = find_friend_character.gender
+                        # send_friend_info['hair_type'] = find_friend_character.hair_type
+                        # send_friend_info['weapon_exp'] = find_friend_character.weapon_exp
+                        # send_friend_info['weapon_level'] = find_friend_character.weapon_level
+                        # send_friend_info['weapon_type'] = find_friend_character.weapon_type
 
                         result['friend_info'] = json.dumps(send_friend_info)
                     else:
