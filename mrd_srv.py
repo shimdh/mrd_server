@@ -96,6 +96,9 @@ app.add_url_rule(
 app.add_url_rule(
     '/send_friendshippoint', 'send_friendshippoint', view_friends.sendFriendShipPoint
 )
+app.add_url_rule(
+    '/receive_friendshippoint', 'receive_friendshippoint', view_friends.receiveFriendShipPoint
+)
 
 
 @app.route('/hello')

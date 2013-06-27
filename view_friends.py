@@ -355,3 +355,46 @@ def sendFriendShipPoint():
 
 
 sendFriendShipPoint.methods = ['POST']
+
+
+def receiveFriendShipPoint():
+    result = dict(
+        type=ProtocolTypes.ReceiveFriendShipPoint,
+        result=ResultCodes.Success
+    )
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id', 'friend_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_me = Friend.query.filter_by(
+                    user_id=got_data['friend_id'], friend_id=got_user.id).first()
+                if find_me:
+                    if find_me.friendship_sent_date.strftime(
+                            "%Y,%m,%d") == datetime.datetime.now().strftime(
+                            "%Y,%m,%d") and find_me.friendship_received_date.strftime(
+                            "%Y,%m,%d") != datetime.datetime.now().strftime("%Y,%m,%d"):
+                        find_me.friendship_received_date = datetime.datetime.now()
+
+                        db_session.add(find_me)
+                        try:
+                            db_session.commit()
+                        except exc.SQLAlchemyError:
+                            result['result'] = ResultCodes.DBInputError
+                    else:
+                        result['result'] = ResultCodes.InputParamError
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+receiveFriendShipPoint.methods = ['POST']

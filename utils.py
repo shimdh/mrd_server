@@ -37,8 +37,8 @@ class ProtocolTypes(object):
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
         GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
         AcceptFriend, GetFriendCharacterInfo, AddCompletedEvent, GetFishing,
-        AddOwnCostume, AddOwnCostumeBase, SendFriendShipPoint,
-    ) = range(100, 133)
+        AddOwnCostume, AddOwnCostumeBase, SendFriendShipPoint, ReceiveFriendShipPoint,
+    ) = range(100, 134)
 
 
 def checkSessionId(got_session_id):
