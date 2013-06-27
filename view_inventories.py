@@ -19,7 +19,7 @@ def getInventories():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if (got_user.inventories is None) or (got_user.inventories == ''):
+                if (not got_user.inventories) or (got_user.inventories == ''):
                     result['result'] = ResultCodes.NoData
                 else:
                     got_inventories = json.loads(got_user.inventories)

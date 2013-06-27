@@ -4,13 +4,15 @@ from flask import request
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
 import json
 
-
 from database import db_session
+from sqlalchemy import exc
 
 
 def setSlots():
-    result = {'type': ProtocolTypes.SetSlots}
-
+    result = dict(
+        type=ProtocolTypes.SetSlots,
+        result=ResultCodes.Success
+    )
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'slots']
@@ -20,7 +22,10 @@ def setSlots():
             if got_user:
                 got_user.slots = json.dumps(got_data['slots'])
                 db_session.add(got_user)
-                db_session.commit()
+                try:
+                    db_session.commit()
+                except exc.SQLAlchemyError:
+                    result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:

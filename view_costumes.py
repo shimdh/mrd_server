@@ -19,7 +19,7 @@ def setOwnCostumes():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if got_data['own_costumes'] == '' or got_data['own_costumes'] == None:
+                if got_data['own_costumes'] == '':
                     result['result'] = ResultCodes.InputParamError
                 else:
                     for got_costume_index in got_data['own_costumes']:
@@ -81,7 +81,7 @@ def setOwnCostumebases():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if got_data['own_costumebases'] == '' or got_data['own_costumebases'] == None:
+                if got_data['own_costumebases'] == '':
                     result['result'] = ResultCodes.InputParamError
                 else:
                     for got_costumebase_index in got_data['own_costumebases']:
@@ -147,7 +147,7 @@ def addOwnCostume():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if got_data['own_costume'] == '' or got_data['own_costume'] == None:
+                if got_data['own_costume'] == '':
                     result['result'] = ResultCodes.InputParamError
                 else:
                     find_costume = OwnCostume.query.filter_by(
@@ -180,7 +180,7 @@ def addOwnCostumeBase():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                if got_data['own_costumebase'] == '' or got_data['own_costumebase'] == None:
+                if got_data['own_costumebase'] == '':
                     result['result'] = ResultCodes.InputParamError
                 else:
                     find_costumebase = OwnCostumebase.query.filter_by(

@@ -77,11 +77,7 @@ def getFriendsList():
                                 user_id=got_friend.id,
                                 name=got_friend.name,
                                 last_login=got_friend.login_date.strftime("%Y,%m,%d")
-                                )
-                            # tmp_friend_info['user_id'] = got_friend.id
-                            # tmp_friend_info['name'] = got_friend.name
-                            # tmp_friend_info['last_login'] = got_friend.login_date.strftime("%Y,%m,%d")
-
+                            )
                             friends_info.append(tmp_friend_info)
 
                     result['friends'] = json.dumps(friends_info)
@@ -118,10 +114,6 @@ def findFriendByName():
                             name=got_user_list.name,
                             last_login=got_user_list.login_date.strftime("%Y,%m,%d")
                         )
-                        # tmp_friend['user_id'] = got_user_list.id
-                        # tmp_friend['name'] = got_user_list.name
-                        # tmp_friend['last_login'] = got_user_list.login_date.strftime("%Y,%m,%d")
-
                         send_user_lists.append(tmp_friend)
 
                     result['searched_list'] = json.dumps(send_user_lists)
@@ -192,11 +184,6 @@ def getWaitingFriends():
                                 nickname=friend_data.nickname,
                                 last_login=tmp_friend.login_date.strftime("%Y,%m,%d")
                             )
-                            # tmp_friend[id] = find_friend.user_id
-                            # tmp_friend['name'] = friend_data.name
-                            # tmp_friend['nickname'] = friend_data.nickname
-                            # tmp_friend['last_login'] = tmp_friend.login_date.strftime("%Y,%m,%d")
-
                             friends_data.append(tmp_friend)
 
                         if len(friends_data) == 0:
@@ -284,22 +271,6 @@ def getFriendCharacterInfo():
                             weapon_level=find_friend_character.weapon_level,
                             weapon_type=find_friend_character.weapon_type,
                         )
-                        # send_friend_info['user_id'] = got_data['friend_id']
-                        # send_friend_info['name'] = find_friend_character.name
-                        # send_friend_info['level'] = find_friend_character.level
-                        # send_friend_info['body_type'] = find_friend_character.body_type
-                        # send_friend_info['cloak_type'] = find_friend_character.cloak_type
-                        # send_friend_info['color_r'] = find_friend_character.color_r
-                        # send_friend_info['color_g'] = find_friend_character.color_g
-                        # send_friend_info['color_b'] = find_friend_character.color_b
-                        # send_friend_info['exp'] = find_friend_character.exp
-                        # send_friend_info['face_type'] = find_friend_character.face_type
-                        # send_friend_info['hp'] = find_friend_character.hp
-                        # send_friend_info['gender'] = find_friend_character.gender
-                        # send_friend_info['hair_type'] = find_friend_character.hair_type
-                        # send_friend_info['weapon_exp'] = find_friend_character.weapon_exp
-                        # send_friend_info['weapon_level'] = find_friend_character.weapon_level
-                        # send_friend_info['weapon_type'] = find_friend_character.weapon_type
 
                         result['friend_info'] = json.dumps(send_friend_info)
                     else:
@@ -385,6 +356,7 @@ def receiveFriendShipPoint():
                         if not got_user.friendship_point:
                             got_user.friendship_point = 0
                         got_user.friendship_point += 1
+
                         db_session.add(got_user)
                         try:
                             db_session.commit()

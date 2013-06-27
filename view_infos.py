@@ -8,13 +8,15 @@ from models import Notice, Info
 
 
 def getNotice():
-    result = {'type': ProtocolTypes.GetNotice}
+    result = dict(
+        type=ProtocolTypes.GetNotice,
+        result=ResultCodes.Success
+    )
 
     got_notice = Notice.query.filter_by(opened=True).first()
     if not got_notice:
         result['result'] = ResultCodes.NoData
     else:
-        result['result'] = ResultCodes.Success
         result['title'] = got_notice.title
         result['content'] = got_notice.content
 
@@ -24,8 +26,10 @@ getNotice.methods = ['POST']
 
 
 def checkGameVersion():
-    result = {'type': ProtocolTypes.CheckGameVersion}
-
+    result = dict(
+        type=ProtocolTypes.CheckGameVersion,
+        result=ResultCodes.Success
+    )
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
 
@@ -35,15 +39,11 @@ def checkGameVersion():
             if not got_info:
                 result['result'] = ResultCodes.NoData
             else:
-                if got_data['os_type'] == 'android':
-                    if got_data['game_version'] == got_info.android_game_version:
-                        result['result'] = ResultCodes.Success
-                    else:
+                if got_data['os_type'].lower() == 'android':
+                    if got_data['game_version'] != got_info.android_game_version:
                         result['result'] = ResultCodes.GameVersionError
-                elif got_data['os_type'] == 'ios':
-                    if got_data['game_version'] == got_info.ios_game_version:
-                        result['result'] = ResultCodes.Success
-                    else:
+                elif got_data['os_type'].lower() == 'ios':
+                    if got_data['game_version'] != got_info.ios_game_version:
                         result['result'] = ResultCodes.GameVersionError
                 else:
                     result['result'] = ResultCodes.GameVersionError

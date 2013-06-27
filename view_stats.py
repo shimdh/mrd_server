@@ -76,12 +76,6 @@ def getStats():
                         weapon_exp=find_stat.weapon_exp,
                         visited_zone_no=find_stat.visited_zone_no,
                     )
-                    # send_stat['exp'] = find_stat.exp
-                    # send_stat['level'] = find_stat.level
-                    # send_stat['hp'] = find_stat.hp
-                    # send_stat['weapon_level'] = find_stat.weapon_level
-                    # send_stat['weapon_exp'] = find_stat.weapon_exp
-                    # send_stat['visited_zone_no'] = find_stat.visited_zone_no
 
                     result['stats'] = json.dumps(send_stat)
                 else:

@@ -36,5 +36,4 @@ def addCompletedEvent():
 
     return str(json.dumps(result))
 
-
 addCompletedEvent.methods = ['POST']

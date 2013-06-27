@@ -10,8 +10,10 @@ from sqlalchemy import exc
 
 
 def writeMail():
-    result = {'type': ProtocolTypes.WriteMail}
-
+    result = dict(
+        type=ProtocolTypes.WriteMail,
+        result=ResultCodes.Success
+    )
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'mail_to', 'content']
@@ -24,7 +26,6 @@ def writeMail():
                 db_session.add(got_mail)
                 try:
                     db_session.commit()
-                    result['result'] = ResultCodes.Success
                 except exc.SQLAlchemyError:
                     result['result'] = ResultCodes.DBInputError
         else:
@@ -74,7 +75,10 @@ readMail.methods = ['POST']
 
 
 def getGiftMail():
-    result = {'type': ProtocolTypes.GetGiftMail}
+    result = dict(
+        type=ProtocolTypes.GetGiftMail,
+        result=ResultCodes.Success
+    )
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -105,8 +109,10 @@ getGiftMail.methods = ['POST']
 
 
 def getMailList():
-    result = {'type': ProtocolTypes.GetMailList}
-
+    result = dict(
+        type=ProtocolTypes.GetMailList,
+        result=ResultCodes.Success
+    )
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
@@ -142,8 +148,10 @@ getMailList.methods = ['POST']
 
 
 def deleteMails():
-    result = {'type': ProtocolTypes.DeleteMails}
-
+    result = dict(
+        type=ProtocolTypes.DeleteMails,
+        result=ResultCodes.Success
+    )
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'mail_indexes']
