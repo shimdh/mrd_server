@@ -39,12 +39,17 @@ def checkGameVersion():
             if not got_info:
                 result['result'] = ResultCodes.NoData
             else:
+                version_check = lambda ver: ver == got_data['game_version']
                 if got_data['os_type'].lower() == 'android':
-                    if got_data['game_version'] != got_info.android_game_version:
+                    if not version_check(got_info.android_game_version):
                         result['result'] = ResultCodes.GameVersionError
+                    # if got_data['game_version'] != got_info.android_game_version:
+                    #     result['result'] = ResultCodes.GameVersionError
                 elif got_data['os_type'].lower() == 'ios':
-                    if got_data['game_version'] != got_info.ios_game_version:
+                    if not version_check(got_info.ios_game_version):
                         result['result'] = ResultCodes.GameVersionError
+                    # if got_data['game_version'] != got_info.ios_game_version:
+                    #     result['result'] = ResultCodes.GameVersionError
                 else:
                     result['result'] = ResultCodes.GameVersionError
         else:
