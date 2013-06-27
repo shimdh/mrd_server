@@ -29,7 +29,7 @@ def register():
                     import re
                     if (
                         not re.match("^[A-Za-z0-9_-]*$", got_data['nickname'])
-                    ) and (not re.match("^[A-Za-z0-9_-]*$", got_data['password'])):
+                    ) or (not re.match("^[A-Za-z0-9_-]*$", got_data['password'])):
                         ResultCodes.InputParamError
                     else:
                         if User.query.filter_by(nickname=got_data['nickname']).first():
