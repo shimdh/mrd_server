@@ -68,13 +68,20 @@ def getStats():
             if got_user:
                 find_stat = Stat.query.filter_by(user_id=got_user.id).first()
                 if find_stat:
-                    send_stat = dict()
-                    send_stat['exp'] = find_stat.exp
-                    send_stat['level'] = find_stat.level
-                    send_stat['hp'] = find_stat.hp
-                    send_stat['weapon_level'] = find_stat.weapon_level
-                    send_stat['weapon_exp'] = find_stat.weapon_exp
-                    send_stat['visited_zone_no'] = find_stat.visited_zone_no
+                    send_stat = dict(
+                        exp=find_stat.exp,
+                        level=find_stat.level,
+                        hp=find_stat.hp,
+                        weapon_level=find_stat.weapon_level,
+                        weapon_exp=find_stat.weapon_exp,
+                        visited_zone_no=find_stat.visited_zone_no,
+                    )
+                    # send_stat['exp'] = find_stat.exp
+                    # send_stat['level'] = find_stat.level
+                    # send_stat['hp'] = find_stat.hp
+                    # send_stat['weapon_level'] = find_stat.weapon_level
+                    # send_stat['weapon_exp'] = find_stat.weapon_exp
+                    # send_stat['visited_zone_no'] = find_stat.visited_zone_no
 
                     result['stats'] = json.dumps(send_stat)
                 else:
