@@ -100,7 +100,7 @@ class SavedCurrentZone(Base):
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
     zone_index = Column(String(10))
-    episode_result = Column(Text())
+    episode = Column(Text())
     position = Column(Text())
     rotation = Column(Text())
 

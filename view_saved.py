@@ -164,7 +164,7 @@ def setSavedCurrentZone():
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = [
-            'session_id', 'zone_index', 'episode_result',
+            'session_id', 'zone_index', 'episode',
             'position', 'rotation']
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
@@ -174,8 +174,8 @@ def setSavedCurrentZone():
                     user_id=got_user.id).first()
                 if find_current_zone:
                     find_current_zone.zone_index = got_data['zone_index']
-                    find_current_zone.episode_result = got_data[
-                        'episode_result']
+                    find_current_zone.episode = got_data[
+                        'episode']
                     find_current_zone.position = json.dumps(
                         got_data['position'])
                     find_current_zone.rotation = json.dumps(
@@ -185,8 +185,8 @@ def setSavedCurrentZone():
                 else:
                     made_current_zone = SavedCurrentZone(
                         got_user.id, got_data['zone_index'])
-                    made_current_zone.episode_result = got_data[
-                        'episode_result']
+                    made_current_zone.episode = got_data[
+                        'episode']
                     made_current_zone.position = json.dumps(
                         got_data['position'])
                     made_current_zone.rotation = json.dumps(
@@ -225,7 +225,7 @@ def getSavedCurrentZone():
                     user_id=got_user.id).first()
                 if find_current_zone:
                     result['zone_index'] = find_current_zone.zone_index
-                    result['episode_result'] = find_current_zone.episode_result
+                    result['episode'] = find_current_zone.episode
                     result['position'] = find_current_zone.position
                     result['rotation'] = find_current_zone.rotation
                 else:
