@@ -38,7 +38,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     nickname = Column(String(20), unique=True, nullable=False)
-    name = Column(String(30), unique=True, nullable=False)
+    name = Column(String(30), unique=True)
     password = Column(String(200), nullable=False)
     email = Column(String(100), unique=True)
     gender = Column(String(1), default='M')
