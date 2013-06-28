@@ -101,6 +101,10 @@ app.add_url_rule(
 app.add_url_rule(
     '/receive_friendshippoint', 'receive_friendshippoint',
     view_friends.receiveFriendShipPoint)
+app.add_url_rule(
+    '/set_buttonstate', 'set_buttonstate', view_stats.setButtonState)
+app.add_url_rule(
+    '/get_buttonstate', 'get_buttonstate', view_stats.getButtonState)
 
 
 @app.route('/hello')
