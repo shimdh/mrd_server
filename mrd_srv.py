@@ -42,7 +42,8 @@ app.add_url_rule(
 app.add_url_rule(
     '/get_friendslist', 'get_friendslist', view_friends.getFriendsList)
 app.add_url_rule(
-    '/find_friendbynickname', 'find_friendbynickname', view_friends.findFriendByName)
+    '/find_friendbynickname', 'find_friendbynickname',
+    view_friends.findFriendByName)
 app.add_url_rule(
     '/get_inventories', 'get_inventories', view_inventories.getInventories)
 app.add_url_rule(
@@ -70,35 +71,36 @@ app.add_url_rule(
 app.add_url_rule(
     '/get_owncostumes', 'get_owncostumes', view_costumes.getOwnCostumes)
 app.add_url_rule(
-    '/set_owncostumebases', 'set_owncostumebases', view_costumes.setOwnCostumebases)
+    '/set_owncostumebases', 'set_owncostumebases',
+    view_costumes.setOwnCostumebases)
 app.add_url_rule(
-    '/get_owncostumebases', 'get_owncostumebases', view_costumes.getOwnCostumebases)
+    '/get_owncostumebases', 'get_owncostumebases',
+    view_costumes.getOwnCostumebases)
 app.add_url_rule(
     '/request_friend', 'request_friend', view_friends.requestFriend)
 app.add_url_rule(
-    '/get_waitingfriends', 'get_waitingfriends', view_friends.getWaitingFriends)
+    '/get_waitingfriends', 'get_waitingfriends',
+    view_friends.getWaitingFriends)
 app.add_url_rule(
     '/accept_friend', 'accept_friend', view_friends.acceptFriend)
 app.add_url_rule(
-    '/get_friendcharacterinfo', 'get_friendcharacterinfo', view_friends.getFriendCharacterInfo)
+    '/get_friendcharacterinfo', 'get_friendcharacterinfo',
+    view_friends.getFriendCharacterInfo)
 app.add_url_rule(
-    '/add_completedevent', 'add_completedevent', view_events.addCompletedEvent
-)
+    '/add_completedevent', 'add_completedevent', view_events.addCompletedEvent)
 app.add_url_rule(
-    '/get_fishing', 'get_fishing', view_fishing.getFishing
-)
+    '/get_fishing', 'get_fishing', view_fishing.getFishing)
 app.add_url_rule(
-    '/add_owncostume', 'add_owncostume', view_costumes.addOwnCostume
-)
+    '/add_owncostume', 'add_owncostume', view_costumes.addOwnCostume)
 app.add_url_rule(
-    '/add_owncostumebase', 'add_owncostumebase', view_costumes.addOwnCostumeBase
-)
+    '/add_owncostumebase', 'add_owncostumebase',
+    view_costumes.addOwnCostumeBase)
 app.add_url_rule(
-    '/send_friendshippoint', 'send_friendshippoint', view_friends.sendFriendShipPoint
-)
+    '/send_friendshippoint', 'send_friendshippoint',
+    view_friends.sendFriendShipPoint)
 app.add_url_rule(
-    '/receive_friendshippoint', 'receive_friendshippoint', view_friends.receiveFriendShipPoint
-)
+    '/receive_friendshippoint', 'receive_friendshippoint',
+    view_friends.receiveFriendShipPoint)
 
 
 @app.route('/hello')
