@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, Date, Float
+from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import DateTime, Boolean, Date, Float
 from database import Base
 
 import json
@@ -68,6 +69,22 @@ class User(Base):
             "waypoint": 0
         }
         return temp_resurrect
+
+
+class Button(Base):
+    """docstring for Button"""
+    __tablename__ = 'buttons'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    state = Column(Text())
+
+    def __init__(self, user_id, state):
+        self.user_id = user_id
+        self.state = state
+
+    def __repr__(self):
+        return '<Button %s>' % self.user_id
 
 
 class Character(Base):
@@ -162,6 +179,25 @@ class CompletedEvent(Base):
         return '<CompletedEvent %s>' % self.event_index
 
 
+class LastVisitedWave(Base):
+    """docstring for LastVisitedWave"""
+    __tablename__ = 'last_visited_waves'
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    zone_index = Column(String(10))
+    episode_no = Column(Integer())
+    wave_no = Column(Integer())
+
+    def __init__(self, user_id, zone_index, episode_no, wave_no):
+        self.user_id = user_id
+        self.zone_index = zone_index
+        self.episode_no = episode_no
+        self.wave_no = wave_no
+
+    def __repr__(self):
+        return '<LastVisitedWave %s>' % self.zone_index
+
+
 class Friend(Base):
     __tablename__ = 'friends'
     id = Column(Integer(), primary_key=True)
@@ -191,7 +227,10 @@ class Costumebase(Base):
     armor_index = Column(String(10))
     cloak_index = Column(String(10))
 
-    def __init__(self, index, cash_count, duration, weapon_index, helmet_index, armor_index, cloak_index):
+    def __init__(
+            self, index, cash_count, duration,
+            weapon_index, helmet_index,
+            armor_index, cloak_index):
         self.index = index
         self.cash_count = cash_count
         self.duration = duration
@@ -273,7 +312,6 @@ class PirateShip(Base):
     def __init__(self, user_id):
         self.user_id = user_id
 
-
     def __repr__(self):
         return '<PirateShip %s>' % self.user_id
 
@@ -289,7 +327,6 @@ class AttackedShipUser(Base):
     def __init__(self, ship_id, user_id):
         self.ship_id = ship_id
         self.user_id = user_id
-
 
     def __repr__(self):
         return '<AttackedShipUser %s>' % self.ship_id
@@ -378,6 +415,7 @@ class Mail(Base):
 
     def __repr__(self):
         return "<Mail('%s')>" % (self.title)
+
 
 class Notice(Base):
     """docstring for Notice"""
