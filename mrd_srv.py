@@ -15,6 +15,7 @@ import view_inventories
 import view_slots
 import view_stats
 import view_mails
+import view_saved
 
 app = Flask(__name__)
 
@@ -102,9 +103,19 @@ app.add_url_rule(
     '/receive_friendshippoint', 'receive_friendshippoint',
     view_friends.receiveFriendShipPoint)
 app.add_url_rule(
-    '/set_buttonstate', 'set_buttonstate', view_stats.setButtonState)
+    '/set_buttonstate', 'set_buttonstate', view_saved.setButtonState)
 app.add_url_rule(
-    '/get_buttonstate', 'get_buttonstate', view_stats.getButtonState)
+    '/get_buttonstate', 'get_buttonstate', view_saved.getButtonState)
+app.add_url_rule(
+    '/set_savedstory', 'set_savedstory', view_saved.setSavedStory)
+app.add_url_rule(
+    '/get_savedstory', 'get_savedstory', view_saved.getSavedStory)
+app.add_url_rule(
+    '/set_savedcurrentzone', 'set_savedcurrentzone',
+    view_saved.setSavedCurrentZone)
+app.add_url_rule(
+    '/get_savedcurrentzone', 'get_savedcurrentzone',
+    view_saved.getSavedCurrentZone)
 
 
 @app.route('/hello')

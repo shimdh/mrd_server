@@ -39,8 +39,9 @@ class ProtocolTypes(object):
         GetWaitingFriends, AcceptFriend, GetFriendCharacterInfo,
         AddCompletedEvent, GetFishing, AddOwnCostume, AddOwnCostumeBase,
         SendFriendShipPoint, ReceiveFriendShipPoint,
-        SetButtonState, GetButtonState,
-    ) = range(100, 136)
+        SetButtonState, GetButtonState, SetSavedStory, GetSavedStory,
+        SetSavedCurrentZone, GetSavedCurrentZone,
+    ) = range(100, 140)
 
 
 def checkSessionId(got_session_id):

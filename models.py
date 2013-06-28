@@ -71,6 +71,47 @@ class User(Base):
         return temp_resurrect
 
 
+class SavedStory(Base):
+    """docstring for SavedStory"""
+    __tablename__ = 'saved_stories'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    zone_index = Column(String(10))
+    episode_no = Column(Integer())
+    wave_no = Column(Integer())
+    position = Column(Text())
+    rotation = Column(Text())
+
+    def __init__(self, user_id, zone_index, episode_no, wave_no):
+        self.user_id = user_id
+        self.zone_index = zone_index
+        self.episode_no = episode_no
+        self.wave_no = wave_no
+
+    def __repr__(self):
+        return '<SavedStory %s>' % self.zone_index
+
+
+class SavedCurrentZone(Base):
+    """docstring for SavedCurrentZone"""
+    __tablename__ = 'saved_current_zones'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    zone_index = Column(String(10))
+    episode_result = Column(Text())
+    position = Column(Text())
+    rotation = Column(Text())
+
+    def __init__(self, user_id, zone_index):
+        self.user_id = user_id
+        self.zone_index = zone_index
+
+    def __repr__(self):
+        return '<SavedCurrentZone %s>' % self.zone_index
+
+
 class Button(Base):
     """docstring for Button"""
     __tablename__ = 'buttons'
