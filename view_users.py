@@ -31,11 +31,17 @@ def register():
                 else:
                     import re
                     if (
-                        not re.match("^[A-Za-z0-9_-]*$", got_data['nickname'])
-                    ) or (not re.match("^[A-Za-z0-9_-]*$", got_data['password'])):
+                        (not re.match(
+                            "^[A-Za-z0-9_-]*$",
+                            got_data['nickname'])) or
+                        (not re.match(
+                            "^[A-Za-z0-9_-]*$",
+                            got_data['password']))
+                    ):
                         ResultCodes.InputParamError
                     else:
-                        if User.query.filter_by(nickname=got_data['nickname']).first():
+                        if User.query.filter_by(
+                                nickname=got_data['nickname']).first():
                             result['result'] = ResultCodes.NicknameExist
                         else:
                             user_data = User(
@@ -69,22 +75,26 @@ def login():
 
         from_keys = ['nickname', 'password']
         if checkContainKeys(from_keys, got_data):
-            got_user = User.query.filter_by(nickname=got_data['nickname']).first()
-            if got_user:
-                if got_user.password == got_data['password']:
-                    got_user.session_id = get_session_id(got_user.nickname)
-                    got_user.session_date = datetime.datetime.now()
-                    got_user.login_date = datetime.datetime.now()
-                    db_session.add(got_user)
-                    try:
-                        db_session.commit()
-                        result['session_id'] = got_user.session_id
-                    except exc.SQLAlchemyError:
-                        result['result'] = ResultCodes.DBInputError
-                else:
-                    result['result'] = ResultCodes.UserPasswordWrong
+            if got_data['nickname'] == '' or got_data['password'] == '':
+                result["result"] = ResultCodes.InputParamError
             else:
-                result['result'] = ResultCodes.NicknameNonExist
+                got_user = User.query.filter_by(
+                    nickname=got_data['nickname']).first()
+                if got_user:
+                    if got_user.password == got_data['password']:
+                        got_user.session_id = get_session_id(got_user.nickname)
+                        got_user.session_date = datetime.datetime.now()
+                        got_user.login_date = datetime.datetime.now()
+                        db_session.add(got_user)
+                        try:
+                            db_session.commit()
+                            result['session_id'] = got_user.session_id
+                        except exc.SQLAlchemyError:
+                            result['result'] = ResultCodes.DBInputError
+                    else:
+                        result['result'] = ResultCodes.UserPasswordWrong
+                else:
+                    result['result'] = ResultCodes.NicknameNonExist
         else:
             result['result'] = ResultCodes.InputParamError
     else:
