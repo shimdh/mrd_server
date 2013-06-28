@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from models import Button
+from models import Button, SavedStory, SavedCurrentZone
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
 import json
 
@@ -76,7 +76,7 @@ getButtonState.methods = ['POST']
 
 def setSavedStory():
     result = dict(
-        type=ProtocolTypes.SetButtonState,
+        type=ProtocolTypes.SetSavedStory,
         result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:
@@ -88,14 +88,25 @@ def setSavedStory():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                find_button = Button.query.filter_by(
+                find_story = SavedStory.query.filter_by(
                     user_id=got_user.id).first()
-                if find_button:
-                    find_button.state = got_data['button']
-                    db_session.add(find_button)
+                if find_story:
+                    find_story.zone_index = got_data['zone_index']
+                    find_story.episode_no = got_data['episode_no']
+                    find_story.wave_no = got_data['wave_no']
+                    find_story.position = json.dumps(got_data['position'])
+                    find_story.rotation = json.dumps(got_data['rotation'])
+
+                    db_session.add(find_story)
                 else:
-                    made_button = Button(got_user.id, got_data['button'])
-                    db_session.add(made_button)
+                    made_story = SavedStory(
+                        got_user.id, got_data['zone_index'])
+                    made_story.episode_no = got_data['episode_no']
+                    made_story.wave_no = got_data['wave_no']
+                    made_story.position = json.dumps(got_data['position'])
+                    made_story.rotation = json.dumps(got_data['rotation'])
+
+                    db_session.add(made_story)
 
                 try:
                     db_session.commit()
@@ -110,3 +121,121 @@ def setSavedStory():
 
 
 setSavedStory.methods = ['POST']
+
+
+def getSavedStory():
+    result = dict(
+        type=ProtocolTypes.GetSavedStory,
+        result=ResultCodes.Success)
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_story = SavedStory.query.filter_by(
+                    user_id=got_user.id).first()
+                if find_story:
+                    result['zone_index'] = find_story.zone_index
+                    result['episode_no'] = find_story.episode_no
+                    result['wave_no'] = find_story.wave_no
+                    result['position'] = find_story.position
+                    result['rotation'] = find_story.rotation
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+getSavedStory.methods = ['POST']
+
+
+def setSavedCurrentZone():
+    result = dict(
+        type=ProtocolTypes.SetSavedCurrentZone,
+        result=ResultCodes.Success)
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = [
+            'session_id', 'zone_index', 'episode_result',
+            'position', 'rotation']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_current_zone = SavedCurrentZone.query.filter_by(
+                    user_id=got_user.id).first()
+                if find_current_zone:
+                    find_current_zone.zone_index = got_data['zone_index']
+                    find_current_zone.episode_result = got_data[
+                        'episode_result']
+                    find_current_zone.position = json.dumps(
+                        got_data['position'])
+                    find_current_zone.rotation = json.dumps(
+                        got_data['rotation'])
+
+                    db_session.add(find_current_zone)
+                else:
+                    made_current_zone = SavedCurrentZone(
+                        got_user.id, got_data['zone_index'])
+                    made_current_zone.episode_result = got_data[
+                        'episode_result']
+                    made_current_zone.position = json.dumps(
+                        got_data['position'])
+                    made_current_zone.rotation = json.dumps(
+                        got_data['rotation'])
+
+                    db_session.add(made_current_zone)
+
+                try:
+                    db_session.commit()
+                except exc.SQLAlchemyError:
+                    result['result'] = ResultCodes.DBInputError
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+setSavedCurrentZone.methods = ['POST']
+
+
+def getSavedCurrentZone():
+    result = dict(
+        type=ProtocolTypes.GetSavedCurrentZone,
+        result=ResultCodes.Success)
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_current_zone = SavedCurrentZone.query.filter_by(
+                    user_id=got_user.id).first()
+                if find_current_zone:
+                    result['zone_index'] = find_current_zone.zone_index
+                    result['episode_result'] = find_current_zone.episode_result
+                    result['position'] = find_current_zone.position
+                    result['rotation'] = find_current_zone.rotation
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+getSavedCurrentZone.methods = ['POST']
