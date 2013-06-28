@@ -35,9 +35,10 @@ class ProtocolTypes(object):
         FindFriendByName, GetInventories, SetInventories,
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
-        GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend, GetWaitingFriends,
-        AcceptFriend, GetFriendCharacterInfo, AddCompletedEvent, GetFishing,
-        AddOwnCostume, AddOwnCostumeBase, SendFriendShipPoint, ReceiveFriendShipPoint,
+        GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend,
+        GetWaitingFriends, AcceptFriend, GetFriendCharacterInfo,
+        AddCompletedEvent, GetFishing, AddOwnCostume, AddOwnCostumeBase,
+        SendFriendShipPoint, ReceiveFriendShipPoint,
         SetButtonState, GetButtonState,
     ) = range(100, 136)
 
@@ -47,7 +48,8 @@ def checkSessionId(got_session_id):
     if not got_user:
         return ResultCodes.SessionIdNonExist, None
     else:
-        if got_user.session_date < datetime.datetime.now() - datetime.timedelta(minutes=10):
+        if got_user.session_date < (
+                datetime.datetime.now() - datetime.timedelta(minutes=10)):
             got_user.session_id = ''
             db_session.add(got_user)
             try:
@@ -67,4 +69,5 @@ def checkSessionId(got_session_id):
 
 
 def checkContainKeys(my_list, my_dict):
-    return len([x for x in my_list if x in my_dict and my_dict[x]]) == len(my_list)
+    return len(
+        [x for x in my_list if x in my_dict and my_dict[x]]) == len(my_list)
