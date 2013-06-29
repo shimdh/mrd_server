@@ -23,24 +23,40 @@ def setStats():
                 got_stat = got_data['stats']
                 find_stat = Stat.query.filter_by(user_id=got_user.id).first()
                 if find_stat:
-                    find_stat.exp = got_stat['exp']
-                    find_stat.level = got_stat['level']
-                    find_stat.hp = got_stat['hp']
-                    find_stat.weapon_level = got_stat['weapon_level']
-                    find_stat.weapon_exp = got_stat['weapon_exp']
-                    find_stat.visited_zone_no = got_stat['visited_zone_no']
-                    find_stat.updated_date = datetime.datetime.now()
+                    find_stat.__dict__.update(dict(
+                        exp=got_stat['exp'],
+                        level=got_stat['level'],
+                        hp=got_stat['hp'],
+                        weapon_level=got_stat['weapon_level'],
+                        weapon_exp=got_stat['weapon_exp'],
+                        visited_zone_no=got_stat['visited_zone_no'],
+                        updated_date=datetime.datetime.now()))
+                    # find_stat.exp = got_stat['exp']
+                    # find_stat.level = got_stat['level']
+                    # find_stat.hp = got_stat['hp']
+                    # find_stat.weapon_level = got_stat['weapon_level']
+                    # find_stat.weapon_exp = got_stat['weapon_exp']
+                    # find_stat.visited_zone_no = got_stat['visited_zone_no']
+                    # find_stat.updated_date = datetime.datetime.now()
 
                     db_session.add(find_stat)
                 else:
                     made_stat = Stat(got_user.id)
-                    made_stat.exp = got_stat['exp']
-                    made_stat.level = got_stat['level']
-                    made_stat.hp = got_stat['hp']
-                    made_stat.weapon_level = got_stat['weapon_level']
-                    made_stat.weapon_exp = got_stat['weapon_exp']
-                    made_stat.visited_zone_no = got_stat['visited_zone_no']
-                    made_stat.updated_date = datetime.datetime.now()
+                    made_stat.__dict__.update(dict(
+                        exp=got_stat['exp'],
+                        level=got_stat['level'],
+                        hp=got_stat['hp'],
+                        weapon_level=got_stat['weapon_level'],
+                        weapon_exp=got_stat['weapon_exp'],
+                        visited_zone_no=got_stat['visited_zone_no'],
+                        updated_date=datetime.datetime.now()))
+                    # made_stat.exp = got_stat['exp']
+                    # made_stat.level = got_stat['level']
+                    # made_stat.hp = got_stat['hp']
+                    # made_stat.weapon_level = got_stat['weapon_level']
+                    # made_stat.weapon_exp = got_stat['weapon_exp']
+                    # made_stat.visited_zone_no = got_stat['visited_zone_no']
+                    # made_stat.updated_date = datetime.datetime.now()
 
                     db_session.add(made_stat)
 
@@ -54,7 +70,6 @@ def setStats():
         result['result'] = ResultCodes.AccessError
 
     return str(json.dumps(result))
-
 
 setStats.methods = ['POST']
 
