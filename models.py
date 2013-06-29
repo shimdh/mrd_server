@@ -114,7 +114,7 @@ class SavedCurrentZone(Base):
         return '<SavedCurrentZone %s>' % self.zone_index
 
 
-class OpendedPuzzlePiece(Base):
+class OpenedPuzzlePiece(Base):
     """docstring for OpendedPuzzlePiece"""
     __tablename__ = 'opended_puzzle_pieces'
 
@@ -137,6 +137,7 @@ class OpenedPuzzle(Base):
     user_id = Column(Integer())
     puzzle_index = Column(Integer())
     opened = Column(Integer()) 
+
     def __init__(self, user_id, puzzle_index, opened):
         self.user_id = user_id
         self.puzzle_index = puzzle_index
