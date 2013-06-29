@@ -186,8 +186,8 @@ def setSavedCurrentZone():
                     user_id=got_user.id).first()
                 if find_current_zone:
                     find_current_zone.zone_index = got_data['zone_index']
-                    find_current_zone.episode = got_data[
-                        'episode']
+                    find_current_zone.episode = json.dumps(got_data[
+                        'episode'])
                     find_current_zone.position = json.dumps(
                         got_data['position'])
                     find_current_zone.rotation = json.dumps(
@@ -198,8 +198,8 @@ def setSavedCurrentZone():
                 else:
                     made_current_zone = SavedCurrentZone(
                         got_user.id, got_data['zone_index'])
-                    made_current_zone.episode = got_data[
-                        'episode']
+                    made_current_zone.episode = json.dumps(got_data[
+                        'episode'])
                     made_current_zone.position = json.dumps(
                         got_data['position'])
                     made_current_zone.rotation = json.dumps(
