@@ -16,6 +16,7 @@ import view_slots
 import view_stats
 import view_mails
 import view_saved
+import view_puzzles
 
 app = Flask(__name__)
 
@@ -116,6 +117,10 @@ app.add_url_rule(
 app.add_url_rule(
     '/get_savedcurrentzone', 'get_savedcurrentzone',
     view_saved.getSavedCurrentZone)
+app.add_url_rule(
+    '/add_puzzlepiece', 'add_puzzlepiece', view_puzzles.addOpenedPuzzlePiece)
+app.add_url_rule(
+    '/get_puzzlepieces', 'get_puzzlepieces', view_puzzles.getOpenedPuzzlePieces)
 
 
 @app.route('/hello')

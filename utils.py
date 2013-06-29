@@ -41,7 +41,8 @@ class ProtocolTypes(object):
         SendFriendShipPoint, ReceiveFriendShipPoint,
         SetButtonState, GetButtonState, SetSavedStory, GetSavedStory,
         SetSavedCurrentZone, GetSavedCurrentZone,
-    ) = range(100, 140)
+        AddPuzzlePiece, GetPuzzlePieces, AddPuzzle, GetPuzzles,
+    ) = range(100, 144)
 
 
 def checkSessionId(got_session_id):

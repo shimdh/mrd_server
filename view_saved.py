@@ -49,7 +49,7 @@ setButtonState.methods = ['POST']
 
 def getButtonState():
     result = dict(
-        type=ProtocolTypes.getButtonState,
+        type=ProtocolTypes.GetButtonState,
         result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:

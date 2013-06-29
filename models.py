@@ -114,6 +114,64 @@ class SavedCurrentZone(Base):
         return '<SavedCurrentZone %s>' % self.zone_index
 
 
+class OpendedPuzzlePiece(Base):
+    """docstring for OpendedPuzzlePiece"""
+    __tablename__ = 'opended_puzzle_pieces'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    puzzle_index = Column(Integer())
+    condition = Column(Integer())
+
+    def __init__(self, user_id, puzzle_index, condition):
+        self.user_id = user_id
+        self.puzzle_index = puzzle_index
+        self.condition = condition
+                        
+
+class OpenedPuzzle(Base):
+    """docstring for OpenedPuzzle"""
+    __tablename__ = 'opened_puzzles'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    puzzle_index = Column(Integer())
+    opened = Column(Integer()) 
+    def __init__(self, user_id, puzzle_index, opened):
+        self.user_id = user_id
+        self.puzzle_index = puzzle_index
+        self.opened = opened
+
+
+class Diary(Base):
+    """docstring for Diary"""
+    __tablename__ = 'diaries'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    index = Column(Integer())
+    opened = Column(Boolean())
+
+    def __init__(self, user_id, index, opened):
+        self.user_id = user_id
+        self.index = index
+        self.opened = opened
+
+        
+class WornCostume(Base):
+    """docstring for WornCostume"""
+    __tablename__ = 'worn_costumes'
+
+    id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer())
+    costumes = Column(Text())
+
+    def __init__(self, user_id, costumes):
+        super(WornCostume, self).__init__()
+        self.user_id = user_id
+        self.costumes = costumes
+        
+
 class Button(Base):
     """docstring for Button"""
     __tablename__ = 'buttons'
