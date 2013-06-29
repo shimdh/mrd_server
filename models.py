@@ -150,13 +150,11 @@ class Diary(Base):
 
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
-    index = Column(Integer())
-    opened = Column(Boolean())
+    diary_index = Column(Integer())
 
-    def __init__(self, user_id, index, opened):
+    def __init__(self, user_id, diary_index):
         self.user_id = user_id
-        self.index = index
-        self.opened = opened
+        self.diary_index = diary_index
 
         
 class WornCostume(Base):

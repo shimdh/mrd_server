@@ -6,7 +6,7 @@ import json
 
 from database import db_session
 from sqlalchemy import exc
-from models import OwnCostume, OwnCostumebase
+from models import OwnCostume, OwnCostumebase, WornCostume
 
 
 def setOwnCostumes():
@@ -174,7 +174,10 @@ addOwnCostume.methods = ['POST']
 
 
 def addOwnCostumeBase():
-    result = {'type': ProtocolTypes.AddOwnCostumeBase}
+    result = dict(
+        type=ProtocolTypes.AddOwnCostumeBase,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.AddOwnCostumeBase}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -205,3 +208,63 @@ def addOwnCostumeBase():
 
 
 addOwnCostumeBase.methods = ['POST']
+
+
+def setWornCostume():
+    result = dict(
+        type=ProtocolTypes.SetWornCostume,
+        result=ResultCodes.Success)
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id', 'costumes']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_worn_costume = WornCostume.query.filter_by(user_id=got_user.id).first()
+                if find_worn_costume:
+                    find_worn_costume.costumes = json.dumps(got_data['costumes'])
+                    db_session.add(find_worn_costume)
+                else:
+                    made_worn_costume = WornCostume(user_id=got_user.id, costumes=json.dumps(got_data['costumes']))
+                    db_session.add(made_worn_costume)
+
+                result['result'] = commitData()
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+
+    return str(json.dumps(result))
+
+setWornCostume.methods = ['POST']
+
+def getWornCostume():
+    result = dict(
+        type=ProtocolTypes.GetWornCostume,
+        result=ResultCodes.Success)
+
+    if request.method == 'POST' and request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_worn_costume = WornCostume.query.filter_by(user_id=got_user.id).first()
+                if find_worn_costume:
+                    result['costumes'] = find_worn_costume.costumes
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+
+    return str(json.dumps(result))
+
+getWornCostume.methods = ['POST']
+

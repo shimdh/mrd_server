@@ -42,7 +42,8 @@ class ProtocolTypes(object):
         SetButtonState, GetButtonState, SetSavedStory, GetSavedStory,
         SetSavedCurrentZone, GetSavedCurrentZone,
         AddPuzzlePiece, GetPuzzlePieces, AddPuzzle, GetPuzzles,
-    ) = range(100, 144)
+        AddDiary, GetDiaries, SetWornCostume, GetWornCostume,
+    ) = range(100, 148)
 
 
 def checkSessionId(got_session_id):

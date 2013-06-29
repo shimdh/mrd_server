@@ -17,6 +17,7 @@ import view_stats
 import view_mails
 import view_saved
 import view_puzzles
+import view_diaries
 
 app = Flask(__name__)
 
@@ -125,6 +126,14 @@ app.add_url_rule(
     '/add_puzzle', 'add_puzzle', view_puzzles.addOpenedPuzzle)
 app.add_url_rule(
     '/get_puzzles', 'get_puzzles', view_puzzles.getOpenedPuzzles)
+app.add_url_rule(
+    '/add_diary', 'add_diary', view_diaries.addDiary)
+app.add_url_rule(
+    '/get_diaries', 'get_diaries', view_diaries.getDiaries)
+app.add_url_rule(
+    '/set_worncostume', 'set_worncostume', view_costumes.setWornCostume)
+app.add_url_rule(
+    '/get_worncostume', 'get_worncostume', view_costumes.getWornCostume)
 
 
 @app.route('/hello')
