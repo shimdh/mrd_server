@@ -7,6 +7,7 @@ import json
 
 from database import db_session
 from sqlalchemy import exc
+import datetime
 
 
 def setButtonState():
@@ -97,6 +98,7 @@ def setSavedStory():
                     find_story.wave_no = got_data['wave_no']
                     find_story.position = json.dumps(got_data['position'])
                     find_story.rotation = json.dumps(got_data['rotation'])
+                    find_story.updated_date = datetime.datetime.now()
 
                     db_session.add(find_story)
                 else:
@@ -106,6 +108,7 @@ def setSavedStory():
                     made_story.wave_no = got_data['wave_no']
                     made_story.position = json.dumps(got_data['position'])
                     made_story.rotation = json.dumps(got_data['rotation'])
+                    made_story.updated_date = datetime.datetime.now()
 
                     db_session.add(made_story)
 
@@ -189,6 +192,7 @@ def setSavedCurrentZone():
                         got_data['position'])
                     find_current_zone.rotation = json.dumps(
                         got_data['rotation'])
+                    find_current_zone.updated_date = datetime.datetime.now()
 
                     db_session.add(find_current_zone)
                 else:
@@ -200,6 +204,7 @@ def setSavedCurrentZone():
                         got_data['position'])
                     made_current_zone.rotation = json.dumps(
                         got_data['rotation'])
+                    made_current_zone.updated_date = datetime.datetime.now()
 
                     db_session.add(made_current_zone)
 

@@ -82,6 +82,7 @@ class SavedStory(Base):
     wave_no = Column(Integer())
     position = Column(Text())
     rotation = Column(Text())
+    updated_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, zone_index, episode_no, wave_no):
         self.user_id = user_id
@@ -103,6 +104,7 @@ class SavedCurrentZone(Base):
     episode = Column(Text())
     position = Column(Text())
     rotation = Column(Text())
+    updated_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, zone_index):
         self.user_id = user_id
