@@ -64,7 +64,7 @@ def getButtonState():
                 if find_button:
                     result['button'] = find_button.state
                 else:
-                    result['return'] = ResultCodes.NoData
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:

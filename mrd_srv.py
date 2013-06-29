@@ -121,6 +121,10 @@ app.add_url_rule(
     '/add_puzzlepiece', 'add_puzzlepiece', view_puzzles.addOpenedPuzzlePiece)
 app.add_url_rule(
     '/get_puzzlepieces', 'get_puzzlepieces', view_puzzles.getOpenedPuzzlePieces)
+app.add_url_rule(
+    '/add_puzzle', 'add_puzzle', view_puzzles.addOpenedPuzzle)
+app.add_url_rule(
+    '/get_puzzles', 'get_puzzles', view_puzzles.getOpenedPuzzles)
 
 
 @app.route('/hello')
