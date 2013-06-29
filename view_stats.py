@@ -25,9 +25,9 @@ def setStats():
                     find_stat.exp = got_stat['exp']
                     find_stat.level = got_stat['level']
                     find_stat.hp = got_stat['hp']
-                    find_stat.weapon_level = got_data['weapon_level']
-                    find_stat.weapon_exp = got_data['weapon_exp']
-                    find_stat.visited_zone_no = got_data['visited_zone_no']
+                    find_stat.weapon_level = got_stat['weapon_level']
+                    find_stat.weapon_exp = got_stat['weapon_exp']
+                    find_stat.visited_zone_no = got_stat['visited_zone_no']
 
                     db_session.add(find_stat)
                 else:
