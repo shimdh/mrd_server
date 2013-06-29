@@ -41,7 +41,9 @@ writeMail.methods = ['POST']
 
 
 def readMail():
-    result = {'type': ProtocolTypes.ReadMail}
+    result = dict(
+        type=ProtocolTypes.ReadMail,
+        result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])

@@ -140,11 +140,18 @@ def getSavedStory():
                 find_story = SavedStory.query.filter_by(
                     user_id=got_user.id).first()
                 if find_story:
-                    result['zone_index'] = find_story.zone_index
-                    result['episode_no'] = find_story.episode_no
-                    result['wave_no'] = find_story.wave_no
-                    result['position'] = find_story.position
-                    result['rotation'] = find_story.rotation
+                    tmp_result = dict(
+                        zone_index=find_story.zone_index,
+                        episode_no=find_story.episode_no,
+                        wave_no=find_story.wave_no,
+                        position=find_story.position,
+                        rotation=find_story.rotation)
+                    result.update(tmp_result)
+                    # result['zone_index'] = find_story.zone_index
+                    # result['episode_no'] = find_story.episode_no
+                    # result['wave_no'] = find_story.wave_no
+                    # result['position'] = find_story.position
+                    # result['rotation'] = find_story.rotation
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -227,10 +234,15 @@ def getSavedCurrentZone():
                 find_current_zone = SavedCurrentZone.query.filter_by(
                     user_id=got_user.id).first()
                 if find_current_zone:
-                    result['zone_index'] = find_current_zone.zone_index
-                    result['episode'] = find_current_zone.episode
-                    result['position'] = find_current_zone.position
-                    result['rotation'] = find_current_zone.rotation
+                    tmp_result = dict(
+                        zone_index=find_current_zone.zone_index,
+                        episode=find_current_zone.episode,
+                        position=find_current_zone.position,
+                        rotation=find_current_zone.rotation)
+                    # result['zone_index'] = find_current_zone.zone_index
+                    # result['episode'] = find_current_zone.episode
+                    # result['position'] = find_current_zone.position
+                    # result['rotation'] = find_current_zone.rotation
                 else:
                     result['result'] = ResultCodes.NoData
         else:
