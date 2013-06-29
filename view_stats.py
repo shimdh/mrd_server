@@ -7,6 +7,7 @@ import json
 
 from database import db_session
 from sqlalchemy import exc
+import datetime
 
 
 def setStats():
@@ -28,6 +29,7 @@ def setStats():
                     find_stat.weapon_level = got_stat['weapon_level']
                     find_stat.weapon_exp = got_stat['weapon_exp']
                     find_stat.visited_zone_no = got_stat['visited_zone_no']
+                    find_stat.updated_date = datetime.datetime.now()
 
                     db_session.add(find_stat)
                 else:
@@ -38,6 +40,7 @@ def setStats():
                     made_stat.weapon_level = got_stat['weapon_level']
                     made_stat.weapon_exp = got_stat['weapon_exp']
                     made_stat.visited_zone_no = got_stat['visited_zone_no']
+                    made_stat.updated_date = datetime.datetime.now()
 
                     db_session.add(made_stat)
 

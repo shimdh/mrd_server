@@ -166,6 +166,7 @@ class Stat(Base):
     weapon_level = Column(Integer())
     weapon_exp = Column(Integer())
     visited_zone_no = Column(String(10))
+    updated_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id):
         self.user_id = user_id
