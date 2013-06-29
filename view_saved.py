@@ -239,6 +239,7 @@ def getSavedCurrentZone():
                         episode=find_current_zone.episode,
                         position=find_current_zone.position,
                         rotation=find_current_zone.rotation)
+                    result.update(tmp_result)
                     # result['zone_index'] = find_current_zone.zone_index
                     # result['episode'] = find_current_zone.episode
                     # result['position'] = find_current_zone.position
