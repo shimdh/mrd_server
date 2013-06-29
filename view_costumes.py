@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -28,10 +28,11 @@ def setOwnCostumes():
                         if not find_costume:
                             temp_costume = OwnCostume(got_user.id, got_costume_index)
                             db_session.add(temp_costume)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -90,10 +91,11 @@ def setOwnCostumebases():
                         if not find_costumebase:
                             temp_costumebase = OwnCostumebase(got_user.id, got_costumebase_index)
                             db_session.add(temp_costumebase)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -155,10 +157,11 @@ def addOwnCostume():
                     if not find_costume:
                         temp_costume = OwnCostume(got_user.id, got_data['own_costume'])
                         db_session.add(temp_costume)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -188,10 +191,11 @@ def addOwnCostumeBase():
                     if not find_costumebase:
                         temp_costumebase = OwnCostumebase(got_user.id, got_data['own_costumebase'])
                         db_session.add(temp_costumebase)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result["result"] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:

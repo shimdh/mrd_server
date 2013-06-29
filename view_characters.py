@@ -71,22 +71,22 @@ def getCharacter():
             if got_user:
                 find_character = Character.query.filter_by(user_id=got_user.id).first()
                 if find_character:
-                    got_character = dict()
-                    got_character['name'] = find_character.name
-                    got_character['level'] = find_character.level
-                    got_character['body_type'] = find_character.body_type
-                    got_character['cloak_type'] = find_character.cloak_type
-                    got_character['color_r'] = find_character.color_r
-                    got_character['color_g'] = find_character.color_g
-                    got_character['color_b'] = find_character.color_b
-                    got_character['exp'] = find_character.exp
-                    got_character['face_type'] = find_character.face_type
-                    got_character['hp'] = find_character.hp
-                    got_character['gender'] = find_character.gender
-                    got_character['hair_type'] = find_character.hair_type
-                    got_character['weapon_exp'] = find_character.weapon_exp
-                    got_character['weapon_level'] = find_character.weapon_level
-                    got_character['weapon_type'] = find_character.weapon_type
+                    got_character = dict(
+                        name=find_character.name,
+                        level=find_character.level,
+                        body_type=find_character.body_type,
+                        cloak_type=find_character.cloak_type,
+                        color_r=find_character.color_r,
+                        color_g=find_character.color_g,
+                        color_b=find_character.color_b,
+                        exp=find_character.exp,
+                        face_type=find_character.face_type,
+                        hp=find_character.hp,
+                        gender=find_character.gender,
+                        hair_type=find_character.hair_type,
+                        weapon_exp=find_character.weapon_exp,
+                        weapon_level=find_character.weapon_level,
+                        weapon_type=find_character.weapon_type)
 
                     result['character'] = json.dumps(got_character)
                 else:

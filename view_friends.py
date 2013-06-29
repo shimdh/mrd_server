@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -144,10 +144,11 @@ def requestFriend():
                 if not find_friend:
                     friend_data = Friend(got_user.id, got_data['request_friend'])
                     db_session.add(friend_data)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result['result'] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result['result'] = ResultCodes.DBInputError
                 else:
                     result['result'] = ResultCodes.DataExist
         else:
@@ -221,10 +222,11 @@ def acceptFriend():
                     if find_friend:
                         find_friend.accepted = True
                         db_session.add(find_friend)
-                        try:
-                            db_session.commit()
-                        except exc.SQLAlchemyError:
-                            result['result'] = ResultCodes.DBInputError
+                        result['result'] = commitData()
+                        # try:
+                        #     db_session.commit()
+                        # except exc.SQLAlchemyError:
+                        #     result['result'] = ResultCodes.DBInputError
                     else:
                         result['result'] = ResultCodes.NoData
         else:
@@ -311,10 +313,11 @@ def sendFriendShipPoint():
                         find_friend.friendship_sent_date = datetime.datetime.now()
 
                         db_session.add(find_friend)
-                        try:
-                            db_session.commit()
-                        except exc.SQLAlchemyError:
-                            result['result'] = ResultCodes.DBInputError
+                        result['result'] = commitData()
+                        # try:
+                        #     db_session.commit()
+                        # except exc.SQLAlchemyError:
+                        #     result['result'] = ResultCodes.DBInputError
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -358,10 +361,11 @@ def receiveFriendShipPoint():
                         got_user.friendship_point += 1
 
                         db_session.add(got_user)
-                        try:
-                            db_session.commit()
-                        except exc.SQLAlchemyError:
-                            result['result'] = ResultCodes.DBInputError
+                        result['result'] = commitData()
+                        # try:
+                        #     db_session.commit()
+                        # except exc.SQLAlchemyError:
+                        #     result['result'] = ResultCodes.DBInputError
                     else:
                         result['result'] = ResultCodes.InputParamError
                 else:

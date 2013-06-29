@@ -72,3 +72,11 @@ def checkSessionId(got_session_id):
 def checkContainKeys(my_list, my_dict):
     return len(
         [x for x in my_list if x in my_dict and my_dict[x]]) == len(my_list)
+
+
+def commitData():
+    try:
+        db_session.commit()
+        return ResultCodes.Success
+    except exc.SQLAlchemyError:
+        return ResultCodes.DBInputError

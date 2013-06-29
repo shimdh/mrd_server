@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -48,10 +48,11 @@ def getFishing():
                         made_ship.hp = 400
                         made_ship.type = 's'
                         db_session.add(made_ship)
-                        try:
-                            db_session.commit()
-                        except exc.SQLAlchemyError:
-                            result['result'] = ResultCodes.DBInputError
+                        result['result'] = commitData
+                        # try:
+                        #     db_session.commit()
+                        # except exc.SQLAlchemyError:
+                        #     result['result'] = ResultCodes.DBInputError
                     elif got_random_rate < sum(got_rate_list[:4]):
                         result['item_index'] = find_fishing.item_index_1
                         result['item_count'] = find_fishing.item_count_1
