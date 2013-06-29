@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -22,6 +22,8 @@ def setSlots():
             if got_user:
                 got_user.slots = json.dumps(got_data['slots'])
                 db_session.add(got_user)
+
+                result['result'] = commitData()
                 try:
                     db_session.commit()
                 except exc.SQLAlchemyError:

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -24,10 +24,11 @@ def writeMail():
                 got_mail = Mail(
                     got_user.nickname, got_data['mail_to'], got_data['content'])
                 db_session.add(got_mail)
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                    result['result'] = ResultCodes.DBInputError
+                result['result'] = commitData()
+                # try:
+                #     db_session.commit()
+                # except exc.SQLAlchemyError:
+                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -92,10 +93,11 @@ def getGiftMail():
                 if got_mail:
                     got_mail.items = None
                     db_session.add(got_mail)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result['result'] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result['result'] = ResultCodes.DBInputError
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -164,10 +166,11 @@ def deleteMails():
                 if got_mails:
                     for got_mail in got_mails:
                         db_session.delete(got_mail)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result['result'] = ResultCodes.DBInputError
+                    result['result'] = commitData()
+                    # try:
+                    #     db_session.commit()
+                    # except exc.SQLAlchemyError:
+                    #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:

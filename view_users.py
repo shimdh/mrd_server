@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData
 import json
 import datetime
 
@@ -30,13 +30,10 @@ def register():
                     result['result'] = ResultCodes.ShortPassword
                 else:
                     import re
+                    check_all_letters = lambda given_value: re.match("^[A-Za-z0-9_-]*$", given_value)
                     if (
-                        (not re.match(
-                            "^[A-Za-z0-9_-]*$",
-                            got_data['nickname'])) or
-                        (not re.match(
-                            "^[A-Za-z0-9_-]*$",
-                            got_data['password']))
+                        not check_all_letters(got_data['nickname']) or
+                        not check_all_letters(got_data['password'])
                     ):
                         ResultCodes.InputParamError
                     else:
@@ -52,10 +49,11 @@ def register():
                                     got_data['password']
                                 )
                                 db_session.add(user_data)
-                                try:
-                                    db_session.commit()
-                                except exc.SQLAlchemyError:
-                                    result["result"] = ResultCodes.DBInputError
+                                result['result'] = commitData()
+                                # try:
+                                #     db_session.commit()
+                                # except exc.SQLAlchemyError:
+                                #     result["result"] = ResultCodes.DBInputError
 
         else:
             result["result"] = ResultCodes.InputParamError

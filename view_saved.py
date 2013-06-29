@@ -2,7 +2,7 @@
 
 from flask import request
 from models import Button, SavedStory, SavedCurrentZone
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -30,10 +30,11 @@ def setButtonState():
                     made_button = Button(got_user.id, got_data['button'])
                     db_session.add(made_button)
 
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                    result['result'] = ResultCodes.DBInputError
+                result['result'] = commitData()
+                # try:
+                #     db_session.commit()
+                # except exc.SQLAlchemyError:
+                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -108,10 +109,11 @@ def setSavedStory():
 
                     db_session.add(made_story)
 
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                    result['result'] = ResultCodes.DBInputError
+                result['result'] = commitData()
+                # try:
+                #     db_session.commit()
+                # except exc.SQLAlchemyError:
+                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -194,10 +196,11 @@ def setSavedCurrentZone():
 
                     db_session.add(made_current_zone)
 
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                    result['result'] = ResultCodes.DBInputError
+                result['result'] = commitData()
+                # try:
+                #     db_session.commit()
+                # except exc.SQLAlchemyError:
+                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:

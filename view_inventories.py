@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -54,10 +54,11 @@ def setInventories():
             if got_user:
                 got_user.inventories = json.dumps(got_data['inventories'])
                 db_session.add(got_user)
-                try:
-                    db_session.commit()
-                except exc.SQLAlchemyError:
-                    result['result'] = ResultCodes.DBInputError
+                result['result'] = commitData()
+                # try:
+                #     db_session.commit()
+                # except exc.SQLAlchemyError:
+                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
