@@ -82,15 +82,15 @@ def setSavedStory():
         result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:
-        write_log = DirtyLog(request.form['data'])
-        db_session.add(write_log)
-        db_session.commit()
+        # write_log = DirtyLog(request.form['data'])
+        # db_session.add(write_log)
+        # db_session.commit()
 
         got_data = json.loads(request.form['data'])
         from_keys = [
             'session_id', 
-            # 'zone_index', 'episode_no', 'wave_no',
-            # 'position', 'rotation'
+            'zone_index', 'episode_no', 'wave_no',
+            'position', 'rotation'
         ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
