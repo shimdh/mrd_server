@@ -78,8 +78,6 @@ def setSavedStory():
         result=ResultCodes.Success)
 
     if request.form['data']:
-        # writeDirtyLog(request.form['data'])
-
         got_data = json.loads(request.form['data'])
         from_keys = [
             'session_id', 
