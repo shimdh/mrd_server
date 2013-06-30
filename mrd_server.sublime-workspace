@@ -1,0 +1,528 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"go",
+				"got_user	(local, instance)"
+			],
+			[
+				"from",
+				"from_keys"
+			],
+			[
+				"open",
+				"opened"
+			],
+			[
+				"ope",
+				"opened"
+			],
+			[
+				"AddPu",
+				"AddPuzzle	(attribute, instance)"
+			],
+			[
+				"getPuzz",
+				"getOpenedPuzzlePieces	(imported, function)"
+			],
+			[
+				"fin",
+				"find_puzzle_piece	(local, instance)"
+			],
+			[
+				"find",
+				"find_puzzle_piece"
+			],
+			[
+				"got",
+				"got_user	(local, instance)"
+			],
+			[
+				"check",
+				"checkContainKeys(my_list, my_dict)	(imported, function)"
+			],
+			[
+				"Getpu",
+				"GetPuzzlePieces	(attribute, instance)"
+			],
+			[
+				"mad",
+				"made_puzzle_piece	(local, instance)"
+			],
+			[
+				"fro",
+				"from_keys"
+			],
+			[
+				"me",
+				"methods"
+			],
+			[
+				"bas",
+				"Base"
+			],
+			[
+				"inte",
+				"Integer"
+			],
+			[
+				"user",
+				"user_id"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "models.py",
+			"settings":
+			{
+				"buffer_size": 15567,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_puzzles.py",
+			"settings":
+			{
+				"buffer_size": 4994,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_diaries.py",
+			"settings":
+			{
+				"buffer_size": 2241,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "utils.py",
+			"settings":
+			{
+				"buffer_size": 2667,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mrd_srv.py",
+			"settings":
+			{
+				"buffer_size": 5028,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "view_saved.py",
+			"settings":
+			{
+				"buffer_size": 9745,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_costumes.py",
+			"settings":
+			{
+				"buffer_size": 10512,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"selected_items":
+		[
+			[
+				"mini",
+				"View: Toggle Minimap"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_saved.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_slots.py",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/models.py",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"tmp_piece",
+			"puzzle_index",
+			"find_puzzle_piece",
+			"OpenedPuzzlePiece",
+			"find_puzzle_pieces",
+			"made_puzzle_piece",
+			"index",
+			"puzzle_index",
+			"OpenedPuzzlePiece",
+			"find_puzzle_piece",
+			"find_puzzle_pieces",
+			"made_puzzle_piece",
+			"puzzle_index"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "models.py",
+					"settings":
+					{
+						"buffer_size": 15567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4735,
+								4735
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2150.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "view_puzzles.py",
+					"settings":
+					{
+						"buffer_size": 4994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2613,
+								2613
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 448.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "view_diaries.py",
+					"settings":
+					{
+						"buffer_size": 2241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2240,
+								2240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 485.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "utils.py",
+					"settings":
+					{
+						"buffer_size": 2667,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								515,
+								515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "mrd_srv.py",
+					"settings":
+					{
+						"buffer_size": 5028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4936,
+								4936
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1862.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "view_saved.py",
+					"settings":
+					{
+						"buffer_size": 9745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2208,
+								2208
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 495.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "view_costumes.py",
+					"settings":
+					{
+						"buffer_size": 10512,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8722,
+								8730
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3620.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"mr",
+				"mrd_srv.py"
+			],
+			[
+				"cos",
+				"view_costumes.py"
+			],
+			[
+				"mo",
+				"models.py"
+			],
+			[
+				"costu",
+				"view_costumes.py"
+			],
+			[
+				"dia",
+				"view_diaries.py"
+			],
+			[
+				"mrd",
+				"mrd_srv.py"
+			],
+			[
+				"sa",
+				"view_saved.py"
+			],
+			[
+				"puzz",
+				"view_puzzles.py"
+			],
+			[
+				"uti",
+				"utils.py"
+			],
+			[
+				"mod",
+				"models.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 462.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 219.0,
+	"status_bar_visible": true
+}
