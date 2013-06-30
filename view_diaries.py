@@ -3,6 +3,7 @@
 from flask import request
 from models import Diary
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
+from utils import writeDirtyLog
 import json
 
 from database import db_session
@@ -44,28 +45,29 @@ def getDiaries():
     result = dict(
         type=ProtocolTypes.GetDiaries,
         result=ResultCodes.Success)
-    result['result'] = ResultCodes.NoData
 
-    # if request.form['data']:
-    #     got_data = json.loads(request.form['data'])
-    #     from_keys = ['session_id']
-    #     if checkContainKeys(from_keys, got_data):
-    #         result['result'], got_user = checkSessionId(got_data['session_id'])
+    writeDirtyLog(request.form['data'])
 
-    #         if got_user:
-    #             find_diaries = Diary.query.filter_by(user_id=got_user.id).all()
-    #             if find_diaries:
-    #                 send_list = list()
-    #                 for find_diary in find_diaries:
-    #                     send_list.append(find_diary.diary_index)
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
 
-    #                 result['diaries'] = json.dumps(send_list)
-    #             else:
-    #                 result['result'] = ResultCodes.NoData
-    #     else:
-    #         result['result'] = ResultCodes.InputParamError
-    # else:
-    #     result['result'] = ResultCodes.AccessError
+            if got_user:
+                find_diaries = Diary.query.filter_by(user_id=got_user.id).all()
+                if find_diaries:
+                    send_list = list()
+                    for find_diary in find_diaries:
+                        send_list.append(find_diary.diary_index)
+
+                    result['diaries'] = json.dumps(send_list)
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
 
     return str(json.dumps(result))
 

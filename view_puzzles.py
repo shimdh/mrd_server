@@ -3,6 +3,7 @@
 from flask import request
 from models import OpenedPuzzlePiece, OpenedPuzzle
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
+from utils import writeDirtyLog
 import json
 
 from database import db_session
@@ -111,6 +112,8 @@ def getOpenedPuzzles():
     result = dict(
         type=ProtocolTypes.GetPuzzlePieces,
         result=ResultCodes.Success)
+
+    writeDirtyLog(request.form['data'])
 
     if request.methods == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
