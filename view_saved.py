@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from models import Button, SavedStory, SavedCurrentZone, DirtyLog
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog
+from models import Button, SavedStory, SavedCurrentZone
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -15,7 +15,7 @@ def setButtonState():
         type=ProtocolTypes.SetButtonState,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'button']
         if checkContainKeys(from_keys, got_data):
@@ -32,10 +32,6 @@ def setButtonState():
                     db_session.add(made_button)
 
                 result['result'] = commitData()
-                # try:
-                #     db_session.commit()
-                # except exc.SQLAlchemyError:
-                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -52,7 +48,7 @@ def getButtonState():
         type=ProtocolTypes.GetButtonState,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -81,7 +77,7 @@ def setSavedStory():
         type=ProtocolTypes.SetSavedStory,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         # writeDirtyLog(request.form['data'])
 
         got_data = json.loads(request.form['data'])
@@ -117,10 +113,6 @@ def setSavedStory():
                     db_session.add(made_story)
 
                 result['result'] = commitData()
-                # try:
-                #     db_session.commit()
-                # except exc.SQLAlchemyError:
-                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -137,7 +129,7 @@ def getSavedStory():
         type=ProtocolTypes.GetSavedStory,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -154,11 +146,6 @@ def getSavedStory():
                         position=find_story.position,
                         rotation=find_story.rotation)
                     result.update(tmp_result)
-                    # result['zone_index'] = find_story.zone_index
-                    # result['episode_no'] = find_story.episode_no
-                    # result['wave_no'] = find_story.wave_no
-                    # result['position'] = find_story.position
-                    # result['rotation'] = find_story.rotation
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -177,7 +164,7 @@ def setSavedCurrentZone():
         type=ProtocolTypes.SetSavedCurrentZone,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = [
             'session_id', 'zone_index', 'episode',
@@ -213,10 +200,6 @@ def setSavedCurrentZone():
                     db_session.add(made_current_zone)
 
                 result['result'] = commitData()
-                # try:
-                #     db_session.commit()
-                # except exc.SQLAlchemyError:
-                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -233,7 +216,7 @@ def getSavedCurrentZone():
         type=ProtocolTypes.GetSavedCurrentZone,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -249,10 +232,6 @@ def getSavedCurrentZone():
                         position=find_current_zone.position,
                         rotation=find_current_zone.rotation)
                     result.update(tmp_result)
-                    # result['zone_index'] = find_current_zone.zone_index
-                    # result['episode'] = find_current_zone.episode
-                    # result['position'] = find_current_zone.position
-                    # result['rotation'] = find_current_zone.rotation
                 else:
                     result['result'] = ResultCodes.NoData
         else:

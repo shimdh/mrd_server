@@ -99,7 +99,7 @@
 			"file": "view_saved.py",
 			"settings":
 			{
-				"buffer_size": 9748,
+				"buffer_size": 9731,
 				"line_ending": "Windows"
 			}
 		},
@@ -123,7 +123,7 @@
 			"file": "utils.py",
 			"settings":
 			{
-				"buffer_size": 2667,
+				"buffer_size": 2799,
 				"line_ending": "Windows"
 			}
 		}
@@ -164,6 +164,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/database.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/models.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_puzzles.py",
@@ -174,8 +175,7 @@
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_costumes.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_slots.py",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
 	],
 	"find":
 	{
@@ -183,7 +183,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 		]
@@ -259,15 +259,15 @@
 					"file": "view_saved.py",
 					"settings":
 					{
-						"buffer_size": 9748,
+						"buffer_size": 9731,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2938,
-								2938
+								2583,
+								2583
 							]
 						],
 						"settings":
@@ -277,7 +277,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1258.0,
+						"translation.y": 1123.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -294,8 +294,8 @@
 						"selection":
 						[
 							[
-								4323,
-								4323
+								4322,
+								4322
 							]
 						],
 						"settings":
@@ -349,15 +349,15 @@
 					"file": "utils.py",
 					"settings":
 					{
-						"buffer_size": 2667,
+						"buffer_size": 2799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1866,
-								1866
+								0,
+								0
 							]
 						],
 						"settings":

@@ -12,7 +12,7 @@ Base	.\users_test.py	/^Base = declarative_base()$/;"	v
 Base	.\zones_test.py	/^Base = declarative_base()$/;"	v
 Boolean	.\models.py	/^from sqlalchemy import DateTime, Boolean, Date, Float$/;"	i
 Button	.\models.py	/^class Button(Base):$/;"	c
-Button	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
+Button	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
 Button	.\view_stats.py	/^from models import Stat, Button$/;"	i
 Character	.\models.py	/^class Character(Base):$/;"	c
 Character	.\view_characters.py	/^from models import Character$/;"	i
@@ -29,6 +29,11 @@ Date	.\models.py	/^from sqlalchemy import DateTime, Boolean, Date, Float$/;"	i
 DateTime	.\models.py	/^from sqlalchemy import DateTime, Boolean, Date, Float$/;"	i
 DateTime	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 DateTime	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
+Diary	.\models.py	/^class Diary(Base):$/;"	c
+Diary	.\view_diaries.py	/^from models import Diary$/;"	i
+DirtyLog	.\models.py	/^class DirtyLog(Base):$/;"	c
+DirtyLog	.\utils.py	/^from models import User, DirtyLog$/;"	i
+DirtyLog	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
 Fishing	.\models.py	/^class Fishing(Base):$/;"	c
 Fishing	.\view_fishing.py	/^from models import Fishing, PirateShip$/;"	i
 Flask	.\mrd_srv.py	/^from flask import Flask$/;"	i
@@ -48,38 +53,44 @@ Mail	.\models.py	/^class Mail(Base):$/;"	c
 Mail	.\view_mails.py	/^from models import Mail$/;"	i
 Notice	.\models.py	/^class Notice(Base):$/;"	c
 Notice	.\view_infos.py	/^from models import Notice, Info$/;"	i
-OpendedPuzzlePiece	.\models.py	/^class OpendedPuzzlePiece(Base):$/;"	c
 OpenedPuzzle	.\models.py	/^class OpenedPuzzle(Base):$/;"	c
+OpenedPuzzle	.\view_puzzles.py	/^from models import OpenedPuzzlePiece, OpenedPuzzle$/;"	i
+OpenedPuzzlePiece	.\models.py	/^class OpenedPuzzlePiece(Base):$/;"	c
+OpenedPuzzlePiece	.\view_puzzles.py	/^from models import OpenedPuzzlePiece, OpenedPuzzle$/;"	i
 OwnCostume	.\models.py	/^class OwnCostume(Base):$/;"	c
-OwnCostume	.\view_costumes.py	/^from models import OwnCostume, OwnCostumebase$/;"	i
+OwnCostume	.\view_costumes.py	/^from models import OwnCostume, OwnCostumebase, WornCostume$/;"	i
 OwnCostumebase	.\models.py	/^class OwnCostumebase(Base):$/;"	c
-OwnCostumebase	.\view_costumes.py	/^from models import OwnCostume, OwnCostumebase$/;"	i
+OwnCostumebase	.\view_costumes.py	/^from models import OwnCostume, OwnCostumebase, WornCostume$/;"	i
 PORT	.\serverconfig.py	/^PORT = 5000$/;"	v
 PirateShip	.\models.py	/^class PirateShip(Base):$/;"	c
 PirateShip	.\view_fishing.py	/^from models import Fishing, PirateShip$/;"	i
 ProtocolTypes	.\utils.py	/^class ProtocolTypes(object):$/;"	c
 ProtocolTypes	.\view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 ProtocolTypes	.\view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ProtocolTypes	.\view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ProtocolTypes	.\view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ProtocolTypes	.\view_fishing.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ProtocolTypes	.\view_friends.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ProtocolTypes	.\view_infos.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys$/;"	i
 ProtocolTypes	.\view_inventories.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ProtocolTypes	.\view_mails.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
-ProtocolTypes	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ProtocolTypes	.\view_puzzles.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ProtocolTypes	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 ProtocolTypes	.\view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ProtocolTypes	.\view_stats.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 ProtocolTypes	.\view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
 ResultCodes	.\utils.py	/^class ResultCodes(object):$/;"	c
 ResultCodes	.\view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 ResultCodes	.\view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ResultCodes	.\view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	.\view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	.\view_fishing.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	.\view_friends.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	.\view_infos.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys$/;"	i
 ResultCodes	.\view_inventories.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	.\view_mails.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
-ResultCodes	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ResultCodes	.\view_puzzles.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ResultCodes	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 ResultCodes	.\view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	.\view_stats.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 ResultCodes	.\view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
@@ -87,9 +98,9 @@ SESS_CHARS	.\models.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRS
 SESS_CHARS	.\users_test.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'$/;"	v
 SESS_CHARS	.\zones_test.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'$/;"	v
 SavedCurrentZone	.\models.py	/^class SavedCurrentZone(Base):$/;"	c
-SavedCurrentZone	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
+SavedCurrentZone	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
 SavedStory	.\models.py	/^class SavedStory(Base):$/;"	c
-SavedStory	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
+SavedStory	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
 Sequence	.\users_test.py	/^from sqlalchemy import Sequence$/;"	i
 Sequence	.\zones_test.py	/^from sqlalchemy import Sequence$/;"	i
 Session	.\users_test.py	/^Session = sessionmaker()$/;"	v
@@ -104,14 +115,17 @@ Text	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, Dat
 Text	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 User	.\models.py	/^class User(Base):$/;"	c
 User	.\users_test.py	/^class User(Base):$/;"	c
-User	.\utils.py	/^from models import User$/;"	i
+User	.\utils.py	/^from models import User, DirtyLog$/;"	i
 User	.\view_friends.py	/^from models import User, Friend, Character$/;"	i
 User	.\view_users.py	/^from models import User, get_session_id$/;"	i
 WSGIContainer	.\server.py	/^from tornado.wsgi import WSGIContainer$/;"	i
 WSGIServer	.\srver.py	/^from gevent.wsgi import WSGIServer$/;"	i
+WornCostume	.\models.py	/^class WornCostume(Base):$/;"	c
+WornCostume	.\view_costumes.py	/^from models import OwnCostume, OwnCostumebase, WornCostume$/;"	i
 Zone	.\models.py	/^class Zone(Base):$/;"	c
 Zone	.\zones_test.py	/^class Zone(Base):$/;"	c
 __init__	.\models.py	/^    def __init__($/;"	m	class:Costumebase
+__init__	.\models.py	/^    def __init__(self, all_string):$/;"	m	class:DirtyLog
 __init__	.\models.py	/^    def __init__(self, from_nickname, to_user_id, content, items=None):$/;"	m	class:Mail
 __init__	.\models.py	/^    def __init__(self, ios_game_version, android_game_version):$/;"	m	class:Info
 __init__	.\models.py	/^    def __init__(self, nickname, password):$/;"	m	class:User
@@ -122,10 +136,12 @@ __init__	.\models.py	/^    def __init__(self, user_id):$/;"	m	class:PirateShip
 __init__	.\models.py	/^    def __init__(self, user_id):$/;"	m	class:Stat
 __init__	.\models.py	/^    def __init__(self, user_id, costume_index):$/;"	m	class:OwnCostume
 __init__	.\models.py	/^    def __init__(self, user_id, costumebase_index):$/;"	m	class:OwnCostumebase
+__init__	.\models.py	/^    def __init__(self, user_id, costumes):$/;"	m	class:WornCostume
+__init__	.\models.py	/^    def __init__(self, user_id, diary_index):$/;"	m	class:Diary
 __init__	.\models.py	/^    def __init__(self, user_id, event_index):$/;"	m	class:CompletedEvent
 __init__	.\models.py	/^    def __init__(self, user_id, friend_id):$/;"	m	class:Friend
 __init__	.\models.py	/^    def __init__(self, user_id, name):$/;"	m	class:Character
-__init__	.\models.py	/^    def __init__(self, user_id, puzzle_index, condition):$/;"	m	class:OpendedPuzzlePiece
+__init__	.\models.py	/^    def __init__(self, user_id, puzzle_index, condition):$/;"	m	class:OpenedPuzzlePiece
 __init__	.\models.py	/^    def __init__(self, user_id, puzzle_index, opened):$/;"	m	class:OpenedPuzzle
 __init__	.\models.py	/^    def __init__(self, user_id, state):$/;"	m	class:Button
 __init__	.\models.py	/^    def __init__(self, user_id, zone_index):$/;"	m	class:SavedCurrentZone
@@ -139,6 +155,7 @@ __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Button	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Character	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:CompletedEvent	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Costumebase	file:
+__repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:DirtyLog	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Fishing	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Friend	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Info	file:
@@ -160,13 +177,15 @@ __tablename__	.\models.py	/^    __tablename__ = 'buttons'$/;"	v	class:Button
 __tablename__	.\models.py	/^    __tablename__ = 'characters'$/;"	v	class:Character
 __tablename__	.\models.py	/^    __tablename__ = 'completed_events'$/;"	v	class:CompletedEvent
 __tablename__	.\models.py	/^    __tablename__ = 'costumebases'$/;"	v	class:Costumebase
+__tablename__	.\models.py	/^    __tablename__ = 'diaries'$/;"	v	class:Diary
+__tablename__	.\models.py	/^    __tablename__ = 'dirty_logs'$/;"	v	class:DirtyLog
 __tablename__	.\models.py	/^    __tablename__ = 'fishing'$/;"	v	class:Fishing
 __tablename__	.\models.py	/^    __tablename__ = 'friends'$/;"	v	class:Friend
 __tablename__	.\models.py	/^    __tablename__ = 'infos'$/;"	v	class:Info
 __tablename__	.\models.py	/^    __tablename__ = 'last_visited_waves'$/;"	v	class:LastVisitedWave
 __tablename__	.\models.py	/^    __tablename__ = 'mails'$/;"	v	class:Mail
 __tablename__	.\models.py	/^    __tablename__ = 'notices'$/;"	v	class:Notice
-__tablename__	.\models.py	/^    __tablename__ = 'opended_puzzle_pieces'$/;"	v	class:OpendedPuzzlePiece
+__tablename__	.\models.py	/^    __tablename__ = 'opended_puzzle_pieces'$/;"	v	class:OpenedPuzzlePiece
 __tablename__	.\models.py	/^    __tablename__ = 'opened_puzzles'$/;"	v	class:OpenedPuzzle
 __tablename__	.\models.py	/^    __tablename__ = 'own_costumebases'$/;"	v	class:OwnCostumebase
 __tablename__	.\models.py	/^    __tablename__ = 'own_costumes'$/;"	v	class:OwnCostume
@@ -175,15 +194,20 @@ __tablename__	.\models.py	/^    __tablename__ = 'saved_current_zones'$/;"	v	clas
 __tablename__	.\models.py	/^    __tablename__ = 'saved_stories'$/;"	v	class:SavedStory
 __tablename__	.\models.py	/^    __tablename__ = 'stats'$/;"	v	class:Stat
 __tablename__	.\models.py	/^    __tablename__ = 'users'$/;"	v	class:User
+__tablename__	.\models.py	/^    __tablename__ = 'worn_costumes'$/;"	v	class:WornCostume
 __tablename__	.\models.py	/^    __tablename__ = 'zones'$/;"	v	class:Zone
 __tablename__	.\users_test.py	/^    __tablename__ = 'users'$/;"	v	class:User
 __tablename__	.\zones_test.py	/^    __tablename__ = 'zones'$/;"	v	class:Zone
 acceptFriend	.\view_friends.py	/^def acceptFriend():$/;"	f
 accepted	.\models.py	/^    accepted = Column(Boolean(), default=False)$/;"	v	class:Friend
 addCompletedEvent	.\view_events.py	/^def addCompletedEvent():$/;"	f
+addDiary	.\view_diaries.py	/^def addDiary():$/;"	f
 addFriend	.\view_friends.py	/^def addFriend():$/;"	f
+addOpenedPuzzle	.\view_puzzles.py	/^def addOpenedPuzzle():$/;"	f
+addOpenedPuzzlePiece	.\view_puzzles.py	/^def addOpenedPuzzlePiece():$/;"	f
 addOwnCostume	.\view_costumes.py	/^def addOwnCostume():$/;"	f
 addOwnCostumeBase	.\view_costumes.py	/^def addOwnCostumeBase():$/;"	f
+all_string	.\models.py	/^    all_string = Column(Text())$/;"	v	class:DirtyLog
 android_game_version	.\models.py	/^    android_game_version = Column(String(10))$/;"	v	class:Info
 ap_recharged_time	.\models.py	/^    ap_recharged_time = Column(Integer())$/;"	v	class:Info
 app	.\mrd_srv.py	/^app = Flask(__name__)$/;"	v
@@ -199,13 +223,15 @@ character	.\users_test.py	/^    character = Column(Text())$/;"	v	class:User
 checkContainKeys	.\utils.py	/^def checkContainKeys(my_list, my_dict):$/;"	f
 checkContainKeys	.\view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 checkContainKeys	.\view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkContainKeys	.\view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_fishing.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_friends.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_infos.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys$/;"	i
 checkContainKeys	.\view_inventories.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_mails.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
-checkContainKeys	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkContainKeys	.\view_puzzles.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkContainKeys	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 checkContainKeys	.\view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_stats.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 checkContainKeys	.\view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
@@ -213,12 +239,14 @@ checkGameVersion	.\view_infos.py	/^def checkGameVersion():$/;"	f
 checkSessionId	.\utils.py	/^def checkSessionId(got_session_id):$/;"	f
 checkSessionId	.\view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 checkSessionId	.\view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkSessionId	.\view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	.\view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	.\view_fishing.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	.\view_friends.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	.\view_inventories.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	.\view_mails.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
-checkSessionId	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkSessionId	.\view_puzzles.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkSessionId	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 checkSessionId	.\view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	.\view_stats.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 cloak_index	.\models.py	/^    cloak_index = Column(String(10))$/;"	v	class:Costumebase
@@ -230,31 +258,37 @@ color_g	.\models.py	/^    color_g = Column(String(15))$/;"	v	class:Character
 color_r	.\models.py	/^    color_r = Column(String(15))$/;"	v	class:Character
 commitData	.\utils.py	/^def commitData():$/;"	f
 commitData	.\view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+commitData	.\view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	.\view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	.\view_fishing.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	.\view_friends.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	.\view_inventories.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	.\view_mails.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
-commitData	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+commitData	.\view_puzzles.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+commitData	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 commitData	.\view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	.\view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
-condition	.\models.py	/^    condition = Column(Integer())$/;"	v	class:OpendedPuzzlePiece
+condition	.\models.py	/^    condition = Column(Integer())$/;"	v	class:OpenedPuzzlePiece
 content	.\models.py	/^    content = Column(Text())$/;"	v	class:Mail
 content	.\models.py	/^    content = Column(Text())$/;"	v	class:Notice
 costume_index	.\models.py	/^    costume_index = Column(String(10))$/;"	v	class:OwnCostume
 costumebase_index	.\models.py	/^    costumebase_index = Column(String(10))$/;"	v	class:OwnCostumebase
+costumes	.\models.py	/^    costumes = Column(Text())$/;"	v	class:WornCostume
 createCharacter	.\view_characters.py	/^def createCharacter():$/;"	f
 create_engine	.\database.py	/^from sqlalchemy import create_engine$/;"	i
 create_engine	.\users_test.py	/^from sqlalchemy import create_engine$/;"	i
 create_engine	.\zones_test.py	/^from sqlalchemy import create_engine$/;"	i
 created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:CompletedEvent
+created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:DirtyLog
 created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:OwnCostume
 created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:OwnCostumebase
 created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:PirateShip
 datetime	.\models.py	/^import datetime$/;"	i
 datetime	.\users_test.py	/^import datetime$/;"	i
 datetime	.\utils.py	/^import datetime$/;"	i
+datetime	.\view_diaries.py	/^import datetime$/;"	i
 datetime	.\view_friends.py	/^import datetime$/;"	i
+datetime	.\view_puzzles.py	/^import datetime$/;"	i
 datetime	.\view_saved.py	/^import datetime$/;"	i
 datetime	.\view_stats.py	/^import datetime$/;"	i
 datetime	.\view_users.py	/^import datetime$/;"	i
@@ -264,11 +298,13 @@ db_session	.\mrd_srv.py	/^from database import db_session$/;"	i
 db_session	.\utils.py	/^from database import db_session$/;"	i
 db_session	.\view_characters.py	/^from database import db_session$/;"	i
 db_session	.\view_costumes.py	/^from database import db_session$/;"	i
+db_session	.\view_diaries.py	/^from database import db_session$/;"	i
 db_session	.\view_events.py	/^from database import db_session$/;"	i
 db_session	.\view_fishing.py	/^from database import db_session$/;"	i
 db_session	.\view_friends.py	/^from database import db_session$/;"	i
 db_session	.\view_inventories.py	/^from database import db_session$/;"	i
 db_session	.\view_mails.py	/^from database import db_session$/;"	i
+db_session	.\view_puzzles.py	/^from database import db_session$/;"	i
 db_session	.\view_saved.py	/^from database import db_session$/;"	i
 db_session	.\view_slots.py	/^from database import db_session$/;"	i
 db_session	.\view_stats.py	/^from database import db_session$/;"	i
@@ -278,6 +314,7 @@ declarative_base	.\users_test.py	/^from sqlalchemy.ext.declarative import declar
 declarative_base	.\zones_test.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	i
 del_db	.\database.py	/^def del_db():$/;"	f
 deleteMails	.\view_mails.py	/^def deleteMails():$/;"	f
+diary_index	.\models.py	/^    diary_index = Column(Integer())$/;"	v	class:Diary
 died	.\models.py	/^    died = Column(Boolean(), default=False)$/;"	v	class:PirateShip
 duration	.\models.py	/^    duration = Column(Integer)$/;"	v	class:Costumebase
 ed_user	.\users_test.py	/^ed_user = User('ed', m.hexdigest())$/;"	v
@@ -321,6 +358,7 @@ general_ship_index	.\models.py	/^    general_ship_index = Column(String(10))$/;"
 general_ship_rate	.\models.py	/^    general_ship_rate = Column(Float())$/;"	v	class:Fishing
 getButtonState	.\view_saved.py	/^def getButtonState():$/;"	f
 getCharacter	.\view_characters.py	/^def getCharacter():$/;"	f
+getDiaries	.\view_diaries.py	/^def getDiaries():$/;"	f
 getFishing	.\view_fishing.py	/^def getFishing():$/;"	f
 getFriendCharacterInfo	.\view_friends.py	/^def getFriendCharacterInfo():$/;"	f
 getFriendsList	.\view_friends.py	/^def getFriendsList():$/;"	f
@@ -328,6 +366,8 @@ getGiftMail	.\view_mails.py	/^def getGiftMail():$/;"	f
 getInventories	.\view_inventories.py	/^def getInventories():$/;"	f
 getMailList	.\view_mails.py	/^def getMailList():$/;"	f
 getNotice	.\view_infos.py	/^def getNotice():$/;"	f
+getOpenedPuzzlePieces	.\view_puzzles.py	/^def getOpenedPuzzlePieces():$/;"	f
+getOpenedPuzzles	.\view_puzzles.py	/^def getOpenedPuzzles():$/;"	f
 getOwnCostumebases	.\view_costumes.py	/^def getOwnCostumebases():$/;"	f
 getOwnCostumes	.\view_costumes.py	/^def getOwnCostumes():$/;"	f
 getSavedCurrentZone	.\view_saved.py	/^def getSavedCurrentZone():$/;"	f
@@ -335,6 +375,7 @@ getSavedStory	.\view_saved.py	/^def getSavedStory():$/;"	f
 getSlots	.\view_slots.py	/^def getSlots():$/;"	f
 getStats	.\view_stats.py	/^def getStats():$/;"	f
 getWaitingFriends	.\view_friends.py	/^def getWaitingFriends():$/;"	f
+getWornCostume	.\view_costumes.py	/^def getWornCostume():$/;"	f
 get_sesseion_id	.\users_test.py	/^def get_sesseion_id(userid):$/;"	f
 get_sesseion_id	.\zones_test.py	/^def get_sesseion_id(userid):$/;"	f
 get_session_id	.\models.py	/^def get_session_id(nickname):$/;"	f
@@ -353,17 +394,20 @@ id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Attack
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Button
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Character
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:CompletedEvent
+id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Diary
+id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:DirtyLog
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Fishing
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Friend
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:LastVisitedWave
-id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:OpendedPuzzlePiece
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:OpenedPuzzle
+id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:OpenedPuzzlePiece
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:OwnCostume
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:OwnCostumebase
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:PirateShip
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:SavedCurrentZone
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:SavedStory
 id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Stat
+id	.\models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:WornCostume
 id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Costumebase
 id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Info
 id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Mail
@@ -426,12 +470,14 @@ json	.\models.py	/^import json$/;"	i
 json	.\users_test.py	/^import json$/;"	i
 json	.\view_characters.py	/^import json$/;"	i
 json	.\view_costumes.py	/^import json$/;"	i
+json	.\view_diaries.py	/^import json$/;"	i
 json	.\view_events.py	/^import json$/;"	i
 json	.\view_fishing.py	/^import json$/;"	i
 json	.\view_friends.py	/^import json$/;"	i
 json	.\view_infos.py	/^import json$/;"	i
 json	.\view_inventories.py	/^import json$/;"	i
 json	.\view_mails.py	/^import json$/;"	i
+json	.\view_puzzles.py	/^import json$/;"	i
 json	.\view_saved.py	/^import json$/;"	i
 json	.\view_slots.py	/^import json$/;"	i
 json	.\view_stats.py	/^import json$/;"	i
@@ -459,8 +505,8 @@ password	.\models.py	/^    password = Column(String(200), nullable=False)$/;"	v	
 password	.\users_test.py	/^    password = Column(String(250))$/;"	v	class:User
 position	.\models.py	/^    position = Column(Text())$/;"	v	class:SavedCurrentZone
 position	.\models.py	/^    position = Column(Text())$/;"	v	class:SavedStory
-puzzle_index	.\models.py	/^    puzzle_index = Column(Integer())$/;"	v	class:OpendedPuzzlePiece
 puzzle_index	.\models.py	/^    puzzle_index = Column(Integer())$/;"	v	class:OpenedPuzzle
+puzzle_index	.\models.py	/^    puzzle_index = Column(Integer())$/;"	v	class:OpenedPuzzlePiece
 random	.\view_fishing.py	/^                    import random$/;"	i
 randrange	.\models.py	/^from random import sample, randrange$/;"	i
 randrange	.\users_test.py	/^from random import sample, randrange$/;"	i
@@ -474,12 +520,14 @@ registered_date	.\models.py	/^    registered_date = Column(DateTime(), default=d
 registered_date	.\users_test.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:User
 request	.\view_characters.py	/^from flask import request$/;"	i
 request	.\view_costumes.py	/^from flask import request$/;"	i
+request	.\view_diaries.py	/^from flask import request$/;"	i
 request	.\view_events.py	/^from flask import request$/;"	i
 request	.\view_fishing.py	/^from flask import request$/;"	i
 request	.\view_friends.py	/^from flask import request$/;"	i
 request	.\view_infos.py	/^from flask import request$/;"	i
 request	.\view_inventories.py	/^from flask import request$/;"	i
 request	.\view_mails.py	/^from flask import request$/;"	i
+request	.\view_puzzles.py	/^from flask import request$/;"	i
 request	.\view_saved.py	/^from flask import request$/;"	i
 request	.\view_slots.py	/^from flask import request$/;"	i
 request	.\view_stats.py	/^from flask import request$/;"	i
@@ -514,6 +562,7 @@ setSavedCurrentZone	.\view_saved.py	/^def setSavedCurrentZone():$/;"	f
 setSavedStory	.\view_saved.py	/^def setSavedStory():$/;"	f
 setSlots	.\view_slots.py	/^def setSlots():$/;"	f
 setStats	.\view_stats.py	/^def setStats():$/;"	f
+setWornCostume	.\view_costumes.py	/^def setWornCostume():$/;"	f
 ship_id	.\models.py	/^    ship_id = Column(Integer())$/;"	v	class:AttackedShipUser
 shutdown_session	.\mrd_srv.py	/^def shutdown_session(exception=None):$/;"	f
 slot_item	.\users_test.py	/^    slot_item = Column(Text())$/;"	v	class:User
@@ -531,25 +580,29 @@ user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:AttackedShipUs
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:Button
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:Character
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:CompletedEvent
+user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:Diary
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:Friend
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:LastVisitedWave
-user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:OpendedPuzzlePiece
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:OpenedPuzzle
+user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:OpenedPuzzlePiece
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:OwnCostume
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:OwnCostumebase
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:PirateShip
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:SavedCurrentZone
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:SavedStory
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:Stat
+user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:WornCostume
 user_id	.\users_test.py	/^    user_id = Column(String(16))$/;"	v	class:User
 view_characters	.\mrd_srv.py	/^import view_characters$/;"	i
 view_costumes	.\mrd_srv.py	/^import view_costumes$/;"	i
+view_diaries	.\mrd_srv.py	/^import view_diaries$/;"	i
 view_events	.\mrd_srv.py	/^import view_events$/;"	i
 view_fishing	.\mrd_srv.py	/^import view_fishing$/;"	i
 view_friends	.\mrd_srv.py	/^import view_friends$/;"	i
 view_infos	.\mrd_srv.py	/^import view_infos$/;"	i
 view_inventories	.\mrd_srv.py	/^import view_inventories$/;"	i
 view_mails	.\mrd_srv.py	/^import view_mails$/;"	i
+view_puzzles	.\mrd_srv.py	/^import view_puzzles$/;"	i
 view_saved	.\mrd_srv.py	/^import view_saved$/;"	i
 view_slots	.\mrd_srv.py	/^import view_slots$/;"	i
 view_stats	.\mrd_srv.py	/^import view_stats$/;"	i
@@ -563,6 +616,8 @@ weapon_index	.\models.py	/^    weapon_index = Column(String(10))$/;"	v	class:Cos
 weapon_level	.\models.py	/^    weapon_level = Column(Integer())$/;"	v	class:Stat
 weapon_level	.\models.py	/^    weapon_level = Column(String(10))$/;"	v	class:Character
 weapon_type	.\models.py	/^    weapon_type = Column(String(100))$/;"	v	class:Character
+writeDirtyLog	.\utils.py	/^def writeDirtyLog(all_string):$/;"	f
+writeDirtyLog	.\view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 writeMail	.\view_mails.py	/^def writeMail():$/;"	f
 zone_index	.\models.py	/^    zone_index = Column(String(10))$/;"	v	class:Fishing
 zone_index	.\models.py	/^    zone_index = Column(String(10))$/;"	v	class:LastVisitedWave
