@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData
+from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId
 import json
 import datetime
 
@@ -104,3 +104,59 @@ def login():
     return str(json.dumps(result))
 
 login.methods = ['POST']
+
+
+def setCash():
+    result = dict(
+        type=ProtocolTypes.SetCash,
+        result=ResultCodes.Success)
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = [
+            'session_id', 'cash'
+        ]
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                got_user.cash = got_data['cash']
+                result['result'] = commitData()
+            else:
+                result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+setCash.methods = ['POST']
+
+
+def getCash():
+    result = dict(
+        type=ProtocolTypes.GetCash,
+        result=ResultCodes.Success)
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = [
+            'session_id',
+        ]
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                result['cash'] = got_user.cash
+            else:
+                result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+getCash.methods = ['POST']
+

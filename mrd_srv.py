@@ -134,7 +134,10 @@ app.add_url_rule(
     '/set_worncostume', 'set_worncostume', view_costumes.setWornCostume)
 app.add_url_rule(
     '/get_worncostume', 'get_worncostume', view_costumes.getWornCostume)
-
+app.add_url_rule(
+    '/set_cash', 'set_cash', view_users.setCash)
+app.add_url_rule(
+    '/get_cash', 'get_cash', view_users.getCash)
 
 @app.route('/hello')
 def hello():

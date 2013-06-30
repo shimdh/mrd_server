@@ -48,7 +48,7 @@ class User(Base):
     clothes = Column(Text())
     friendship_point = Column(Integer(), default=0)
     inventories = Column(Text())
-    cashes = Column(Integer(), default=0)
+    cash = Column(Integer(), default=0)
     session_id = Column(String(100))
     session_date = Column(DateTime())
     registered_date = Column(DateTime(), default=datetime.datetime.now())
