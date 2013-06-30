@@ -121,6 +121,8 @@ def setCash():
 
             if got_user:
                 got_user.cash = got_data['cash']
+                db_session.add(got_user)
+                
                 result['result'] = commitData()
             else:
                 result['result'] = ResultCodes.NoData
