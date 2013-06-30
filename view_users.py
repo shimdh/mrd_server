@@ -35,9 +35,12 @@ def register():
                         not check_all_letters(got_data['nickname']) or
                         not check_all_letters(got_data['password'])
                     ):
-                        ResultCodes.InputParamError
+                        result['result'] = ResultCodes.InputParamError
                     else:
-                        if got_data['nickname'] == 'system':
+                        reserved_nickname = [
+                            'system', 'admin', 'administrator', 'root'
+                        ]
+                        if got_data['nickname'] in reserved_nickname:
                             result["result"] = ResultCodes.InputParamError
                         else:
                             if User.query.filter_by(
@@ -50,11 +53,6 @@ def register():
                                 )
                                 db_session.add(user_data)
                                 result['result'] = commitData()
-                                # try:
-                                #     db_session.commit()
-                                # except exc.SQLAlchemyError:
-                                #     result["result"] = ResultCodes.DBInputError
-
         else:
             result["result"] = ResultCodes.InputParamError
     else:
