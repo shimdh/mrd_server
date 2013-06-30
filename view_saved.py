@@ -88,8 +88,10 @@ def setSavedStory():
         from_keys = [
             'session_id', 
             'zone_index',
-            # 'episode_no', 'wave_no',
-            # 'position', 'rotation',
+            # 'episode_no',
+            # 'wave_no',
+            # 'position',
+            # 'rotation',
         ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
