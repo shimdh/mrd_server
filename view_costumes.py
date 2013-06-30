@@ -29,10 +29,6 @@ def setOwnCostumes():
                             temp_costume = OwnCostume(got_user.id, got_costume_index)
                             db_session.add(temp_costume)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -154,10 +150,6 @@ def addOwnCostume():
                         temp_costume = OwnCostume(got_user.id, got_data['own_costume'])
                         db_session.add(temp_costume)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -173,7 +165,6 @@ def addOwnCostumeBase():
     result = dict(
         type=ProtocolTypes.AddOwnCostumeBase,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.AddOwnCostumeBase}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -191,10 +182,6 @@ def addOwnCostumeBase():
                         temp_costumebase = OwnCostumebase(got_user.id, got_data['own_costumebase'])
                         db_session.add(temp_costumebase)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
