@@ -92,10 +92,6 @@ def setOwnCostumebases():
                             temp_costumebase = OwnCostumebase(got_user.id, got_costumebase_index)
                             db_session.add(temp_costumebase)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result["result"] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
