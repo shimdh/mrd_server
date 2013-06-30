@@ -59,6 +59,8 @@ def getDiaries():
                         send_list.append(find_diary.diary_index)
 
                     result['diaries'] = json.dumps(send_list)
+                else:
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:
