@@ -132,6 +132,8 @@ def getOpenedPuzzles():
                         send_list.append(tmp_puzzle)
 
                     result['puzzles'] = json.dumps(send_list)
+                else:
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:
