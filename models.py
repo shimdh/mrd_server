@@ -187,6 +187,21 @@ class Button(Base):
         return '<Button %s>' % self.user_id
 
 
+class DirtyLog(Base):
+    """docstring for DirtyLog"""
+    __tablename__ = 'dirty_logs'
+
+    id = Column(Integer(), primary_key=True)
+    all_string = Column(Text())
+    created_datetime = Column(DateTime(), default=datetime.datetime.now())
+
+    def __init__(self, all_string):
+        self.all_string = all_string
+        
+    def __repr__(self):
+        return '<DirtyLog %s>' % self.id
+
+
 class Character(Base):
     __tablename__ = 'characters'
     id = Column(Integer(), primary_key=True)
