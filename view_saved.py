@@ -2,7 +2,7 @@
 
 from flask import request
 from models import Button, SavedStory, SavedCurrentZone, DirtyLog
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog
 import json
 
 from database import db_session
@@ -82,15 +82,13 @@ def setSavedStory():
         result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:
-        # write_log = DirtyLog(request.form['data'])
-        # db_session.add(write_log)
-        # db_session.commit()
+        # writeDirtyLog(request.form['data'])
 
         got_data = json.loads(request.form['data'])
         from_keys = [
             'session_id', 
             'zone_index', 'episode_no', 'wave_no',
-            'position', 'rotation'
+            'position', 'rotation',
         ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])

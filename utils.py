@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from models import User
+from models import User, DirtyLog
 import datetime
 from database import db_session
 from sqlalchemy import exc
@@ -82,3 +82,8 @@ def commitData():
         return ResultCodes.Success
     except exc.SQLAlchemyError:
         return ResultCodes.DBInputError
+
+def writeDirtyLog(all_string):
+    write_log = DirtyLog(all_string)
+    db_session.add(write_log)
+    db_session.commit()
