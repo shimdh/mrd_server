@@ -29,7 +29,8 @@ def addOpenedPuzzlePiece():
                     find_puzzle_piece.condition = got_data['condition']
                     db_session.add(find_puzzle_piece)
                 else:
-                    made_puzzle_piece = OpenedPuzzlePiece(got_user.id, got_data['puzzle_index'], got_data['condition'])
+                    made_puzzle_piece = OpenedPuzzlePiece(
+                        got_user.id, got_data['puzzle_index'], got_data['condition'])
                     db_session.add(made_puzzle_piece)
 
                 result['result'] = commitData()
@@ -96,7 +97,8 @@ def addOpenedPuzzle():
                     find_puzzle.opened = got_data['opened']
                     db_session.add(find_puzzle)
                 else:
-                    made_puzzle = OpenedPuzzle(got_user.id, got_data['puzzle_index'], got_data['opened'])
+                    made_puzzle = OpenedPuzzle(
+                        got_user.id, got_data['puzzle_index'], got_data['opened'])
                     db_session.add(made_puzzle)
 
                 result['result'] = commitData()
