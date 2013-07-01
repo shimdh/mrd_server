@@ -16,7 +16,7 @@ def addOpenedPuzzlePiece():
         result=ResultCodes.Success
         )
 
-    if request.methods == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'puzzle_index', 'condition']
         if checkContainKeys(from_keys, got_data):
@@ -83,7 +83,7 @@ def addOpenedPuzzle():
         result=ResultCodes.Success
         )
 
-    if request.methods == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'puzzle_index', 'opened']
         if checkContainKeys(from_keys, got_data):

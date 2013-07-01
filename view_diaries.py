@@ -16,7 +16,7 @@ def addDiary():
         result=ResultCodes.Success
         )
 
-    if request.methods == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'diary_index']
         if checkContainKeys(from_keys, got_data):
