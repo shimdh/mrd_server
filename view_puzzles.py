@@ -65,6 +65,8 @@ def getOpenedPuzzlePieces():
                         send_list.append(tmp_piece)
 
                     result['puzzle_pieces'] = json.dumps(send_list)
+                else:
+                    result['result'] = ResultCodes.NoData
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -113,7 +115,7 @@ def getOpenedPuzzles():
         type=ProtocolTypes.GetPuzzlePieces,
         result=ResultCodes.Success)
 
-    writeDirtyLog(request.form['data'])
+    # writeDirtyLog(request.form['data'])
 
     if request.methods == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
