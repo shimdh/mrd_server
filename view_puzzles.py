@@ -124,7 +124,7 @@ addOpenedPuzzle.methods = ['POST']
 
 def getOpenedPuzzles():
     result = dict(
-        type=ProtocolTypes.GetPuzzlePieces,
+        type=ProtocolTypes.GetPuzzles,
         result=ResultCodes.Success)
 
     # writeDirtyLog(request.form['data'])
