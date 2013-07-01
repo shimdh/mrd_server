@@ -16,7 +16,7 @@ def addDiary():
         result=ResultCodes.Success
         )
 
-    writeDirtyLog(request.form['data'])
+    # writeDirtyLog(request.form['data'])
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
