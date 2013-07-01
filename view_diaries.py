@@ -20,7 +20,10 @@ def addDiary():
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
-        from_keys = ['session_id', 'diary_index']
+        from_keys = [
+            'session_id', 
+            # 'diary_index'
+        ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
