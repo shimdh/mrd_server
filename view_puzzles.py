@@ -16,6 +16,8 @@ def addOpenedPuzzlePiece():
         result=ResultCodes.Success
         )
 
+    writeDirtyLog(request.form['data'])
+
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'puzzle_index', 'condition']
@@ -83,6 +85,8 @@ def addOpenedPuzzle():
         type=ProtocolTypes.AddPuzzle,
         result=ResultCodes.Success
         )
+
+    writeDirtyLog(request.form['data'])
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
