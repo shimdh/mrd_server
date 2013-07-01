@@ -20,7 +20,10 @@ def addOpenedPuzzlePiece():
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
-        from_keys = ['session_id', 'puzzle_index', 'condition']
+        from_keys = [
+            'session_id', 
+            # 'puzzle_index', 'condition'
+        ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
@@ -90,7 +93,10 @@ def addOpenedPuzzle():
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
-        from_keys = ['session_id', 'puzzle_index', 'opened']
+        from_keys = [
+            'session_id', 
+            # 'puzzle_index', 'opened'
+        ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
