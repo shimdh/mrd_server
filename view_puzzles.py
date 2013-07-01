@@ -48,7 +48,7 @@ def getOpenedPuzzlePieces():
         type=ProtocolTypes.GetPuzzlePieces,
         result=ResultCodes.Success)
 
-    if request.methods == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -117,7 +117,7 @@ def getOpenedPuzzles():
 
     # writeDirtyLog(request.form['data'])
 
-    if request.methods == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
