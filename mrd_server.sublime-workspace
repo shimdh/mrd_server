@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"fro",
+				"from	(keyword, instance)"
+			],
+			[
+				"res",
+				"reserved_nickname	(local, instance)"
+			],
+			[
 				"got",
 				"got_user	(local, instance)"
 			],
@@ -76,10 +84,6 @@
 				"made_puzzle_piece	(local, instance)"
 			],
 			[
-				"fro",
-				"from_keys"
-			],
-			[
 				"me",
 				"methods"
 			],
@@ -119,7 +123,23 @@
 			"file": "view_users.py",
 			"settings":
 			{
-				"buffer_size": 5732,
+				"buffer_size": 5661,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_diaries.py",
+			"settings":
+			{
+				"buffer_size": 2416,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_puzzles.py",
+			"settings":
+			{
+				"buffer_size": 5314,
 				"line_ending": "Windows"
 			}
 		},
@@ -291,8 +311,8 @@
 						"selection":
 						[
 							[
-								4891,
-								4891
+								4048,
+								4048
 							]
 						],
 						"settings":
@@ -302,7 +322,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1797.0,
+						"translation.y": 1656.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -312,15 +332,15 @@
 					"file": "view_users.py",
 					"settings":
 					{
-						"buffer_size": 5732,
+						"buffer_size": 5661,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4691,
-								4691
+								3445,
+								3445
 							]
 						],
 						"settings":
@@ -330,7 +350,63 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1605.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "view_diaries.py",
+					"settings":
+					{
+						"buffer_size": 2416,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								976,
+								976
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "view_puzzles.py",
+					"settings":
+					{
+						"buffer_size": 5314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2995,
+								2995
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1365.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -338,11 +414,11 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "models.py",
 					"settings":
 					{
@@ -353,8 +429,8 @@
 						"selection":
 						[
 							[
-								1470,
-								1470
+								3827,
+								3827
 							]
 						],
 						"settings":
@@ -364,13 +440,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 516.0,
+						"translation.y": 330.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "utils.py",
 					"settings":
 					{
@@ -392,13 +468,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 887.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "view_saved.py",
 					"settings":
 					{
@@ -456,7 +532,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.556924882629,
 			1.0
 		],
 		"rows":
@@ -481,6 +557,14 @@
 		"selected_items":
 		[
 			[
+				"puzz",
+				"view_puzzles.py"
+			],
+			[
+				"dia",
+				"view_diaries.py"
+			],
+			[
 				"mr",
 				"mrd_srv.py"
 			],
@@ -497,20 +581,12 @@
 				"view_costumes.py"
 			],
 			[
-				"dia",
-				"view_diaries.py"
-			],
-			[
 				"mrd",
 				"mrd_srv.py"
 			],
 			[
 				"sa",
 				"view_saved.py"
-			],
-			[
-				"puzz",
-				"view_puzzles.py"
 			],
 			[
 				"uti",
@@ -535,6 +611,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 219.0,
+	"side_bar_width": 160.0,
 	"status_bar_visible": true
 }
