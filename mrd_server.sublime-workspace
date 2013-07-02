@@ -104,66 +104,10 @@
 	"buffers":
 	[
 		{
-			"file": "view_costumes.py",
+			"file": "view_friends.py",
 			"settings":
 			{
-				"buffer_size": 9683,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "mrd_srv.py",
-			"settings":
-			{
-				"buffer_size": 5161,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "view_users.py",
-			"settings":
-			{
-				"buffer_size": 5661,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "view_diaries.py",
-			"settings":
-			{
-				"buffer_size": 2416,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "view_puzzles.py",
-			"settings":
-			{
-				"buffer_size": 5314,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "models.py",
-			"settings":
-			{
-				"buffer_size": 15956,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "utils.py",
-			"settings":
-			{
-				"buffer_size": 2825,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "view_saved.py",
-			"settings":
-			{
-				"buffer_size": 8351,
+				"buffer_size": 13986,
 				"line_ending": "Windows"
 			}
 		}
@@ -204,19 +148,48 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_srv.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/__init__.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/fishing.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/user.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/mail.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/event.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/diary.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_diaries.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/puzzle.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_puzzles.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/saved.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_saved.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_fishing.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_events.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/costume.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/srver.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/character.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/friend.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/info.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/inventory.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/stat.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_costumes.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_mails.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_stats.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/database.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_users.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/model/all.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/slot.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/__init__.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/all.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_slots.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_inventories.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_friends.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_infos.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_characters.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/model/__init__.py",
 		"/C/Users/shimdh/.ssh/config",
 		"/C/Users/shimdh/.ssh/id_rsa.pub",
 		"/C/Users/shimdh/github_rsa.pub",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/database.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/models.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_puzzles.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_diaries.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/utils.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_srv.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_saved.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_costumes.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_slots.py",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
 	],
@@ -236,6 +209,55 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"get_session_id",
+			"Integer",
+			"Column",
+			"Text",
+			"datetime",
+			"DateTime",
+			"datetime",
+			"DateTime",
+			"string",
+			"String",
+			"string",
+			"String",
+			"string",
+			"String",
+			"string",
+			"String",
+			"Integer",
+			"Column",
+			"Float",
+			"String",
+			"Integer",
+			"Column",
+			"date",
+			"Date",
+			"Boolean",
+			"String",
+			"Integer",
+			"Column",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
+			"base",
+			"Base",
 			"writeDirtyLog",
 			"DirtyLog",
 			"tmp_piece",
@@ -268,23 +290,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "view_costumes.py",
+					"file": "view_friends.py",
 					"settings":
 					{
-						"buffer_size": 9683,
+						"buffer_size": 13986,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								255,
-								255
+								6932,
+								6932
 							]
 						],
 						"settings":
@@ -294,119 +316,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1855.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "mrd_srv.py",
-					"settings":
-					{
-						"buffer_size": 5161,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4048,
-								4048
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1656.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "view_users.py",
-					"settings":
-					{
-						"buffer_size": 5661,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3445,
-								3445
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 225.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "view_diaries.py",
-					"settings":
-					{
-						"buffer_size": 2416,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								976,
-								976
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "view_puzzles.py",
-					"settings":
-					{
-						"buffer_size": 5314,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2995,
-								2995
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1365.0,
+						"translation.y": 1981.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -414,93 +324,8 @@
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 5,
-					"file": "models.py",
-					"settings":
-					{
-						"buffer_size": 15956,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3827,
-								3827
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 330.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "utils.py",
-					"settings":
-					{
-						"buffer_size": 2825,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								481,
-								481
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 887.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "view_saved.py",
-					"settings":
-					{
-						"buffer_size": 8351,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1069,
-								1069
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2857.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -606,13 +431,13 @@
 		[
 			[
 				"",
-				"/C/Users/shimdh/Documents/PythonProjects/mrd_conv/mrd_conv.sublime-project"
+				"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_server.sublime-project"
 			]
 		],
 		"width": 462.0
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 160.0,
