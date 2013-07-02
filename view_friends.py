@@ -22,29 +22,6 @@ def addFriend():
 
             if got_user:
                 pass
-                # if (got_user.friends is None) or (got_user.friends == ''):
-                #     got_friends = list(got_data['name'])
-                #     got_user.friends = json.dumps(got_friends)
-                #     db_session.add(got_user)
-                #     try:
-                #         db_session.commit()
-                #     except exc.SQLAlchemyError:
-                #         result['result'] = ResultCodes.DBInputError
-                # else:
-                #     got_friends = json.loads(got_user.friends)
-                #     if got_friends:
-                #         if len(got_friends) == 0:
-                #             got_friends = list(got_data['name'])
-                #             got_user.friends = json.dumps(got_friends)
-                #             db_session.add(got_user)
-                #         else:
-                #             got_friends.append(got_data['name'])
-                #             got_user.friends = json.dumps(got_friends)
-                #             db_session.add(got_user)
-                #         try:
-                #             db_session.commit()
-                #         except exc.SQLAlchemyError:
-                #             result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -183,7 +160,7 @@ def getWaitingFriends():
                                 id=find_friend.user_id,
                                 name=friend_data.name,
                                 nickname=friend_data.nickname,
-                                last_login=tmp_friend.login_date.strftime("%Y,%m,%d")
+                                last_login=friend_data.login_date.strftime("%Y,%m,%d")
                             )
                             friends_data.append(tmp_friend)
 
