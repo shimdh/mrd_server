@@ -58,17 +58,8 @@ class User(Base):
         self.nickname = nickname
         self.password = password
 
-        self.resurrect = json.dumps(self.initResurrect())
-
     def __repr__(self):
         return '<User %s>' % (self.name)
-
-    def initResurrect(self):
-        temp_resurrect = {
-            "map": 0,
-            "waypoint": 0
-        }
-        return temp_resurrect
 
 
 class SavedStory(Base):

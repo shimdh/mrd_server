@@ -27,7 +27,6 @@ def index():
     """Default"""
     return 'Index Page'
 
-
 app.add_url_rule(
     '/register', 'register', view_users.register)
 app.add_url_rule(

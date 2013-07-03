@@ -104,10 +104,18 @@
 	"buffers":
 	[
 		{
-			"file": "view_friends.py",
+			"file": "mrd_srv.py",
 			"settings":
 			{
-				"buffer_size": 13986,
+				"buffer_size": 5160,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "mrd_server.py",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
@@ -148,10 +156,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_users.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/user.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_friends.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_srv.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/__init__.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/fishing.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/user.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/mail.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/event.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/diary.py",
@@ -173,14 +183,12 @@
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_mails.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_stats.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/database.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_users.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/model/all.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/slot.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/__init__.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/all.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_slots.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_inventories.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_friends.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_infos.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_characters.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/model/__init__.py",
@@ -290,23 +298,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "view_friends.py",
+					"file": "mrd_srv.py",
 					"settings":
 					{
-						"buffer_size": 13986,
+						"buffer_size": 5160,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6932,
-								6932
+								711,
+								711
 							]
 						],
 						"settings":
@@ -316,7 +324,34 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1981.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mrd_server.py",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -431,7 +466,7 @@
 		[
 			[
 				"",
-				"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_server.sublime-project"
+				"/C/Users/shimdh/Documents/PythonProjects/mrd-server/mrd-server.sublime-project"
 			]
 		],
 		"width": 462.0
