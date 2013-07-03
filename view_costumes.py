@@ -11,7 +11,7 @@ from models import OwnCostume, OwnCostumebase, WornCostume
 def setOwnCostumes():
     result = {'type': ProtocolTypes.SetOwnCostumes}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'own_costumes']
         if checkContainKeys(from_keys, got_data):
@@ -42,7 +42,7 @@ setOwnCostumes.methods = ['POST']
 def getOwnCostumes():
     result = {'type': ProtocolTypes.GetOwnCostumes}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -70,7 +70,7 @@ getOwnCostumes.methods = ['POST']
 def setOwnCostumebases():
     result = {'type': ProtocolTypes.SetOwnCostumeBases}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'own_costumebases']
         if checkContainKeys(from_keys, got_data):
@@ -101,7 +101,7 @@ setOwnCostumebases.methods = ['POST']
 def getOwnCostumebases():
     result = {'type': ProtocolTypes.GetOwnCostumeBases}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -168,7 +168,7 @@ def addOwnCostumeBase():
         type=ProtocolTypes.AddOwnCostumeBase,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'own_costumebase']
         if checkContainKeys(from_keys, got_data):
