@@ -14,7 +14,7 @@ def addDiary():
     result = dict(
         type=ProtocolTypes.AddDiary,
         result=ResultCodes.Success
-        )
+    )
 
     # writeDirtyLog(request.form['data'])
 

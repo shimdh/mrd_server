@@ -28,13 +28,21 @@ def index():
     return 'Index Page'
 
 app.add_url_rule(
-    '/register', 'register', view_users.register)
+    '/register', 'register', 
+    view_users.register
+)
 app.add_url_rule(
-    '/login', 'login', view_users.login)
+    '/login', 'login', 
+    view_users.login
+)
 app.add_url_rule(
-    '/create_character', 'create_character', view_characters.createCharacter)
+    '/create_character', 'create_character', 
+    view_characters.createCharacter
+)
 app.add_url_rule(
-    '/get_notice', 'get_notice', view_infos.getNotice)
+    '/get_notice', 'get_notice', 
+    view_infos.getNotice
+)
 app.add_url_rule(
     '/get_character', 'get_character', view_characters.getCharacter)
 app.add_url_rule(
