@@ -163,16 +163,16 @@
 		"selected_items":
 		[
 			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
 				"instal",
 				"Package Control: Install Package"
 			],
 			[
 				"mini",
 				"View: Toggle Minimap"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 400.0
@@ -192,6 +192,10 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/CHANGELOG.md",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/GoSublime.sublime-settings",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/GoSublime.sublime-settings",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_users.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/serverconfig.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_srv.py",
@@ -353,8 +357,8 @@
 						"selection":
 						[
 							[
-								807,
-								807
+								4150,
+								4150
 							]
 						],
 						"settings":
@@ -364,7 +368,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1618.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -499,8 +503,8 @@
 						"selection":
 						[
 							[
-								418,
-								419
+								1526,
+								1526
 							]
 						],
 						"settings":
@@ -510,7 +514,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -546,7 +550,7 @@
 		"cols":
 		[
 			0.0,
-			0.411091549296,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -556,6 +560,14 @@
 		]
 	},
 	"menu_visible": true,
+	"output.9o://C:\\Users\\shimdh\\Documents\\GoProjects\\learn-go":
+	{
+		"height": 100.0
+	},
+	"output.MarGo-output":
+	{
+		"height": 100.0
+	},
 	"output.exec":
 	{
 		"height": 100.0

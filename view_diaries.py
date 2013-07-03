@@ -7,7 +7,6 @@ from utils import writeDirtyLog
 import json
 
 from database import db_session
-import datetime
 
 
 def addDiary():
