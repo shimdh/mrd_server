@@ -5,7 +5,6 @@ from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, 
 import json
 
 from database import db_session
-from sqlalchemy import exc
 from models import OwnCostume, OwnCostumebase, WornCostume
 
 
@@ -113,10 +112,13 @@ def getOwnCostumebases():
                 if find_own_costumebases:
                     found_own_costumebase_list = list()
                     for find_own_costumebase in find_own_costumebases:
-                        temp_costumebase_dict = dict()
-                        temp_costumebase_dict['costumebase_index'] = find_own_costumebase.costumebase_index
-                        temp_costumebase_dict['lastdate_from_gotcash'] = find_own_costumebase.lastdate_from_gotcash.strftime(
-                            "%Y,%m,%d")
+                        temp_costumebase_dict = dict(
+                            costumebase_index = find_own_costumebase.costumebase_index,
+                            lastdate_from_gotcash = find_own_costumebase.lastdate_from_gotcash.strftime(
+                                "%Y,%m,%d"))
+                        # temp_costumebase_dict['costumebase_index'] = find_own_costumebase.costumebase_index
+                        # temp_costumebase_dict['lastdate_from_gotcash'] = find_own_costumebase.lastdate_from_gotcash.strftime(
+                        #     "%Y,%m,%d")
                         found_own_costumebase_list.append(temp_costumebase_dict)
                     result['own_costumebases'] = json.dumps(found_own_costumebase_list)
                 else:
@@ -189,7 +191,6 @@ def addOwnCostumeBase():
 
     return str(json.dumps(result))
 
-
 addOwnCostumeBase.methods = ['POST']
 
 
@@ -198,7 +199,7 @@ def setWornCostume():
         type=ProtocolTypes.SetWornCostume,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'costumes']
         if checkContainKeys(from_keys, got_data):
@@ -224,12 +225,13 @@ def setWornCostume():
 
 setWornCostume.methods = ['POST']
 
+
 def getWornCostume():
     result = dict(
         type=ProtocolTypes.GetWornCostume,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
