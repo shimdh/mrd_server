@@ -30,10 +30,11 @@ def register():
                     result['result'] = ResultCodes.ShortPassword
                 else:
                     import re
+
                     check_all_letters = lambda given_value: re.match("^[A-Za-z0-9_-]*$", given_value)
                     if (
-                        not check_all_letters(got_data['nickname']) or
-                        not check_all_letters(got_data['password'])
+                            not check_all_letters(got_data['nickname']) or
+                            not check_all_letters(got_data['password'])
                     ):
                         result['result'] = ResultCodes.InputParamError
                     else:
@@ -60,6 +61,7 @@ def register():
         result["result"] = ResultCodes.AccessError
 
     return str(json.dumps(result))
+
 
 register.methods = ['POST']
 
@@ -102,6 +104,7 @@ def login():
 
     return str(json.dumps(result))
 
+
 login.methods = ['POST']
 
 
@@ -121,7 +124,7 @@ def setCash():
             if got_user:
                 got_user.cash = got_data['cash']
                 db_session.add(got_user)
-                
+
                 result['result'] = commitData()
             else:
                 result['result'] = ResultCodes.NoData
@@ -131,6 +134,7 @@ def setCash():
         result['result'] = ResultCodes.AccessError
 
     return str(json.dumps(result))
+
 
 setCash.methods = ['POST']
 
@@ -158,6 +162,7 @@ def getCash():
         result['result'] = ResultCodes.AccessError
 
     return str(json.dumps(result))
+
 
 getCash.methods = ['POST']
 
