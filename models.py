@@ -44,7 +44,6 @@ class User(Base):
     gender = Column(String(1), default='M')
     character = Column(Text())
     slots = Column(Text())
-    resurrect = Column(Text())
     clothes = Column(Text())
     friendship_point = Column(Integer(), default=0)
     inventories = Column(Text())
