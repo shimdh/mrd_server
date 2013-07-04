@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 """Main file"""
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 from flask import Flask
 from database import db_session
 import serverconfig
