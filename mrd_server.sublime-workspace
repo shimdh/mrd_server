@@ -111,7 +111,7 @@
 			"file": "mrd_srv.py",
 			"settings":
 			{
-				"buffer_size": 5184,
+				"buffer_size": 5240,
 				"line_ending": "Windows"
 			}
 		},
@@ -151,7 +151,7 @@
 			"file": "view_diaries.py",
 			"settings":
 			{
-				"buffer_size": 2412,
+				"buffer_size": 2396,
 				"line_ending": "Windows"
 			}
 		}
@@ -192,6 +192,8 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/CHANGELOG.md",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/GoSublime.sublime-settings",
@@ -240,10 +242,8 @@
 		"/C/Users/shimdh/.ssh/config",
 		"/C/Users/shimdh/.ssh/id_rsa.pub",
 		"/C/Users/shimdh/github_rsa.pub",
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/models.py",
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/AdvancedNewFile/Default (Windows).sublime-keymap"
 	],
 	"find":
 	{
@@ -350,15 +350,15 @@
 					"file": "mrd_srv.py",
 					"settings":
 					{
-						"buffer_size": 5184,
+						"buffer_size": 5240,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4150,
-								4150
+								2667,
+								2667
 							]
 						],
 						"settings":
@@ -368,7 +368,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1618.0,
+						"translation.y": 1981.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -496,15 +496,15 @@
 					"file": "view_diaries.py",
 					"settings":
 					{
-						"buffer_size": 2412,
+						"buffer_size": 2396,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1526,
-								1526
+								402,
+								402
 							]
 						],
 						"settings":
@@ -514,7 +514,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
