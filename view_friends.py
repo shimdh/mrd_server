@@ -13,7 +13,7 @@ import datetime
 def addFriend():
     result = {'type': ProtocolTypes.AddFriend}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'name']
@@ -35,7 +35,7 @@ addFriend.methods = ['POST']
 def getFriendsList():
     result = {'type': ProtocolTypes.GetFriendsList}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id']
@@ -73,7 +73,7 @@ getFriendsList.methods = ['POST']
 def findFriendByName():
     result = {'type': ProtocolTypes.FindFriendByName}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'friend_nickname']
@@ -81,7 +81,9 @@ def findFriendByName():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_user_lists = db_session.query(User).filter(
+                # got_user_lists = db_session.query(User).filter(
+                #     User.name.like('%' + got_data['friend_nickname'] + '%')).all()
+                got_user_lists = User.query.filter(
                     User.name.like('%' + got_data['friend_nickname'] + '%')).all()
                 if got_user_lists:
                     send_user_lists = []
@@ -109,7 +111,7 @@ findFriendByName.methods = ['POST']
 def requestFriend():
     result = {'type': ProtocolTypes.RequestFriend}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'request_friend']
@@ -141,7 +143,7 @@ requestFriend.methods = ['POST']
 def getWaitingFriends():
     result = {'type': ProtocolTypes.GetWaitingFriends}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id']
@@ -219,7 +221,7 @@ acceptFriend.methods = ['POST']
 def getFriendCharacterInfo():
     result = {'type': ProtocolTypes.GetFriendCharacterInfo}
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'friend_id']
@@ -270,7 +272,7 @@ def sendFriendShipPoint():
         result=ResultCodes.Success
     )
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'friend_id']
@@ -314,7 +316,7 @@ def receiveFriendShipPoint():
         result=ResultCodes.Success
     )
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'friend_id']
