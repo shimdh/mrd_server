@@ -14,7 +14,7 @@ def writeMail():
         type=ProtocolTypes.WriteMail,
         result=ResultCodes.Success
     )
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'mail_to', 'content']
         if checkContainKeys(from_keys, got_data):
@@ -25,10 +25,6 @@ def writeMail():
                     got_user.nickname, got_data['mail_to'], got_data['content'])
                 db_session.add(got_mail)
                 result['result'] = commitData()
-                # try:
-                #     db_session.commit()
-                # except exc.SQLAlchemyError:
-                #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -45,7 +41,7 @@ def readMail():
         type=ProtocolTypes.ReadMail,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'mail_index']
         if checkContainKeys(from_keys, got_data):
@@ -83,7 +79,7 @@ def getGiftMail():
         result=ResultCodes.Success
     )
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'mail_index']
         if checkContainKeys(from_keys, got_data):
@@ -96,10 +92,6 @@ def getGiftMail():
                     got_mail.items = None
                     db_session.add(got_mail)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result['result'] = ResultCodes.DBInputError
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -117,7 +109,7 @@ def getMailList():
         type=ProtocolTypes.GetMailList,
         result=ResultCodes.Success
     )
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
         if checkContainKeys(from_keys, got_data):
@@ -156,23 +148,19 @@ def deleteMails():
         type=ProtocolTypes.DeleteMails,
         result=ResultCodes.Success
     )
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id', 'mail_indexes']
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_mails = db_session.query(Mail).filter(
-                    Mail.id.in_(got_data['mail_indexes']))
+                got_mails = Mail.query.filter(
+                    Mail.id.in_(got_data['mail_indexes'])).all()
                 if got_mails:
                     for got_mail in got_mails:
                         db_session.delete(got_mail)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result['result'] = ResultCodes.DBInputError
         else:
             result['result'] = ResultCodes.InputParamError
     else:
