@@ -15,7 +15,7 @@ def createCharacter():
         type=ProtocolTypes.CreateCharacter,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id', 'character']
@@ -58,7 +58,7 @@ def getCharacter():
         type=ProtocolTypes.GetCharacter,
         result=ResultCodes.Success)
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['session_id']
