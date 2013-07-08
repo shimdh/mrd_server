@@ -51,8 +51,7 @@ def register():
                                 user_data = User(
                                     got_data['nickname'],
                                     got_data['password']
-                                )
-                                user_data.registered_date = datetime.datetime.now()
+                                )                                
                                 db_session.add(user_data)
                                 result['result'] = commitData()
         else:

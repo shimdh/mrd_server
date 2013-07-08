@@ -55,6 +55,7 @@ class User(Base):
     def __init__(self, nickname, password):
         self.nickname = nickname
         self.password = password
+        self.registered_date = datetime.datetime.now()
 
     def __repr__(self):
         return '<User %s>' % (self.name)
@@ -205,10 +206,12 @@ class Character(Base):
     cloak_type = Column(String(100))
     face_type = Column(String(100))
     weapon_type = Column(String(100))
+    updated_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, name):
         self.user_id = user_id
         self.name = name
+        self.updated_date = datetime.datetime.now()
 
     def __repr__(self):
         return '<Character %s>' % self.name
