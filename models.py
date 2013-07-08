@@ -197,20 +197,15 @@ class Character(Base):
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
     name = Column(String(20))
-    level = Column(String(10))
     color_r = Column(String(15))
     color_g = Column(String(15))
     color_b = Column(String(15))
     gender = Column(String(1))
-    hp = Column(String(20))
-    weapon_level = Column(String(10))
     body_type = Column(String(100))
     hair_type = Column(String(100))
     cloak_type = Column(String(100))
-    weapon_exp = Column(String(100))
     face_type = Column(String(100))
     weapon_type = Column(String(100))
-    exp = Column(String(10))
 
     def __init__(self, user_id, name):
         self.user_id = user_id
