@@ -14,7 +14,6 @@ def addFriend():
     result = dict(
         type=ProtocolTypes.AddFriend,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.AddFriend}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -39,7 +38,6 @@ def getFriendsList():
     result = dict(
         type=ProtocolTypes.GetFriendsList,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.GetFriendsList}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -80,7 +78,6 @@ def findFriendByName():
     result = dict(
         type=ProtocolTypes.FindFriendByName,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.FindFriendByName}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -121,7 +118,6 @@ def requestFriend():
     result = dict(
         type=ProtocolTypes.RequestFriend,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.RequestFriend}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -149,7 +145,10 @@ requestFriend.methods = ['POST']
 
 
 def getWaitingFriends():
-    result = {'type': ProtocolTypes.GetWaitingFriends}
+    result = dict(
+        type=ProtocolTypes.GetWaitingFriends,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.GetWaitingFriends}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -191,7 +190,10 @@ getWaitingFriends.methods = ['POST']
 
 
 def acceptFriend():
-    result = {'type': ProtocolTypes.AcceptFriend}
+    result = dict(
+        type=ProtocolTypes.AcceptFriend,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.AcceptFriend}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -223,7 +225,10 @@ acceptFriend.methods = ['POST']
 
 
 def getFriendCharacterInfo():
-    result = {'type': ProtocolTypes.GetFriendCharacterInfo}
+    result = dict(
+        type=ProtocolTypes.GetFriendCharacterInfo,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.GetFriendCharacterInfo}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -297,10 +302,6 @@ def sendFriendShipPoint():
 
                         db_session.add(find_friend)
                         result['result'] = commitData()
-                        # try:
-                        #     db_session.commit()
-                        # except exc.SQLAlchemyError:
-                        #     result['result'] = ResultCodes.DBInputError
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -345,10 +346,6 @@ def receiveFriendShipPoint():
 
                         db_session.add(got_user)
                         result['result'] = commitData()
-                        # try:
-                        #     db_session.commit()
-                        # except exc.SQLAlchemyError:
-                        #     result['result'] = ResultCodes.DBInputError
                     else:
                         result['result'] = ResultCodes.InputParamError
                 else:
