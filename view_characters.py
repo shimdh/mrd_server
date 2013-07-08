@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
 import json
 
 from database import db_session
@@ -11,7 +11,10 @@ from models import Character
 
 
 def createCharacter():
-    result = {'type': ProtocolTypes.CreateCharacter}
+    result = dict(
+        type=ProtocolTypes.CreateCharacter,
+        result=ResultCodes.Success
+    )
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -39,10 +42,8 @@ def createCharacter():
                     user_character.hair_type = got_character['hair_type']
                     user_character.weapon_type = got_character['weapon_type']
                     db_session.add(user_character)
-                    try:
-                        db_session.commit()
-                    except exc.SQLAlchemyError:
-                        result['result'] = ResultCodes.DBInputError
+
+                    result['result'] = commitData()
         else:
             result['result'] = ResultCodes.InputParamError
     else:
