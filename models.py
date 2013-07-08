@@ -114,11 +114,13 @@ class OpenedPuzzlePiece(Base):
     user_id = Column(Integer())
     puzzle_index = Column(Integer())
     condition = Column(Integer())
+    created_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, puzzle_index, condition):
         self.user_id = user_id
         self.puzzle_index = puzzle_index
         self.condition = condition
+        self.created_date = datetime.datetime.now()
                         
 
 class OpenedPuzzle(Base):
