@@ -54,7 +54,9 @@ createCharacter.methods = ['POST']
 
 
 def getCharacter():
-    result = {'type': ProtocolTypes.GetCharacter}
+    result = dict(
+        type=ProtocolTypes.GetCharacter,
+        result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
