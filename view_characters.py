@@ -13,8 +13,7 @@ from models import Character
 def createCharacter():
     result = dict(
         type=ProtocolTypes.CreateCharacter,
-        result=ResultCodes.Success
-    )
+        result=ResultCodes.Success)
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
