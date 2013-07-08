@@ -16,7 +16,7 @@ def register():
         result=ResultCodes.Success
     )
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['nickname', 'password']
@@ -71,7 +71,7 @@ def login():
         result=ResultCodes.Success
     )
 
-    if request.method == 'POST' and request.form['data']:
+    if request.form['data']:
         got_data = json.loads(request.form['data'])
 
         from_keys = ['nickname', 'password']
