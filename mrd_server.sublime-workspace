@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"ffbn",
+				"FindFriendByName"
+			],
+			[
+				"got_us",
+				"got_user_lists	statement"
+			],
+			[
+				"dat",
+				"datetime	import"
+			],
+			[
+				"date",
+				"datetime	class"
+			],
+			[
 				"costum",
 				"costumebase_index"
 			],
@@ -26,10 +42,6 @@
 			[
 				"from",
 				"from_keys	(local, instance)"
-			],
-			[
-				"dat",
-				"data"
 			],
 			[
 				"getca",
@@ -111,7 +123,7 @@
 			"file": "mrd_srv.py",
 			"settings":
 			{
-				"buffer_size": 5240,
+				"buffer_size": 5416,
 				"line_ending": "Windows"
 			}
 		},
@@ -119,7 +131,15 @@
 			"file": "models.py",
 			"settings":
 			{
-				"buffer_size": 15527,
+				"buffer_size": 16658,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_saved.py",
+			"settings":
+			{
+				"buffer_size": 8351,
 				"line_ending": "Windows"
 			}
 		},
@@ -130,14 +150,88 @@
 				"buffer_size": 2825,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "view_users.py",
+			"settings":
+			{
+				"buffer_size": 5632,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view_characters.py",
+			"settings":
+			{
+				"buffer_size": 3554,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 43 files for \"db_session.\"\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\database.py:\n   14  \n   15  Base = declarative_base()\n   16: Base.query = db_session.query_property()\n   17  \n   18  \n   ..\n   24      if models.Info.query.count() == 0:\n   25          temp_info = models.Info('1.0.0', '1.0.0')\n   26:         db_session.add(temp_info)\n   27:         db_session.commit()\n   28  \n   29      if models.Costumebase.query.count() == 0:\n   ..\n   43              'COB_X09', 1, 1, 'COS_X09', 'COS_X10', 'COS_X11', 'COS_X12')\n   44  \n   45:         db_session.add_all(\n   46              [temp_costumebase_1, temp_costumebase_2, temp_costumebase_3,\n   47                  temp_costumebase_4, temp_costumebase_5, temp_costumebase_6,\n   48                  temp_costumebase_7])\n   49  \n   50:         db_session.commit()\n   51  \n   52      if models.Fishing.query.count() == 0:\n   ..\n   97          temp_fishing_1.item_rate_13 = 1\n   98  \n   99:         db_session.add(temp_fishing_1)\n  100:         db_session.commit()\n  101  \n  102  \n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\mrd_srv.py:\n  191  @app.teardown_request\n  192  def shutdown_session(exception=None):\n  193:     db_session.remove()\n  194  \n  195  \n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\utils.py:\n   56                  datetime.datetime.now() - datetime.timedelta(minutes=20)):\n   57              got_user.session_id = ''\n   58:             db_session.add(got_user)\n   59              try:\n   60:                 db_session.commit()\n   61                  return ResultCodes.SessionIdExpired, None\n   62              except exc.SQLAlchemyError:\n   ..\n   65  \n   66              got_user.session_date = datetime.datetime.now()\n   67:             db_session.add(got_user)\n   68              try:\n   69:                 db_session.commit()\n   70                  return ResultCodes.Success, got_user\n   71              except exc.SQLAlchemyError:\n   ..\n   80  def commitData():\n   81      try:\n   82:         db_session.commit()\n   83          return ResultCodes.Success\n   84      except exc.SQLAlchemyError:\n   ..\n   87  def writeDirtyLog(all_string):\n   88      write_log = DirtyLog(all_string)\n   89:     db_session.add(write_log)\n   90:     db_session.commit()\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_characters.py:\n   29                      got_character = got_data['character']\n   30                      got_user.name = got_character['name']\n   31:                     db_session.add(got_user)\n   32  \n   33                      user_character = Character(got_user.id, got_character['name'])\n   ..\n   41                      user_character.hair_type = got_character['hair_type']\n   42                      user_character.weapon_type = got_character['weapon_type']\n   43:                     db_session.add(user_character)\n   44  \n   45                      result['result'] = commitData()\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_costumes.py:\n   27                          if not find_costume:\n   28                              temp_costume = OwnCostume(got_user.id, got_costume_index)\n   29:                             db_session.add(temp_costume)\n   30                      result['result'] = commitData()\n   31          else:\n   ..\n   86                          if not find_costumebase:\n   87                              temp_costumebase = OwnCostumebase(got_user.id, got_costumebase_index)\n   88:                             db_session.add(temp_costumebase)\n   89                      result['result'] = commitData()\n   90          else:\n   ..\n  151                      if not find_costume:\n  152                          temp_costume = OwnCostume(got_user.id, got_data['own_costume'])\n  153:                         db_session.add(temp_costume)\n  154                      result['result'] = commitData()\n  155          else:\n  ...\n  183                      if not find_costumebase:\n  184                          temp_costumebase = OwnCostumebase(got_user.id, got_data['own_costumebase'])\n  185:                         db_session.add(temp_costumebase)\n  186                      result['result'] = commitData()\n  187          else:\n  ...\n  210                  if find_worn_costume:\n  211                      find_worn_costume.costumes = json.dumps(got_data['costumes'])\n  212:                     db_session.add(find_worn_costume)\n  213                  else:\n  214                      made_worn_costume = WornCostume(user_id=got_user.id, costumes=json.dumps(got_data['costumes']))\n  215:                     db_session.add(made_worn_costume)\n  216  \n  217                  result['result'] = commitData()\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_diaries.py:\n   34                  else:\n   35                      made_diary = Diary(got_user.id, got_data['diary_index'])\n   36:                     db_session.add(made_diary)\n   37                      result['result'] = commitData()\n   38          else:\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_events.py:\n   26                  else:\n   27                      new_event = CompletedEvent(got_user.id, got_data['event_index'])\n   28:                     db_session.add(new_event)\n   29                      result['result'] = commitData()\n   30                      # try:\n   31:                     #     db_session.commit()\n   32                      # except exc.SQLAlchemyError:\n   33                      #     result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_fishing.py:\n   38                          made_ship = PirateShip(got_user.id)\n   39                          made_ship.hp = 200\n   40:                         db_session.add(made_ship)\n   41                          try:\n   42:                             db_session.commit()\n   43                          except exc.SQLAlchemyError:\n   44                              result['result'] = ResultCodes.DBInputError\n   ..\n   48                          made_ship.hp = 400\n   49                          made_ship.type = 's'\n   50:                         db_session.add(made_ship)\n   51                          result['result'] = commitData\n   52                          # try:\n   53:                         #     db_session.commit()\n   54                          # except exc.SQLAlchemyError:\n   55                          #     result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_friends.py:\n   82  \n   83              if got_user:\n   84:                 got_user_lists = db_session.query(User).filter(\n   85                      User.name.like('%' + got_data['friend_nickname'] + '%')).all()\n   86                  if got_user_lists:\n   ..\n  121                  if not find_friend:\n  122                      friend_data = Friend(got_user.id, got_data['request_friend'])\n  123:                     db_session.add(friend_data)\n  124                      result['result'] = commitData()\n  125                      # try:\n  126:                     #     db_session.commit()\n  127                      # except exc.SQLAlchemyError:\n  128                      #     result['result'] = ResultCodes.DBInputError\n  ...\n  199                      if find_friend:\n  200                          find_friend.accepted = True\n  201:                         db_session.add(find_friend)\n  202                          result['result'] = commitData()\n  203                          # try:\n  204:                         #     db_session.commit()\n  205                          # except exc.SQLAlchemyError:\n  206                          #     result['result'] = ResultCodes.DBInputError\n  ...\n  290                          find_friend.friendship_sent_date = datetime.datetime.now()\n  291  \n  292:                         db_session.add(find_friend)\n  293                          result['result'] = commitData()\n  294                          # try:\n  295:                         #     db_session.commit()\n  296                          # except exc.SQLAlchemyError:\n  297                          #     result['result'] = ResultCodes.DBInputError\n  ...\n  332                          find_me.friendship_received_date = datetime.datetime.now()\n  333  \n  334:                         db_session.add(find_me)\n  335  \n  336                          if not got_user.friendship_point:\n  ...\n  338                          got_user.friendship_point += 1\n  339  \n  340:                         db_session.add(got_user)\n  341                          result['result'] = commitData()\n  342                          # try:\n  343:                         #     db_session.commit()\n  344                          # except exc.SQLAlchemyError:\n  345                          #     result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_inventories.py:\n   54              if got_user:\n   55                  got_user.inventories = json.dumps(got_data['inventories'])\n   56:                 db_session.add(got_user)\n   57                  result['result'] = commitData()\n   58                  # try:\n   59:                 #     db_session.commit()\n   60                  # except exc.SQLAlchemyError:\n   61                  #     result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_mails.py:\n   24                  got_mail = Mail(\n   25                      got_user.nickname, got_data['mail_to'], got_data['content'])\n   26:                 db_session.add(got_mail)\n   27                  result['result'] = commitData()\n   28                  # try:\n   29:                 #     db_session.commit()\n   30                  # except exc.SQLAlchemyError:\n   31                  #     result['result'] = ResultCodes.DBInputError\n   ..\n   95                  if got_mail:\n   96                      got_mail.items = None\n   97:                     db_session.add(got_mail)\n   98                      result['result'] = commitData()\n   99                      # try:\n  100:                     #     db_session.commit()\n  101                      # except exc.SQLAlchemyError:\n  102                      #     result['result'] = ResultCodes.DBInputError\n  ...\n  164  \n  165              if got_user:\n  166:                 got_mails = db_session.query(Mail).filter(\n  167                      Mail.id.in_(got_data['mail_indexes']))\n  168                  if got_mails:\n  169                      for got_mail in got_mails:\n  170:                         db_session.delete(got_mail)\n  171                      result['result'] = commitData()\n  172                      # try:\n  173:                     #     db_session.commit()\n  174                      # except exc.SQLAlchemyError:\n  175                      #     result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_puzzles.py:\n   33                  if find_puzzle_piece:\n   34                      find_puzzle_piece.condition = got_data['condition']\n   35:                     db_session.add(find_puzzle_piece)\n   36                  else:\n   37                      made_puzzle_piece = OpenedPuzzlePiece(\n   38                          got_user.id, got_data['puzzle_index'], got_data['condition'])\n   39:                     db_session.add(made_puzzle_piece)\n   40  \n   41                  result['result'] = commitData()\n   ..\n  106                  if find_puzzle:\n  107                      find_puzzle.opened = got_data['opened']\n  108:                     db_session.add(find_puzzle)\n  109                  else:\n  110                      made_puzzle = OpenedPuzzle(\n  111                          got_user.id, got_data['puzzle_index'], got_data['opened'])\n  112:                     db_session.add(made_puzzle)\n  113  \n  114                  result['result'] = commitData()\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_saved.py:\n   27                  if find_button:\n   28                      find_button.state = got_data['button']\n   29:                     db_session.add(find_button)\n   30                  else:\n   31                      made_button = Button(got_user.id, got_data['button'])\n   32:                     db_session.add(made_button)\n   33  \n   34                  result['result'] = commitData()\n   ..\n  102                      find_story.updated_date = datetime.datetime.now()\n  103  \n  104:                     db_session.add(find_story)\n  105                  else:\n  106                      made_story = SavedStory(\n  ...\n  109                      made_story.rotation = json.dumps(got_data['rotation'])\n  110  \n  111:                     db_session.add(made_story)\n  112  \n  113                  result['result'] = commitData()\n  ...\n  184                      find_current_zone.updated_date = datetime.datetime.now()\n  185  \n  186:                     db_session.add(find_current_zone)\n  187                  else:\n  188                      made_current_zone = SavedCurrentZone(\n  ...\n  196                      made_current_zone.updated_date = datetime.datetime.now()\n  197  \n  198:                     db_session.add(made_current_zone)\n  199  \n  200                  result['result'] = commitData()\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_slots.py:\n   22              if got_user:\n   23                  got_user.slots = json.dumps(got_data['slots'])\n   24:                 db_session.add(got_user)\n   25  \n   26                  result['result'] = commitData()\n   27                  try:\n   28:                     db_session.commit()\n   29                  except exc.SQLAlchemyError:\n   30                      result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_stats.py:\n   40                      find_stat.updated_date = datetime.datetime.now()\n   41  \n   42:                     db_session.add(find_stat)\n   43                  else:\n   44                      made_stat = Stat(got_user.id)\n   ..\n   59                      made_stat.updated_date = datetime.datetime.now()\n   60  \n   61:                     db_session.add(made_stat)\n   62  \n   63                  try:\n   64:                     db_session.commit()\n   65                  except exc.SQLAlchemyError:\n   66                      result['result'] = ResultCodes.DBInputError\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_users.py:\n   53                                      got_data['password']\n   54                                  )                                \n   55:                                 db_session.add(user_data)\n   56                                  result['result'] = commitData()\n   57          else:\n   ..\n   87                          got_user.session_date = datetime.datetime.now()\n   88                          got_user.login_date = datetime.datetime.now()\n   89:                         db_session.add(got_user)\n   90                          try:\n   91:                             db_session.commit()\n   92                              result['session_id'] = got_user.session_id\n   93                          except exc.SQLAlchemyError:\n   ..\n  123              if got_user:\n  124                  got_user.cash = got_data['cash']\n  125:                 db_session.add(got_user)\n  126  \n  127                  result['result'] = commitData()\n\n68 matches across 16 files\n\n\nSearching 43 files for \"db_session.query\"\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\database.py:\n   14  \n   15  Base = declarative_base()\n   16: Base.query = db_session.query_property()\n   17  \n   18  \n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_friends.py:\n   88  \n   89              if got_user:\n   90:                 # got_user_lists = db_session.query(User).filter(\n   91                  #     User.name.like('%' + got_data['friend_nickname'] + '%')).all()\n   92                  got_user_lists = User.query.filter(\n\nC:\\Users\\shimdh\\Documents\\PythonProjects\\mrd_server\\view_mails.py:\n  158                  got_mails = Mail.query.filter(\n  159                      Mail.id.in_(got_data['mail_indexes'])).all()\n  160:                 # got_mails = db_session.query(Mail).filter(\n  161                  #     Mail.id.in_(got_data['mail_indexes']))\n  162                  if got_mails:\n\n3 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 16347,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "view_mails.py",
+			"settings":
+			{
+				"buffer_size": 5775,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 58.0,
 		"selected_items":
 		[
+			[
+				"qcmm",
+				"Git: Quick Commit"
+			],
+			[
+				"qcomm",
+				"Git: Quick Commit"
+			],
+			[
+				"qcm",
+				"Git: Quick Commit"
+			],
+			[
+				"qco",
+				"Git: Quick Commit"
+			],
+			[
+				"qcom",
+				"Git: Quick Commit"
+			],
+			[
+				"gico",
+				"Git: Quick Commit"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"comm",
+				"Git: Quick Commit"
+			],
+			[
+				"gitco",
+				"Git: Commit"
+			],
 			[
 				"insta",
 				"Package Control: Install Package"
@@ -149,14 +243,6 @@
 			[
 				"list",
 				"Package Control: List Packages"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"mini",
@@ -183,14 +269,16 @@
 	},
 	"file_history":
 	[
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/SublimeGit/Default (Windows).sublime-keymap",
-		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/SublimeJEDI/Default.sublime-keymap",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_mails.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_friends.py",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/SublimeJEDI/Default.sublime-keymap",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_characters.py",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/SublimeGit/Default (Windows).sublime-keymap",
+		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/SublimeGit/SublimeGit.sublime-settings",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/SublimeJEDI/sublime_jedi.sublime-settings",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_costumes.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_characters.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_diaries.py",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
@@ -206,7 +294,6 @@
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/util/protocol.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/utils.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/__init__.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_friends.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/fishing.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/mail.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/event.py",
@@ -246,9 +333,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"<open folders>"
 		]
 	},
 	"find_state":
@@ -256,6 +344,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"db_session.query",
+			"db_session.",
+			"commit",
 			"check",
 			"auto",
 			"get_session_id",
@@ -348,15 +439,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5240,
+						"buffer_size": 5416,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2105,
-								2105
+								5112,
+								5112
 							]
 						],
 						"settings":
@@ -367,7 +458,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1074.0,
+						"translation.y": 2656.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -375,7 +466,7 @@
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -384,15 +475,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 15527,
+						"buffer_size": 16658,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1669,
-								1669
+								12826,
+								12826
 							]
 						],
 						"settings":
@@ -403,13 +494,43 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 478.0,
+						"translation.y": 943.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "view_saved.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8351,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2509,
+								2509
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1149.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "utils.py",
 					"semi_transient": false,
 					"settings":
@@ -434,6 +555,421 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 222.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "view_users.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5632,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								418,
+								418
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 48.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "view_characters.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3554,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "ASCII",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16347,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										164,
+										175
+									],
+									[
+										332,
+										343
+									],
+									[
+										373,
+										384
+									],
+									[
+										563,
+										574
+									],
+									[
+										813,
+										824
+									],
+									[
+										966,
+										977
+									],
+									[
+										1012,
+										1023
+									],
+									[
+										1198,
+										1209
+									],
+									[
+										1442,
+										1453
+									],
+									[
+										1514,
+										1525
+									],
+									[
+										1746,
+										1757
+									],
+									[
+										1818,
+										1829
+									],
+									[
+										2007,
+										2018
+									],
+									[
+										2207,
+										2218
+									],
+									[
+										2244,
+										2255
+									],
+									[
+										2494,
+										2505
+									],
+									[
+										2816,
+										2827
+									],
+									[
+										3165,
+										3176
+									],
+									[
+										3476,
+										3487
+									],
+									[
+										3769,
+										3780
+									],
+									[
+										4074,
+										4085
+									],
+									[
+										4354,
+										4365
+									],
+									[
+										4567,
+										4578
+									],
+									[
+										4874,
+										4885
+									],
+									[
+										5198,
+										5209
+									],
+									[
+										5350,
+										5361
+									],
+									[
+										5722,
+										5733
+									],
+									[
+										5819,
+										5830
+									],
+									[
+										6116,
+										6127
+									],
+									[
+										6278,
+										6289
+									],
+									[
+										6590,
+										6601
+									],
+									[
+										6918,
+										6929
+									],
+									[
+										7072,
+										7083
+									],
+									[
+										7365,
+										7376
+									],
+									[
+										7531,
+										7542
+									],
+									[
+										7828,
+										7839
+									],
+									[
+										7994,
+										8005
+									],
+									[
+										8291,
+										8302
+									],
+									[
+										8495,
+										8506
+									],
+									[
+										8658,
+										8669
+									],
+									[
+										9031,
+										9042
+									],
+									[
+										9170,
+										9181
+									],
+									[
+										9535,
+										9546
+									],
+									[
+										9674,
+										9685
+									],
+									[
+										9938,
+										9949
+									],
+									[
+										10089,
+										10100
+									],
+									[
+										10324,
+										10335
+									],
+									[
+										10543,
+										10554
+									],
+									[
+										10697,
+										10708
+									],
+									[
+										11072,
+										11083
+									],
+									[
+										11321,
+										11332
+									],
+									[
+										11557,
+										11568
+									],
+									[
+										11786,
+										11797
+									],
+									[
+										12077,
+										12088
+									],
+									[
+										12242,
+										12253
+									],
+									[
+										12451,
+										12462
+									],
+									[
+										12682,
+										12693
+									],
+									[
+										12897,
+										12908
+									],
+									[
+										13150,
+										13161
+									],
+									[
+										13440,
+										13451
+									],
+									[
+										13583,
+										13594
+									],
+									[
+										13904,
+										13915
+									],
+									[
+										14133,
+										14144
+									],
+									[
+										14222,
+										14233
+									],
+									[
+										14608,
+										14619
+									],
+									[
+										14919,
+										14930
+									],
+									[
+										15015,
+										15026
+									],
+									[
+										15289,
+										15300
+									],
+									[
+										15576,
+										15592
+									],
+									[
+										15772,
+										15788
+									],
+									[
+										16185,
+										16201
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								16193,
+								16193
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5600.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "view_mails.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"origin_encoding": "UTF-8",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -491,6 +1027,10 @@
 	{
 		"height": 100.0
 	},
+	"output.git-commit":
+	{
+		"height": 106.0
+	},
 	"project": "mrd_server.sublime-project",
 	"replace":
 	{
@@ -502,6 +1042,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"char",
+				"view_characters.py"
+			],
+			[
+				"chara",
+				"view_characters.py"
+			],
+			[
+				"user",
+				"view_users.py"
+			],
 			[
 				"puzz",
 				"view_puzzles.py"
@@ -572,7 +1124,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 160.0,
+	"side_bar_width": 211.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
