@@ -79,6 +79,7 @@ class SavedStory(Base):
         self.zone_index = zone_index
         self.episode_no = episode_no
         self.wave_no = wave_no
+        self.updated_date = datetime.datetime.now()
 
     def __repr__(self):
         return '<SavedStory %s>' % self.zone_index
@@ -99,6 +100,7 @@ class SavedCurrentZone(Base):
     def __init__(self, user_id, zone_index):
         self.user_id = user_id
         self.zone_index = zone_index
+        self.updated_date = datetime.datetime.now()
 
     def __repr__(self):
         return '<SavedCurrentZone %s>' % self.zone_index
@@ -126,12 +128,14 @@ class OpenedPuzzle(Base):
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
     puzzle_index = Column(Integer())
-    opened = Column(Integer()) 
+    opened = Column(Integer())
+    created_date = Column(DateTime(), default=datetime.datetime.now()) 
 
     def __init__(self, user_id, puzzle_index, opened):
         self.user_id = user_id
         self.puzzle_index = puzzle_index
         self.opened = opened
+        self.created_date = datetime.datetime.now()
 
 
 class Diary(Base):
@@ -141,10 +145,13 @@ class Diary(Base):
     id = Column(Integer(), primary_key=True)
     user_id = Column(Integer())
     diary_index = Column(Integer())
+    created_date = Column(DateTime(), default=datetime.datetime.now())
+
 
     def __init__(self, user_id, diary_index):
         self.user_id = user_id
         self.diary_index = diary_index
+        self.created_date = datetime.datetime.now()
 
         
 class WornCostume(Base):
@@ -187,6 +194,7 @@ class DirtyLog(Base):
 
     def __init__(self, all_string):
         self.all_string = all_string
+        self.created_datetime = datetime.datetime.now()
         
     def __repr__(self):
         return '<DirtyLog %s>' % self.id
@@ -310,10 +318,12 @@ class Friend(Base):
     accepted = Column(Boolean(), default=False)
     friendship_received_date = Column(Date())
     friendship_sent_date = Column(Date())
+    created_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, friend_id):
         self.user_id = user_id
         self.friend_id = friend_id
+        self.created_date = datetime.datetime.now()
 
     def __repr__(self):
         return '<Friend %s>' % (self.user_id)
@@ -329,6 +339,7 @@ class Costumebase(Base):
     helmet_index = Column(String(10))
     armor_index = Column(String(10))
     cloak_index = Column(String(10))
+    created_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(
             self, index, cash_count, duration,
@@ -341,6 +352,8 @@ class Costumebase(Base):
         self.helmet_index = helmet_index
         self.armor_index = armor_index
         self.cloak_index = cloak_index
+        self.created_date = datetime.datetime.now()
+
 
     def __repr__(self):
         return '<Costumebase %s>' % (self.index)
@@ -426,10 +439,12 @@ class AttackedShipUser(Base):
     ship_id = Column(Integer())
     user_id = Column(Integer())
     attack_point = Column(Integer())
+    created_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, ship_id, user_id):
         self.ship_id = ship_id
         self.user_id = user_id
+        self.created_date = datetime.datetime.now()
 
     def __repr__(self):
         return '<AttackedShipUser %s>' % self.ship_id
@@ -533,6 +548,7 @@ class Notice(Base):
     def __init__(self, title, content):
         self.title = title
         self.content = content
+        self.modified_date = datetime.datetime.now()
 
     def __repr__(self):
         return "<Notice('%s')>" % (self.title)
