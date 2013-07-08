@@ -11,7 +11,10 @@ import datetime
 
 
 def addFriend():
-    result = {'type': ProtocolTypes.AddFriend}
+    result = dict(
+        type=ProtocolTypes.AddFriend,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.AddFriend}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -33,7 +36,10 @@ addFriend.methods = ['POST']
 
 
 def getFriendsList():
-    result = {'type': ProtocolTypes.GetFriendsList}
+    result = dict(
+        type=ProtocolTypes.GetFriendsList,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.GetFriendsList}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -71,7 +77,10 @@ getFriendsList.methods = ['POST']
 
 
 def findFriendByName():
-    result = {'type': ProtocolTypes.FindFriendByName}
+    result = dict(
+        type=ProtocolTypes.FindFriendByName,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.FindFriendByName}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -109,7 +118,10 @@ findFriendByName.methods = ['POST']
 
 
 def requestFriend():
-    result = {'type': ProtocolTypes.RequestFriend}
+    result = dict(
+        type=ProtocolTypes.RequestFriend,
+        result=ResultCodes.Success)
+    # result = {'type': ProtocolTypes.RequestFriend}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -124,10 +136,6 @@ def requestFriend():
                     friend_data = Friend(got_user.id, got_data['request_friend'])
                     db_session.add(friend_data)
                     result['result'] = commitData()
-                    # try:
-                    #     db_session.commit()
-                    # except exc.SQLAlchemyError:
-                    #     result['result'] = ResultCodes.DBInputError
                 else:
                     result['result'] = ResultCodes.DataExist
         else:
@@ -202,10 +210,6 @@ def acceptFriend():
                         find_friend.accepted = True
                         db_session.add(find_friend)
                         result['result'] = commitData()
-                        # try:
-                        #     db_session.commit()
-                        # except exc.SQLAlchemyError:
-                        #     result['result'] = ResultCodes.DBInputError
                     else:
                         result['result'] = ResultCodes.NoData
         else:
