@@ -119,7 +119,7 @@
 			"file": "models.py",
 			"settings":
 			{
-				"buffer_size": 15752,
+				"buffer_size": 15721,
 				"line_ending": "Windows"
 			}
 		},
@@ -384,15 +384,15 @@
 					"file": "models.py",
 					"settings":
 					{
-						"buffer_size": 15752,
+						"buffer_size": 15721,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1687,
-								1687
+								0,
+								0
 							]
 						],
 						"settings":
