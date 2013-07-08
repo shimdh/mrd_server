@@ -148,7 +148,6 @@ def getWaitingFriends():
     result = dict(
         type=ProtocolTypes.GetWaitingFriends,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.GetWaitingFriends}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -193,7 +192,6 @@ def acceptFriend():
     result = dict(
         type=ProtocolTypes.AcceptFriend,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.AcceptFriend}
 
     if request.method == 'POST' and request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -228,7 +226,6 @@ def getFriendCharacterInfo():
     result = dict(
         type=ProtocolTypes.GetFriendCharacterInfo,
         result=ResultCodes.Success)
-    # result = {'type': ProtocolTypes.GetFriendCharacterInfo}
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
