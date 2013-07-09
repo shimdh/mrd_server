@@ -1,5 +1,4 @@
 *.py[cod]
-
 *.sublime-workspace
 *.sublime-project
 
@@ -37,5 +36,4 @@ nosetests.xml
 .project
 .pydevproject
 .idea/
-
 
