@@ -43,7 +43,6 @@ class User(Base):
     email = Column(String(100), unique=True)
     gender = Column(String(1), default='M')
     slots = Column(Text())
-    clothes = Column(Text())
     friendship_point = Column(Integer(), default=0)
     inventories = Column(Text())
     cash = Column(Integer(), default=0)

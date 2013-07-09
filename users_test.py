@@ -33,7 +33,6 @@ class User(Base):
     character = Column(Text())
     slot_item = Column(Text())
     resurrect = Column(Text())
-    clothes = Column(Text())
     session_id = Column(String(100))
     session_date = Column(DateTime())
     registered_date = Column(DateTime(), default=datetime.datetime.now())

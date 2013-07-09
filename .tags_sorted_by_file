@@ -118,12 +118,10 @@ ap_recharged_time	models.py	/^    ap_recharged_time = Column(Integer())$/;"	v	cl
 armor_index	models.py	/^    armor_index = Column(String(10))$/;"	v	class:Costumebase
 attack_point	models.py	/^    attack_point = Column(Integer())$/;"	v	class:AttackedShipUser
 body_type	models.py	/^    body_type = Column(String(100))$/;"	v	class:Character
+cash	models.py	/^    cash = Column(Integer(), default=0)$/;"	v	class:User
 cash_count	models.py	/^    cash_count = Column(Integer)$/;"	v	class:Costumebase
-cashes	models.py	/^    cashes = Column(Integer(), default=0)$/;"	v	class:User
-character	models.py	/^    character = Column(Text())$/;"	v	class:User
 cloak_index	models.py	/^    cloak_index = Column(String(10))$/;"	v	class:Costumebase
 cloak_type	models.py	/^    cloak_type = Column(String(100))$/;"	v	class:Character
-clothes	models.py	/^    clothes = Column(Text())$/;"	v	class:User
 color_b	models.py	/^    color_b = Column(String(15))$/;"	v	class:Character
 color_g	models.py	/^    color_g = Column(String(15))$/;"	v	class:Character
 color_r	models.py	/^    color_r = Column(String(15))$/;"	v	class:Character
@@ -133,6 +131,12 @@ content	models.py	/^    content = Column(Text())$/;"	v	class:Notice
 costume_index	models.py	/^    costume_index = Column(String(10))$/;"	v	class:OwnCostume
 costumebase_index	models.py	/^    costumebase_index = Column(String(10))$/;"	v	class:OwnCostumebase
 costumes	models.py	/^    costumes = Column(Text())$/;"	v	class:WornCostume
+created_date	models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now()) $/;"	v	class:OpenedPuzzle
+created_date	models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:AttackedShipUser
+created_date	models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Costumebase
+created_date	models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Diary
+created_date	models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Friend
+created_date	models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:OpenedPuzzlePiece
 created_datetime	models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:CompletedEvent
 created_datetime	models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:DirtyLog
 created_datetime	models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:OwnCostume
@@ -148,7 +152,6 @@ episode_no	models.py	/^    episode_no = Column(Integer())$/;"	v	class:LastVisite
 episode_no	models.py	/^    episode_no = Column(Integer())$/;"	v	class:SavedStory
 event_index	models.py	/^    event_index = Column(String(20))$/;"	v	class:CompletedEvent
 exp	models.py	/^    exp = Column(Integer())$/;"	v	class:Stat
-exp	models.py	/^    exp = Column(String(10))$/;"	v	class:Character
 face_type	models.py	/^    face_type = Column(String(100))$/;"	v	class:Character
 fishing	models.py	/^    fishing = Column(Text())$/;"	v	class:Zone
 friend_id	models.py	/^    friend_id = Column(Integer())$/;"	v	class:Friend
@@ -165,7 +168,6 @@ hair_type	models.py	/^    hair_type = Column(String(100))$/;"	v	class:Character
 helmet_index	models.py	/^    helmet_index = Column(String(10))$/;"	v	class:Costumebase
 hp	models.py	/^    hp = Column(Integer())$/;"	v	class:PirateShip
 hp	models.py	/^    hp = Column(Integer())$/;"	v	class:Stat
-hp	models.py	/^    hp = Column(String(20))$/;"	v	class:Character
 id	models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:AttackedShipUser
 id	models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Button
 id	models.py	/^    id = Column(Integer(), primary_key=True)$/;"	v	class:Character
@@ -192,7 +194,6 @@ id	models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:User
 id	models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Zone
 index	models.py	/^    index = Column(String(10), unique=True)$/;"	v	class:Costumebase
 initFishing	models.py	/^    def initFishing(self):$/;"	m	class:Zone
-initResurrect	models.py	/^    def initResurrect(self):$/;"	m	class:User
 inventories	models.py	/^    inventories = Column(Text())$/;"	v	class:User
 ios_game_version	models.py	/^    ios_game_version = Column(String(10))$/;"	v	class:Info
 item_count_1	models.py	/^    item_count_1 = Column(Integer())$/;"	v	class:Fishing
@@ -238,7 +239,6 @@ items	models.py	/^    items = Column(Text())$/;"	v	class:Mail
 json	models.py	/^import json$/;"	i
 lastdate_from_gotcash	models.py	/^    lastdate_from_gotcash = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:OwnCostumebase
 level	models.py	/^    level = Column(Integer())$/;"	v	class:Stat
-level	models.py	/^    level = Column(String(10))$/;"	v	class:Character
 login_date	models.py	/^    login_date = Column(DateTime())$/;"	v	class:User
 modified_date	models.py	/^    modified_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Notice
 name	models.py	/^    name = Column(String(20))$/;"	v	class:Character
@@ -247,7 +247,7 @@ nickname	models.py	/^    nickname = Column(String(20), unique=True, nullable=Fal
 no_item	models.py	/^    no_item = Column(Float())$/;"	v	class:Fishing
 number	models.py	/^    number = Column(Integer())$/;"	v	class:Zone
 opened	models.py	/^    opened = Column(Boolean(), default=False)$/;"	v	class:Notice
-opened	models.py	/^    opened = Column(Integer()) $/;"	v	class:OpenedPuzzle
+opened	models.py	/^    opened = Column(Integer())$/;"	v	class:OpenedPuzzle
 password	models.py	/^    password = Column(String(200), nullable=False)$/;"	v	class:User
 position	models.py	/^    position = Column(Text())$/;"	v	class:SavedCurrentZone
 position	models.py	/^    position = Column(Text())$/;"	v	class:SavedStory
@@ -257,7 +257,6 @@ randrange	models.py	/^from random import sample, randrange$/;"	i
 registered_date	models.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Mail
 registered_date	models.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:User
 requested	models.py	/^    requested = Column(Boolean(), default=True)$/;"	v	class:Friend
-resurrect	models.py	/^    resurrect = Column(Text())$/;"	v	class:User
 rotation	models.py	/^    rotation = Column(Text())$/;"	v	class:SavedCurrentZone
 rotation	models.py	/^    rotation = Column(Text())$/;"	v	class:SavedStory
 sample	models.py	/^from random import sample, randrange$/;"	i
@@ -271,6 +270,7 @@ state	models.py	/^    state = Column(Text())$/;"	v	class:Button
 title	models.py	/^    title = Column(String(50))$/;"	v	class:Notice
 to_user_id	models.py	/^    to_user_id = Column(String(50))$/;"	v	class:Mail
 type	models.py	/^    type = Column(String(1), default='g')$/;"	v	class:PirateShip
+updated_date	models.py	/^    updated_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Character
 updated_date	models.py	/^    updated_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:SavedCurrentZone
 updated_date	models.py	/^    updated_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:SavedStory
 updated_date	models.py	/^    updated_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Stat
@@ -294,10 +294,8 @@ visited_zone_no	models.py	/^    visited_zone_no = Column(String(10))$/;"	v	class
 wave_no	models.py	/^    wave_no = Column(Integer())$/;"	v	class:LastVisitedWave
 wave_no	models.py	/^    wave_no = Column(Integer())$/;"	v	class:SavedStory
 weapon_exp	models.py	/^    weapon_exp = Column(Integer())$/;"	v	class:Stat
-weapon_exp	models.py	/^    weapon_exp = Column(String(100))$/;"	v	class:Character
 weapon_index	models.py	/^    weapon_index = Column(String(10))$/;"	v	class:Costumebase
 weapon_level	models.py	/^    weapon_level = Column(Integer())$/;"	v	class:Stat
-weapon_level	models.py	/^    weapon_level = Column(String(10))$/;"	v	class:Character
 weapon_type	models.py	/^    weapon_type = Column(String(100))$/;"	v	class:Character
 zone_index	models.py	/^    zone_index = Column(String(10))$/;"	v	class:Fishing
 zone_index	models.py	/^    zone_index = Column(String(10))$/;"	v	class:LastVisitedWave
@@ -310,6 +308,7 @@ hello	mrd_srv.py	/^def hello():$/;"	f
 index	mrd_srv.py	/^def index():$/;"	f
 serverconfig	mrd_srv.py	/^import serverconfig$/;"	i
 shutdown_session	mrd_srv.py	/^def shutdown_session(exception=None):$/;"	f
+sys	mrd_srv.py	/^import sys$/;"	i
 view_characters	mrd_srv.py	/^import view_characters$/;"	i
 view_costumes	mrd_srv.py	/^import view_costumes$/;"	i
 view_diaries	mrd_srv.py	/^import view_diaries$/;"	i
@@ -350,7 +349,6 @@ __init__	users_test.py	/^    def __init__(self, user_id, password):$/;"	m	class:
 __repr__	users_test.py	/^    def __repr__(self):$/;"	m	class:User	file:
 __tablename__	users_test.py	/^    __tablename__ = 'users'$/;"	v	class:User
 character	users_test.py	/^    character = Column(Text())$/;"	v	class:User
-clothes	users_test.py	/^    clothes = Column(Text())$/;"	v	class:User
 create_engine	users_test.py	/^from sqlalchemy import create_engine$/;"	i
 datetime	users_test.py	/^import datetime$/;"	i
 declarative_base	users_test.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	i
@@ -391,10 +389,11 @@ db_session	utils.py	/^from database import db_session$/;"	i
 exc	utils.py	/^from sqlalchemy import exc$/;"	i
 writeDirtyLog	utils.py	/^def writeDirtyLog(all_string):$/;"	f
 Character	view_characters.py	/^from models import Character$/;"	i
-ProtocolTypes	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
-ResultCodes	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
-checkContainKeys	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
-checkSessionId	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
+ProtocolTypes	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ResultCodes	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkContainKeys	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkSessionId	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+commitData	view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 createCharacter	view_characters.py	/^def createCharacter():$/;"	f
 db_session	view_characters.py	/^from database import db_session$/;"	i
 exc	view_characters.py	/^from sqlalchemy import exc$/;"	i
@@ -412,7 +411,6 @@ checkContainKeys	view_costumes.py	/^from utils import ProtocolTypes, ResultCodes
 checkSessionId	view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 db_session	view_costumes.py	/^from database import db_session$/;"	i
-exc	view_costumes.py	/^from sqlalchemy import exc$/;"	i
 getOwnCostumebases	view_costumes.py	/^def getOwnCostumebases():$/;"	f
 getOwnCostumes	view_costumes.py	/^def getOwnCostumes():$/;"	f
 getWornCostume	view_costumes.py	/^def getWornCostume():$/;"	f
@@ -428,11 +426,11 @@ addDiary	view_diaries.py	/^def addDiary():$/;"	f
 checkContainKeys	view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkSessionId	view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 commitData	view_diaries.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
-datetime	view_diaries.py	/^import datetime$/;"	i
 db_session	view_diaries.py	/^from database import db_session$/;"	i
 getDiaries	view_diaries.py	/^def getDiaries():$/;"	f
 json	view_diaries.py	/^import json$/;"	i
 request	view_diaries.py	/^from flask import request$/;"	i
+writeDirtyLog	view_diaries.py	/^from utils import writeDirtyLog$/;"	i
 CompletedEvent	view_events.py	/^from models import CompletedEvent$/;"	i
 ProtocolTypes	view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	view_events.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
@@ -529,15 +527,15 @@ getOpenedPuzzlePieces	view_puzzles.py	/^def getOpenedPuzzlePieces():$/;"	f
 getOpenedPuzzles	view_puzzles.py	/^def getOpenedPuzzles():$/;"	f
 json	view_puzzles.py	/^import json$/;"	i
 request	view_puzzles.py	/^from flask import request$/;"	i
-Button	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
-DirtyLog	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
-ProtocolTypes	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
-ResultCodes	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
-SavedCurrentZone	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
-SavedStory	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone, DirtyLog$/;"	i
-checkContainKeys	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
-checkSessionId	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
-commitData	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
+writeDirtyLog	view_puzzles.py	/^from utils import writeDirtyLog$/;"	i
+Button	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
+ProtocolTypes	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+ResultCodes	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+SavedCurrentZone	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
+SavedStory	view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
+checkContainKeys	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+checkSessionId	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
+commitData	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 datetime	view_saved.py	/^import datetime$/;"	i
 db_session	view_saved.py	/^from database import db_session$/;"	i
 exc	view_saved.py	/^from sqlalchemy import exc$/;"	i
@@ -549,7 +547,6 @@ request	view_saved.py	/^from flask import request$/;"	i
 setButtonState	view_saved.py	/^def setButtonState():$/;"	f
 setSavedCurrentZone	view_saved.py	/^def setSavedCurrentZone():$/;"	f
 setSavedStory	view_saved.py	/^def setSavedStory():$/;"	f
-writeDirtyLog	view_saved.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData, writeDirtyLog$/;"	i
 ProtocolTypes	view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 ResultCodes	view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	view_slots.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
@@ -574,20 +571,23 @@ getStats	view_stats.py	/^def getStats():$/;"	f
 json	view_stats.py	/^import json$/;"	i
 request	view_stats.py	/^from flask import request$/;"	i
 setStats	view_stats.py	/^def setStats():$/;"	f
-ProtocolTypes	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
-ResultCodes	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
+ProtocolTypes	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId$/;"	i
+ResultCodes	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId$/;"	i
 User	view_users.py	/^from models import User, get_session_id$/;"	i
-checkContainKeys	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
-commitData	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData$/;"	i
+checkContainKeys	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId$/;"	i
+checkSessionId	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId$/;"	i
+commitData	view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId$/;"	i
 datetime	view_users.py	/^import datetime$/;"	i
 db_session	view_users.py	/^from database import db_session$/;"	i
 exc	view_users.py	/^from sqlalchemy import exc$/;"	i
+getCash	view_users.py	/^def getCash():$/;"	f
 get_session_id	view_users.py	/^from models import User, get_session_id$/;"	i
 json	view_users.py	/^import json$/;"	i
 login	view_users.py	/^def login():$/;"	f
 re	view_users.py	/^                    import re$/;"	i
 register	view_users.py	/^def register():$/;"	f
 request	view_users.py	/^from flask import request$/;"	i
+setCash	view_users.py	/^def setCash():$/;"	f
 Base	zones_test.py	/^Base = declarative_base()$/;"	v
 Column	zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 DateTime	zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
