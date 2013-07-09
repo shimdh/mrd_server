@@ -119,15 +119,7 @@
 			"file": "models.py",
 			"settings":
 			{
-				"buffer_size": 16658,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "utils.py",
-			"settings":
-			{
-				"buffer_size": 2825,
+				"buffer_size": 16629,
 				"line_ending": "Windows"
 			}
 		}
@@ -135,16 +127,28 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 311.0,
+		"height": 58.0,
 		"selected_items":
 		[
 			[
-				"list",
-				"Package Control: List Packages"
+				"qcmm",
+				"Git: Quick Commit"
+			],
+			[
+				"qcomm",
+				"Git: Quick Commit"
 			],
 			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"gitcom",
+				"Git: Quick Commit"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
 			],
 			[
 				"instal",
@@ -155,7 +159,7 @@
 				"View: Toggle Minimap"
 			]
 		],
-		"width": 512.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -172,6 +176,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/users_test.py",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/.gitignore",
+		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/utils.py",
 		"/C/Users/shimdh/sublime_Text_2.0.2.2221/Data/Packages/CTags/Default.sublime-keymap",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md",
 		"/C/Users/shimdh/sublime_Text_2.0.2.2221/Data/Packages/User/Preferences.sublime-settings",
@@ -190,7 +197,6 @@
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/user.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/mrd_server.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/util/protocol.py",
-		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/utils.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/__init__.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view_friends.py",
 		"/C/Users/shimdh/Documents/PythonProjects/mrd_server/view/fishing.py",
@@ -233,9 +239,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -243,6 +250,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"clothes",
 			"get_session_id",
 			"Integer",
 			"Column",
@@ -339,8 +347,8 @@
 						"selection":
 						[
 							[
-								291,
-								291
+								210,
+								210
 							]
 						],
 						"settings":
@@ -358,7 +366,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -366,15 +374,15 @@
 					"file": "models.py",
 					"settings":
 					{
-						"buffer_size": 16658,
+						"buffer_size": 16629,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1620,
+								1620
 							]
 						],
 						"settings":
@@ -384,35 +392,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 478.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "utils.py",
-					"settings":
-					{
-						"buffer_size": 2825,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								982,
-								982
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 245.0,
+						"translation.y": 371.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -467,6 +447,10 @@
 		"height": 100.0
 	},
 	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.git-commit":
 	{
 		"height": 100.0
 	},
@@ -539,6 +523,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 160.0,
+	"side_bar_width": 228.0,
 	"status_bar_visible": true
 }

@@ -8,7 +8,6 @@ AccessError	.\utils.py	/^    AccessError = 200$/;"	v	class:ResultCodes
 AttackedShipUser	.\models.py	/^class AttackedShipUser(Base):$/;"	c
 Base	.\database.py	/^Base = declarative_base()$/;"	v
 Base	.\models.py	/^from database import Base$/;"	i
-Base	.\users_test.py	/^Base = declarative_base()$/;"	v
 Base	.\zones_test.py	/^Base = declarative_base()$/;"	v
 Boolean	.\models.py	/^from sqlalchemy import DateTime, Boolean, Date, Float$/;"	i
 Button	.\models.py	/^class Button(Base):$/;"	c
@@ -18,7 +17,6 @@ Character	.\models.py	/^class Character(Base):$/;"	c
 Character	.\view_characters.py	/^from models import Character$/;"	i
 Character	.\view_friends.py	/^from models import User, Friend, Character$/;"	i
 Column	.\models.py	/^from sqlalchemy import Column, Integer, String, Text$/;"	i
-Column	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 Column	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 CompletedEvent	.\models.py	/^class CompletedEvent(Base):$/;"	c
 CompletedEvent	.\view_events.py	/^from models import CompletedEvent$/;"	i
@@ -27,7 +25,6 @@ DATABASE_URI	.\serverconfig.py	/^DATABASE_URI = 'mysql:\/\/maerd:2629@127.0.0.1\
 DEBUG	.\serverconfig.py	/^DEBUG = False$/;"	v
 Date	.\models.py	/^from sqlalchemy import DateTime, Boolean, Date, Float$/;"	i
 DateTime	.\models.py	/^from sqlalchemy import DateTime, Boolean, Date, Float$/;"	i
-DateTime	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 DateTime	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 Diary	.\models.py	/^class Diary(Base):$/;"	c
 Diary	.\view_diaries.py	/^from models import Diary$/;"	i
@@ -45,7 +42,6 @@ IOLoop	.\server.py	/^from tornado.ioloop import IOLoop$/;"	i
 Info	.\models.py	/^class Info(Base):$/;"	c
 Info	.\view_infos.py	/^from models import Notice, Info$/;"	i
 Integer	.\models.py	/^from sqlalchemy import Column, Integer, String, Text$/;"	i
-Integer	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 Integer	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 LastVisitedWave	.\models.py	/^class LastVisitedWave(Base):$/;"	c
 Mail	.\models.py	/^class Mail(Base):$/;"	c
@@ -94,26 +90,20 @@ ResultCodes	.\view_slots.py	/^from utils import ProtocolTypes, ResultCodes, chec
 ResultCodes	.\view_stats.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys$/;"	i
 ResultCodes	.\view_users.py	/^from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId$/;"	i
 SESS_CHARS	.\models.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'$/;"	v
-SESS_CHARS	.\users_test.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'$/;"	v
 SESS_CHARS	.\zones_test.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'$/;"	v
 SavedCurrentZone	.\models.py	/^class SavedCurrentZone(Base):$/;"	c
 SavedCurrentZone	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
 SavedStory	.\models.py	/^class SavedStory(Base):$/;"	c
 SavedStory	.\view_saved.py	/^from models import Button, SavedStory, SavedCurrentZone$/;"	i
-Sequence	.\users_test.py	/^from sqlalchemy import Sequence$/;"	i
 Sequence	.\zones_test.py	/^from sqlalchemy import Sequence$/;"	i
-Session	.\users_test.py	/^Session = sessionmaker()$/;"	v
 Session	.\zones_test.py	/^Session = sessionmaker()$/;"	v
 Stat	.\models.py	/^class Stat(Base):$/;"	c
 Stat	.\view_stats.py	/^from models import Stat, Button$/;"	i
 String	.\models.py	/^from sqlalchemy import Column, Integer, String, Text$/;"	i
-String	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 String	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 Text	.\models.py	/^from sqlalchemy import Column, Integer, String, Text$/;"	i
-Text	.\users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 Text	.\zones_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
 User	.\models.py	/^class User(Base):$/;"	c
-User	.\users_test.py	/^class User(Base):$/;"	c
 User	.\utils.py	/^from models import User, DirtyLog$/;"	i
 User	.\view_friends.py	/^from models import User, Friend, Character$/;"	i
 User	.\view_users.py	/^from models import User, get_session_id$/;"	i
@@ -147,7 +137,6 @@ __init__	.\models.py	/^    def __init__(self, user_id, zone_index):$/;"	m	class:
 __init__	.\models.py	/^    def __init__(self, user_id, zone_index, episode_no, wave_no):$/;"	m	class:LastVisitedWave
 __init__	.\models.py	/^    def __init__(self, user_id, zone_index, episode_no, wave_no):$/;"	m	class:SavedStory
 __init__	.\models.py	/^    def __init__(self, zone_index):$/;"	m	class:Fishing
-__init__	.\users_test.py	/^    def __init__(self, user_id, password):$/;"	m	class:User
 __init__	.\zones_test.py	/^    def __init__(self, number):$/;"	m	class:Zone
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:AttackedShipUser	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Button	file:
@@ -169,7 +158,6 @@ __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:SavedStory	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Stat	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:User	file:
 __repr__	.\models.py	/^    def __repr__(self):$/;"	m	class:Zone	file:
-__repr__	.\users_test.py	/^    def __repr__(self):$/;"	m	class:User	file:
 __repr__	.\zones_test.py	/^    def __repr__(self):$/;"	m	class:Zone	file:
 __tablename__	.\models.py	/^    __tablename__ = 'attacked_ship_users'$/;"	v	class:AttackedShipUser
 __tablename__	.\models.py	/^    __tablename__ = 'buttons'$/;"	v	class:Button
@@ -195,7 +183,6 @@ __tablename__	.\models.py	/^    __tablename__ = 'stats'$/;"	v	class:Stat
 __tablename__	.\models.py	/^    __tablename__ = 'users'$/;"	v	class:User
 __tablename__	.\models.py	/^    __tablename__ = 'worn_costumes'$/;"	v	class:WornCostume
 __tablename__	.\models.py	/^    __tablename__ = 'zones'$/;"	v	class:Zone
-__tablename__	.\users_test.py	/^    __tablename__ = 'users'$/;"	v	class:User
 __tablename__	.\zones_test.py	/^    __tablename__ = 'zones'$/;"	v	class:Zone
 acceptFriend	.\view_friends.py	/^def acceptFriend():$/;"	f
 accepted	.\models.py	/^    accepted = Column(Boolean(), default=False)$/;"	v	class:Friend
@@ -217,7 +204,6 @@ attack_point	.\models.py	/^    attack_point = Column(Integer())$/;"	v	class:Atta
 body_type	.\models.py	/^    body_type = Column(String(100))$/;"	v	class:Character
 cash	.\models.py	/^    cash = Column(Integer(), default=0)$/;"	v	class:User
 cash_count	.\models.py	/^    cash_count = Column(Integer)$/;"	v	class:Costumebase
-character	.\users_test.py	/^    character = Column(Text())$/;"	v	class:User
 checkContainKeys	.\utils.py	/^def checkContainKeys(my_list, my_dict):$/;"	f
 checkContainKeys	.\view_characters.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
 checkContainKeys	.\view_costumes.py	/^from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData$/;"	i
@@ -274,7 +260,6 @@ costumebase_index	.\models.py	/^    costumebase_index = Column(String(10))$/;"	v
 costumes	.\models.py	/^    costumes = Column(Text())$/;"	v	class:WornCostume
 createCharacter	.\view_characters.py	/^def createCharacter():$/;"	f
 create_engine	.\database.py	/^from sqlalchemy import create_engine$/;"	i
-create_engine	.\users_test.py	/^from sqlalchemy import create_engine$/;"	i
 create_engine	.\zones_test.py	/^from sqlalchemy import create_engine$/;"	i
 created_date	.\models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now()) $/;"	v	class:OpenedPuzzle
 created_date	.\models.py	/^    created_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:AttackedShipUser
@@ -288,7 +273,6 @@ created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default
 created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:OwnCostumebase
 created_datetime	.\models.py	/^    created_datetime = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:PirateShip
 datetime	.\models.py	/^import datetime$/;"	i
-datetime	.\users_test.py	/^import datetime$/;"	i
 datetime	.\utils.py	/^import datetime$/;"	i
 datetime	.\view_friends.py	/^import datetime$/;"	i
 datetime	.\view_puzzles.py	/^import datetime$/;"	i
@@ -313,19 +297,15 @@ db_session	.\view_slots.py	/^from database import db_session$/;"	i
 db_session	.\view_stats.py	/^from database import db_session$/;"	i
 db_session	.\view_users.py	/^from database import db_session$/;"	i
 declarative_base	.\database.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	i
-declarative_base	.\users_test.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	i
 declarative_base	.\zones_test.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	i
 del_db	.\database.py	/^def del_db():$/;"	f
 deleteMails	.\view_mails.py	/^def deleteMails():$/;"	f
 diary_index	.\models.py	/^    diary_index = Column(Integer())$/;"	v	class:Diary
 died	.\models.py	/^    died = Column(Boolean(), default=False)$/;"	v	class:PirateShip
 duration	.\models.py	/^    duration = Column(Integer)$/;"	v	class:Costumebase
-ed_user	.\users_test.py	/^ed_user = User('ed', m.hexdigest())$/;"	v
 ed_zone	.\zones_test.py	/^ed_zone = Zone(0)$/;"	v
 email	.\models.py	/^    email = Column(String(100), unique=True)$/;"	v	class:User
-email	.\users_test.py	/^    email = Column(String(50))$/;"	v	class:User
 engine	.\database.py	/^engine = create_engine($/;"	v
-engine	.\users_test.py	/^engine = create_engine('mysql:\/\/root:2629@localhost\/mrd_test', echo=True)$/;"	v
 engine	.\zones_test.py	/^engine = create_engine('mysql:\/\/root:2629@localhost\/mrd_test', echo=True)$/;"	v
 episode	.\models.py	/^    episode = Column(Text())$/;"	v	class:SavedCurrentZone
 episode_no	.\models.py	/^    episode_no = Column(Integer())$/;"	v	class:LastVisitedWave
@@ -354,7 +334,6 @@ friendship_sent_date	.\models.py	/^    friendship_sent_date = Column(Date())$/;"
 from_nickname	.\models.py	/^    from_nickname = Column(String(50))$/;"	v	class:Mail
 gender	.\models.py	/^    gender = Column(String(1))$/;"	v	class:Character
 gender	.\models.py	/^    gender = Column(String(1), default='M')$/;"	v	class:User
-gender	.\users_test.py	/^    gender = Column(String(1), default='M')$/;"	v	class:User
 general_ship_index	.\models.py	/^    general_ship_index = Column(String(10))$/;"	v	class:Fishing
 general_ship_rate	.\models.py	/^    general_ship_rate = Column(Float())$/;"	v	class:Fishing
 getButtonState	.\view_saved.py	/^def getButtonState():$/;"	f
@@ -378,12 +357,10 @@ getSlots	.\view_slots.py	/^def getSlots():$/;"	f
 getStats	.\view_stats.py	/^def getStats():$/;"	f
 getWaitingFriends	.\view_friends.py	/^def getWaitingFriends():$/;"	f
 getWornCostume	.\view_costumes.py	/^def getWornCostume():$/;"	f
-get_sesseion_id	.\users_test.py	/^def get_sesseion_id(userid):$/;"	f
 get_sesseion_id	.\zones_test.py	/^def get_sesseion_id(userid):$/;"	f
 get_session_id	.\models.py	/^def get_session_id(nickname):$/;"	f
 get_session_id	.\view_users.py	/^from models import User, get_session_id$/;"	i
 hair_type	.\models.py	/^    hair_type = Column(String(100))$/;"	v	class:Character
-hashlib	.\users_test.py	/^import hashlib$/;"	i
 hashlib	.\zones_test.py	/^import hashlib$/;"	i
 hello	.\mrd_srv.py	/^def hello():$/;"	f
 helmet_index	.\models.py	/^    helmet_index = Column(String(10))$/;"	v	class:Costumebase
@@ -415,14 +392,10 @@ id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Mail
 id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Notice
 id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:User
 id	.\models.py	/^    id = Column(Integer, primary_key=True)$/;"	v	class:Zone
-id	.\users_test.py	/^    id = Column(Integer, Sequence('user_id_seq'), primary_key=True)$/;"	v	class:User
 id	.\zones_test.py	/^    id = Column(Integer, Sequence('zone_id_seq'), primary_key=True)$/;"	v	class:Zone
 index	.\models.py	/^    index = Column(String(10), unique=True)$/;"	v	class:Costumebase
 index	.\mrd_srv.py	/^def index():$/;"	f
-initChracter	.\users_test.py	/^    def initChracter(self):$/;"	m	class:User
 initFishing	.\models.py	/^    def initFishing(self):$/;"	m	class:Zone
-initResurrect	.\users_test.py	/^    def initResurrect(self):$/;"	m	class:User
-initSlotItem	.\users_test.py	/^    def initSlotItem(self):$/;"	m	class:User
 init_db	.\database.py	/^def init_db():$/;"	f
 inventories	.\models.py	/^    inventories = Column(Text())$/;"	v	class:User
 ios_game_version	.\models.py	/^    ios_game_version = Column(String(10))$/;"	v	class:Info
@@ -467,7 +440,6 @@ item_rate_8	.\models.py	/^    item_rate_8 = Column(Float())$/;"	v	class:Fishing
 item_rate_9	.\models.py	/^    item_rate_9 = Column(Float())$/;"	v	class:Fishing
 items	.\models.py	/^    items = Column(Text())$/;"	v	class:Mail
 json	.\models.py	/^import json$/;"	i
-json	.\users_test.py	/^import json$/;"	i
 json	.\view_characters.py	/^import json$/;"	i
 json	.\view_costumes.py	/^import json$/;"	i
 json	.\view_diaries.py	/^import json$/;"	i
@@ -487,7 +459,6 @@ lastdate_from_gotcash	.\models.py	/^    lastdate_from_gotcash = Column(DateTime(
 level	.\models.py	/^    level = Column(Integer())$/;"	v	class:Stat
 login	.\view_users.py	/^def login():$/;"	f
 login_date	.\models.py	/^    login_date = Column(DateTime())$/;"	v	class:User
-m	.\users_test.py	/^m = hashlib.md5()$/;"	v
 models	.\database.py	/^    import models$/;"	i
 modified_date	.\models.py	/^    modified_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Notice
 name	.\models.py	/^    name = Column(String(20))$/;"	v	class:Character
@@ -498,17 +469,14 @@ number	.\models.py	/^    number = Column(Integer())$/;"	v	class:Zone
 number	.\zones_test.py	/^    number = Column(Integer())$/;"	v	class:Zone
 opened	.\models.py	/^    opened = Column(Boolean(), default=False)$/;"	v	class:Notice
 opened	.\models.py	/^    opened = Column(Integer())$/;"	v	class:OpenedPuzzle
-our_user	.\users_test.py	/^our_user = session.query(User).filter_by(user_id='ed').first()$/;"	v
 our_zone	.\zones_test.py	/^our_zone = session.query(Zone).filter_by(number=0).first()$/;"	v
 password	.\models.py	/^    password = Column(String(200), nullable=False)$/;"	v	class:User
-password	.\users_test.py	/^    password = Column(String(250))$/;"	v	class:User
 position	.\models.py	/^    position = Column(Text())$/;"	v	class:SavedCurrentZone
 position	.\models.py	/^    position = Column(Text())$/;"	v	class:SavedStory
 puzzle_index	.\models.py	/^    puzzle_index = Column(Integer())$/;"	v	class:OpenedPuzzle
 puzzle_index	.\models.py	/^    puzzle_index = Column(Integer())$/;"	v	class:OpenedPuzzlePiece
 random	.\view_fishing.py	/^                    import random$/;"	i
 randrange	.\models.py	/^from random import sample, randrange$/;"	i
-randrange	.\users_test.py	/^from random import sample, randrange$/;"	i
 randrange	.\zones_test.py	/^from random import sample, randrange$/;"	i
 re	.\view_users.py	/^                    import re$/;"	i
 readMail	.\view_mails.py	/^def readMail():$/;"	f
@@ -516,7 +484,6 @@ receiveFriendShipPoint	.\view_friends.py	/^def receiveFriendShipPoint():$/;"	f
 register	.\view_users.py	/^def register():$/;"	f
 registered_date	.\models.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:Mail
 registered_date	.\models.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:User
-registered_date	.\users_test.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:User
 request	.\view_characters.py	/^from flask import request$/;"	i
 request	.\view_costumes.py	/^from flask import request$/;"	i
 request	.\view_diaries.py	/^from flask import request$/;"	i
@@ -533,24 +500,18 @@ request	.\view_stats.py	/^from flask import request$/;"	i
 request	.\view_users.py	/^from flask import request$/;"	i
 requestFriend	.\view_friends.py	/^def requestFriend():$/;"	f
 requested	.\models.py	/^    requested = Column(Boolean(), default=True)$/;"	v	class:Friend
-resurrect	.\users_test.py	/^    resurrect = Column(Text())$/;"	v	class:User
 rotation	.\models.py	/^    rotation = Column(Text())$/;"	v	class:SavedCurrentZone
 rotation	.\models.py	/^    rotation = Column(Text())$/;"	v	class:SavedStory
 sample	.\models.py	/^from random import sample, randrange$/;"	i
-sample	.\users_test.py	/^from random import sample, randrange$/;"	i
 sample	.\zones_test.py	/^from random import sample, randrange$/;"	i
 scoped_session	.\database.py	/^from sqlalchemy.orm import scoped_session, sessionmaker$/;"	i
 sendFriendShipPoint	.\view_friends.py	/^def sendFriendShipPoint():$/;"	f
 serverconfig	.\database.py	/^import serverconfig$/;"	i
 serverconfig	.\mrd_srv.py	/^import serverconfig$/;"	i
-session	.\users_test.py	/^session = Session()$/;"	v
 session	.\zones_test.py	/^session = Session()$/;"	v
 session_date	.\models.py	/^    session_date = Column(DateTime())$/;"	v	class:User
-session_date	.\users_test.py	/^    session_date = Column(DateTime())$/;"	v	class:User
 session_id	.\models.py	/^    session_id = Column(String(100))$/;"	v	class:User
-session_id	.\users_test.py	/^    session_id = Column(String(100))$/;"	v	class:User
 sessionmaker	.\database.py	/^from sqlalchemy.orm import scoped_session, sessionmaker$/;"	i
-sessionmaker	.\users_test.py	/^from sqlalchemy.orm import sessionmaker$/;"	i
 sessionmaker	.\zones_test.py	/^from sqlalchemy.orm import sessionmaker$/;"	i
 setButtonState	.\view_saved.py	/^def setButtonState():$/;"	f
 setCash	.\view_users.py	/^def setCash():$/;"	f
@@ -564,7 +525,6 @@ setStats	.\view_stats.py	/^def setStats():$/;"	f
 setWornCostume	.\view_costumes.py	/^def setWornCostume():$/;"	f
 ship_id	.\models.py	/^    ship_id = Column(Integer())$/;"	v	class:AttackedShipUser
 shutdown_session	.\mrd_srv.py	/^def shutdown_session(exception=None):$/;"	f
-slot_item	.\users_test.py	/^    slot_item = Column(Text())$/;"	v	class:User
 slots	.\models.py	/^    slots = Column(Text())$/;"	v	class:User
 special_ship_index	.\models.py	/^    special_ship_index = Column(String(10))$/;"	v	class:Fishing
 special_ship_rate	.\models.py	/^    special_ship_rate = Column(Float())$/;"	v	class:Fishing
@@ -593,7 +553,6 @@ user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:SavedCurrentZo
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:SavedStory
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:Stat
 user_id	.\models.py	/^    user_id = Column(Integer())$/;"	v	class:WornCostume
-user_id	.\users_test.py	/^    user_id = Column(String(16))$/;"	v	class:User
 view_characters	.\mrd_srv.py	/^import view_characters$/;"	i
 view_costumes	.\mrd_srv.py	/^import view_costumes$/;"	i
 view_diaries	.\mrd_srv.py	/^import view_diaries$/;"	i

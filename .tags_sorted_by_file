@@ -335,47 +335,6 @@ PORT	serverconfig.py	/^PORT = 5000$/;"	v
 WSGIServer	srver.py	/^from gevent.wsgi import WSGIServer$/;"	i
 app	srver.py	/^from mrd_srv import app$/;"	i
 http_server	srver.py	/^http_server = WSGIServer(('', 5000), app)$/;"	v
-Base	users_test.py	/^Base = declarative_base()$/;"	v
-Column	users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
-DateTime	users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
-Integer	users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
-SESS_CHARS	users_test.py	/^SESS_CHARS = 'abcdefghijkmpqrstuvwxyzABCDEFGHIJKLMNPQRST23456789'$/;"	v
-Sequence	users_test.py	/^from sqlalchemy import Sequence$/;"	i
-Session	users_test.py	/^Session = sessionmaker()$/;"	v
-String	users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
-Text	users_test.py	/^from sqlalchemy import Column, Integer, String, Text, DateTime$/;"	i
-User	users_test.py	/^class User(Base):$/;"	c
-__init__	users_test.py	/^    def __init__(self, user_id, password):$/;"	m	class:User
-__repr__	users_test.py	/^    def __repr__(self):$/;"	m	class:User	file:
-__tablename__	users_test.py	/^    __tablename__ = 'users'$/;"	v	class:User
-character	users_test.py	/^    character = Column(Text())$/;"	v	class:User
-create_engine	users_test.py	/^from sqlalchemy import create_engine$/;"	i
-datetime	users_test.py	/^import datetime$/;"	i
-declarative_base	users_test.py	/^from sqlalchemy.ext.declarative import declarative_base$/;"	i
-ed_user	users_test.py	/^ed_user = User('ed', m.hexdigest())$/;"	v
-email	users_test.py	/^    email = Column(String(50))$/;"	v	class:User
-engine	users_test.py	/^engine = create_engine('mysql:\/\/root:2629@localhost\/mrd_test', echo=True)$/;"	v
-gender	users_test.py	/^    gender = Column(String(1), default='M')$/;"	v	class:User
-get_sesseion_id	users_test.py	/^def get_sesseion_id(userid):$/;"	f
-hashlib	users_test.py	/^import hashlib$/;"	i
-id	users_test.py	/^    id = Column(Integer, Sequence('user_id_seq'), primary_key=True)$/;"	v	class:User
-initChracter	users_test.py	/^    def initChracter(self):$/;"	m	class:User
-initResurrect	users_test.py	/^    def initResurrect(self):$/;"	m	class:User
-initSlotItem	users_test.py	/^    def initSlotItem(self):$/;"	m	class:User
-json	users_test.py	/^import json$/;"	i
-m	users_test.py	/^m = hashlib.md5()$/;"	v
-our_user	users_test.py	/^our_user = session.query(User).filter_by(user_id='ed').first()$/;"	v
-password	users_test.py	/^    password = Column(String(250))$/;"	v	class:User
-randrange	users_test.py	/^from random import sample, randrange$/;"	i
-registered_date	users_test.py	/^    registered_date = Column(DateTime(), default=datetime.datetime.now())$/;"	v	class:User
-resurrect	users_test.py	/^    resurrect = Column(Text())$/;"	v	class:User
-sample	users_test.py	/^from random import sample, randrange$/;"	i
-session	users_test.py	/^session = Session()$/;"	v
-session_date	users_test.py	/^    session_date = Column(DateTime())$/;"	v	class:User
-session_id	users_test.py	/^    session_id = Column(String(100))$/;"	v	class:User
-sessionmaker	users_test.py	/^from sqlalchemy.orm import sessionmaker$/;"	i
-slot_item	users_test.py	/^    slot_item = Column(Text())$/;"	v	class:User
-user_id	users_test.py	/^    user_id = Column(String(16))$/;"	v	class:User
 AccessError	utils.py	/^    AccessError = 200$/;"	v	class:ResultCodes
 DirtyLog	utils.py	/^from models import User, DirtyLog$/;"	i
 ProtocolTypes	utils.py	/^class ProtocolTypes(object):$/;"	c
