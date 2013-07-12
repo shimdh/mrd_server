@@ -16,6 +16,35 @@ def register():
         result=ResultCodes.Success
     )
 
+    def checkValidNicknamePassword(nickname, password):
+        import re
+
+        check_all_letters = lambda given_value: re.match("^[A-Za-z0-9_-]*$", given_value)
+        if (
+                not check_all_letters(nickname) or
+                not check_all_letters(password)
+        ):
+            return false
+        else:
+            return true
+
+    def checkReservedNickname(nickname):
+        reserved_nickname = [
+            'system', 'admin', 'administrator', 'root'
+        ]
+        if nickname in reserved_nickname:
+            return false
+        else:
+            return true
+            
+    def checkFindNickname(nickname):
+        finding_user = User.query.filter_by(nickname=nickname).first()
+
+        if finding_user:
+            return true
+        else:
+            return false
+
     if request.form['data']:
         got_data = json.loads(request.form['data'])
 
@@ -29,31 +58,21 @@ def register():
                 elif len(got_data['password']) < 4:
                     result['result'] = ResultCodes.ShortPassword
                 else:
-                    import re
-
-                    check_all_letters = lambda given_value: re.match("^[A-Za-z0-9_-]*$", given_value)
-                    if (
-                            not check_all_letters(got_data['nickname']) or
-                            not check_all_letters(got_data['password'])
-                    ):
-                        result['result'] = ResultCodes.InputParamError
-                    else:
-                        reserved_nickname = [
-                            'system', 'admin', 'administrator', 'root'
-                        ]
-                        if got_data['nickname'] in reserved_nickname:
-                            result["result"] = ResultCodes.InputParamError
+                    if (checkValidNicknamePassword(
+                        got_data['nickname'], 
+                        got_data['password']
+                        ) and checkReservedNickname(got_data['nickname'])):
+                        if checkFindNickname(got_data['nickname']):
+                            result['result'] = ResultCodes.NicknameExist
                         else:
-                            if User.query.filter_by(
-                                    nickname=got_data['nickname']).first():
-                                result['result'] = ResultCodes.NicknameExist
-                            else:
-                                user_data = User(
-                                    got_data['nickname'],
-                                    got_data['password']
-                                )                                
-                                db_session.add(user_data)
-                                result['result'] = commitData()
+                            user_data = User(
+                                got_data['nickname'],
+                                got_data['password']
+                            )                                
+                            db_session.add(user_data)
+                            result['result'] = commitData()
+                    else:
+                        result["result"] = ResultCodes.InputParamError
         else:
             result["result"] = ResultCodes.InputParamError
     else:
