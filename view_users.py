@@ -50,24 +50,26 @@ def register():
 
         from_keys = ['nickname', 'password']
         if checkContainKeys(from_keys, got_data):
-            if got_data['nickname'] == '' or got_data['password'] == '':
+            got_nickname, got_password = got_data['nickname'], got_data['password']
+            
+            if got_nickname == '' or got_password == '':
                 result["result"] = ResultCodes.InputParamError
             else:
-                if len(got_data['nickname']) < 4:
+                if len(got_nickname) < 4:
                     result['result'] = ResultCodes.ShortNickname
-                elif len(got_data['password']) < 4:
+                elif len(got_password) < 4:
                     result['result'] = ResultCodes.ShortPassword
                 else:
                     if (checkValidNicknamePassword(
-                        got_data['nickname'], 
-                        got_data['password']
-                        ) and checkReservedNickname(got_data['nickname'])):
-                        if checkFindNickname(got_data['nickname']):
+                        got_nickname, 
+                        got_password
+                        ) and checkReservedNickname(got_nickname)):
+                        if checkFindNickname(got_nickname):
                             result['result'] = ResultCodes.NicknameExist
                         else:
                             user_data = User(
-                                got_data['nickname'],
-                                got_data['password']
+                                got_nickname,
+                                got_password
                             )                                
                             db_session.add(user_data)
                             result['result'] = commitData()
