@@ -40,6 +40,7 @@ def createCharacter():
                     user_character.gender = got_character['gender']
                     user_character.hair_type = got_character['hair_type']
                     user_character.weapon_type = got_character['weapon_type']
+                    
                     db_session.add(user_character)
 
                     result['result'] = commitData()
