@@ -165,6 +165,28 @@ def setSavedCurrentZone():
         type=ProtocolTypes.SetSavedCurrentZone,
         result=ResultCodes.Success)
 
+    def useFoundData(got_user_id, zone_index, episode, position, rotation):
+        find_current_zone = SavedCurrentZone.query.filter_by(
+            user_id=got_user_id).first()
+        
+        if find_current_zone:
+            find_current_zone.zone_index = zone_index
+            find_current_zone.episode = json.dumps(episode)
+            find_current_zone.position = json.dumps(position)
+            find_current_zone.rotation = json.dumps(rotation)
+            find_current_zone.updated_date = datetime.datetime.now()
+
+            return find_current_zone
+
+        else:
+            made_current_zone = SavedCurrentZone(got_user_id, zone_index)
+            made_current_zone.episode = json.dumps(episode)
+            made_current_zone.position = json.dumps(position)
+            made_current_zone.rotation = json.dumps(rotation)
+            made_current_zone.updated_date = datetime.datetime.now()
+
+            return made_current_zone
+
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = [
@@ -174,31 +196,13 @@ def setSavedCurrentZone():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                find_current_zone = SavedCurrentZone.query.filter_by(
-                    user_id=got_user.id).first()
-                if find_current_zone:
-                    find_current_zone.zone_index = got_data['zone_index']
-                    find_current_zone.episode = json.dumps(got_data[
-                        'episode'])
-                    find_current_zone.position = json.dumps(
-                        got_data['position'])
-                    find_current_zone.rotation = json.dumps(
-                        got_data['rotation'])
-                    find_current_zone.updated_date = datetime.datetime.now()
-
-                    db_session.add(find_current_zone)
-                else:
-                    made_current_zone = SavedCurrentZone(
-                        got_user.id, got_data['zone_index'])
-                    made_current_zone.episode = json.dumps(got_data[
-                        'episode'])
-                    made_current_zone.position = json.dumps(
-                        got_data['position'])
-                    made_current_zone.rotation = json.dumps(
-                        got_data['rotation'])
-                    made_current_zone.updated_date = datetime.datetime.now()
-
-                    db_session.add(made_current_zone)
+                db_session.add(
+                    useFoundData(
+                        got_user.id, 
+                        got_data['zone_index'],
+                        got_data['episode'],
+                        got_data['position'],
+                        got_data['rotation']))
 
                 result['result'] = commitData()
         else:
@@ -217,7 +221,9 @@ def getSavedCurrentZone():
         type=ProtocolTypes.GetSavedCurrentZone,
         result=ResultCodes.Success)
 
-    def useFoundData(got_user_id, result):
+    def useFoundData(got_user_id):
+        result_dict = dict()
+
         find_current_zone = SavedCurrentZone.query.filter_by(
             user_id=got_user_id).first()
         
@@ -227,9 +233,11 @@ def getSavedCurrentZone():
                 episode=find_current_zone.episode,
                 position=find_current_zone.position,
                 rotation=find_current_zone.rotation)
-            result.update(tmp_result)
+            result_dict.update(tmp_result)
         else:
-            result['result'] = ResultCodes.NoData
+            result_dict['result'] = ResultCodes.NoData
+
+        return result_dict
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
@@ -238,7 +246,7 @@ def getSavedCurrentZone():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                useFoundData(got_user.id, result)
+                result.update(useFoundData(got_user.id))                
         else:
             result['result'] = ResultCodes.InputParamError
     else:
