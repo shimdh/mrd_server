@@ -51,7 +51,7 @@ def register():
         from_keys = ['nickname', 'password']
         if checkContainKeys(from_keys, got_data):
             got_nickname, got_password = got_data['nickname'], got_data['password']
-            
+
             if got_nickname == '' or got_password == '':
                 result["result"] = ResultCodes.InputParamError
             else:
@@ -69,8 +69,7 @@ def register():
                         else:
                             user_data = User(
                                 got_nickname,
-                                got_password
-                            )                                
+                                got_password)
                             db_session.add(user_data)
                             result['result'] = commitData()
                     else:
