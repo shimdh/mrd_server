@@ -217,6 +217,20 @@ def getSavedCurrentZone():
         type=ProtocolTypes.GetSavedCurrentZone,
         result=ResultCodes.Success)
 
+    def useFoundData(got_user):
+        find_current_zone = SavedCurrentZone.query.filter_by(
+            user_id=got_user.id).first()
+        
+        if find_current_zone:
+            tmp_result = dict(
+                zone_index=find_current_zone.zone_index,
+                episode=find_current_zone.episode,
+                position=find_current_zone.position,
+                rotation=find_current_zone.rotation)
+            result.update(tmp_result)
+        else:
+            result['result'] = ResultCodes.NoData
+
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
@@ -224,17 +238,7 @@ def getSavedCurrentZone():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                find_current_zone = SavedCurrentZone.query.filter_by(
-                    user_id=got_user.id).first()
-                if find_current_zone:
-                    tmp_result = dict(
-                        zone_index=find_current_zone.zone_index,
-                        episode=find_current_zone.episode,
-                        position=find_current_zone.position,
-                        rotation=find_current_zone.rotation)
-                    result.update(tmp_result)
-                else:
-                    result['result'] = ResultCodes.NoData
+                useFoundData(got_user)
         else:
             result['result'] = ResultCodes.InputParamError
     else:
