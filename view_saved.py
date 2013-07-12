@@ -217,9 +217,9 @@ def getSavedCurrentZone():
         type=ProtocolTypes.GetSavedCurrentZone,
         result=ResultCodes.Success)
 
-    def useFoundData(got_user):
+    def useFoundData(got_user_id, result):
         find_current_zone = SavedCurrentZone.query.filter_by(
-            user_id=got_user.id).first()
+            user_id=got_user_id).first()
         
         if find_current_zone:
             tmp_result = dict(
@@ -238,7 +238,7 @@ def getSavedCurrentZone():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                useFoundData(got_user)
+                useFoundData(got_user.id, result)
         else:
             result['result'] = ResultCodes.InputParamError
     else:
