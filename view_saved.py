@@ -104,7 +104,10 @@ def setSavedStory():
                     db_session.add(find_story)
                 else:
                     made_story = SavedStory(
-                        got_user.id, got_data['zone_index'], got_data['episode_no'], got_data['wave_no'])
+                        got_user.id, 
+                        got_data['zone_index'], 
+                        got_data['episode_no'], 
+                        got_data['wave_no'])
                     made_story.position = json.dumps(got_data['position'])
                     made_story.rotation = json.dumps(got_data['rotation'])
 
