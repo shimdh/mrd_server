@@ -288,7 +288,7 @@ def gotCashFromCostumeBase():
     return str(json.dumps(result))
 
 
-GotCashFromCostumeBase.methods = ['POST']
+gotCashFromCostumeBase.methods = ['POST']
 
 
 def gotCashFromCostumeBases():
