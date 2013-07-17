@@ -140,7 +140,7 @@ def setCash():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_user.cash = got_data['cash']
+                got_user.cash = got_data['cash'] or 0
                 db_session.add(got_user)
 
                 result['result'] = commitData()

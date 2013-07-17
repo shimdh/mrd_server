@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"mad",
+				"made_current_zone"
+			],
+			[
+				"find",
+				"find_current_zone"
+			],
+			[
+				"us",
+				"useFoundData"
+			],
+			[
 				"ffbn",
 				"FindFriendByName"
 			],
@@ -84,20 +96,12 @@
 				"find_puzzle_piece	(local, instance)"
 			],
 			[
-				"find",
-				"find_puzzle_piece"
-			],
-			[
 				"check",
 				"checkContainKeys(my_list, my_dict)	(imported, function)"
 			],
 			[
 				"Getpu",
 				"GetPuzzlePieces	(attribute, instance)"
-			],
-			[
-				"mad",
-				"made_puzzle_piece	(local, instance)"
 			],
 			[
 				"me",
@@ -139,7 +143,7 @@
 			"file": "view_saved.py",
 			"settings":
 			{
-				"buffer_size": 8431,
+				"buffer_size": 8484,
 				"line_ending": "Windows"
 			}
 		},
@@ -155,7 +159,7 @@
 			"file": "view_users.py",
 			"settings":
 			{
-				"buffer_size": 5632,
+				"buffer_size": 5842,
 				"line_ending": "Windows"
 			}
 		},
@@ -163,7 +167,7 @@
 			"file": "view_characters.py",
 			"settings":
 			{
-				"buffer_size": 3554,
+				"buffer_size": 3575,
 				"line_ending": "Windows"
 			}
 		},
@@ -179,9 +183,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 173.0,
+		"height": 357.0,
 		"selected_items":
 		[
+			[
+				"list",
+				"Package Control: List Packages"
+			],
 			[
 				"upg",
 				"Package Control: Upgrade Package"
@@ -201,10 +209,6 @@
 			[
 				"remo",
 				"Package Control: Remove Package"
-			],
-			[
-				"list",
-				"Package Control: List Packages"
 			],
 			[
 				"remov",
@@ -255,7 +259,7 @@
 				"View: Toggle Minimap"
 			]
 		],
-		"width": 400.0
+		"width": 536.0
 	},
 	"console":
 	{
@@ -350,6 +354,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"got_data",
+			"got_user",
 			"db_session.query",
 			"db_session.",
 			"commit",
@@ -451,8 +457,8 @@
 						"selection":
 						[
 							[
-								2082,
-								2082
+								3859,
+								3859
 							]
 						],
 						"settings":
@@ -519,7 +525,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1171.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -527,7 +533,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -542,8 +548,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								4967,
+								4967
 							]
 						],
 						"settings":
@@ -610,7 +616,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 943.0,
+						"translation.y": 1948.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -620,15 +626,15 @@
 					"file": "view_saved.py",
 					"settings":
 					{
-						"buffer_size": 8431,
+						"buffer_size": 8484,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7378,
-								7378
+								5549,
+								5549
 							]
 						],
 						"settings":
@@ -695,7 +701,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2916.0,
+						"translation.y": 2652.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -790,15 +796,15 @@
 					"file": "view_users.py",
 					"settings":
 					{
-						"buffer_size": 5632,
+						"buffer_size": 5842,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3822,
-								3822
+								1856,
+								1882
 							]
 						],
 						"settings":
@@ -865,7 +871,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1206.0,
+						"translation.y": 1818.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -875,15 +881,15 @@
 					"file": "view_characters.py",
 					"settings":
 					{
-						"buffer_size": 3554,
+						"buffer_size": 3575,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								367,
-								367
+								246,
+								246
 							]
 						],
 						"settings":
@@ -950,7 +956,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 810.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1177,7 +1183,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 211.0,
 	"status_bar_visible": true
 }
