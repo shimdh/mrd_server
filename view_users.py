@@ -137,7 +137,9 @@ def setCash():
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = [
-            'session_id', 'cash']
+            'session_id', 
+            # 'cash'
+        ]
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
