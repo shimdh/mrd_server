@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId
+from utils import ProtocolTypes, ResultCodes, checkContainKeys, commitData, checkSessionId, writeDirtyLog
 import json
 import datetime
 
@@ -131,6 +131,8 @@ def setCash():
     result = dict(
         type=ProtocolTypes.SetCash,
         result=ResultCodes.Success)
+
+    writeDirtyLog('setCash: ' + request.form['data'])
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
