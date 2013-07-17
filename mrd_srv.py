@@ -181,6 +181,12 @@ app.add_url_rule(
 app.add_url_rule(
     '/get_cash', 'get_cash', 
     view_users.getCash)
+app.add_url_rule(
+    '/got_cashfromcostumebase', 'got_cashfromcostumebase',
+    view_costumes.gotCashFromCostumeBase())
+app.add_url_rule(
+    '/got_cashfromcostumebases', 'got_cashfromcostumebases',
+    view_costumes.gotCashFromCostumeBases())
 
 @app.route('/hello')
 def hello():

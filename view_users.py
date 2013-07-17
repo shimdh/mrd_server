@@ -132,7 +132,7 @@ def setCash():
         type=ProtocolTypes.SetCash,
         result=ResultCodes.Success)
 
-    writeDirtyLog('setCash: ' + request.form['data'])
+    # writeDirtyLog('setCash: ' + request.form['data'])
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])

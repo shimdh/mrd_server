@@ -6,6 +6,7 @@ import json
 
 from database import db_session
 from models import OwnCostume, OwnCostumebase, WornCostume
+import datetime
 
 
 def setOwnCostumes():
@@ -252,4 +253,74 @@ def getWornCostume():
     return str(json.dumps(result))
 
 getWornCostume.methods = ['POST']
+
+
+def gotCashFromCostumeBase():
+    result = dict(
+        type=ProtocolTypes.GotCashFromCostumeBase,
+        result=ResultCodes.Success)
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id',
+            'costumebase_index']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_own_costumebase = OwnCostumebase.query.filter_by(
+                    user_id=got_user.id, costumebase_index=got_data['costumebase_index']).first()
+
+                if find_own_costumebase:
+                    find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
+                    db_session.add(find_own_costumebase)
+
+                    result['result'] = commitData()
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+
+
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+GotCashFromCostumeBase.methods = ['POST']
+
+
+def gotCashFromCostumeBases():
+    result = dict(
+        type=ProtocolTypes.GotCashFromCostumeBases,
+        result=ResultCodes.Success)
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id',
+            'costumebase_indexes']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                for costume_base in got_data['costumebase_indexes']:
+                    find_own_costumebase = OwnCostumebase.query.filter_by(
+                        user_id=got_user.id, costumebase_index=costume_base).first()
+                    if find_own_costumebase:
+                        find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
+                        db_session.add(find_own_costumebase)
+                    else:
+                        result['result'] = ResultCodes.NoData
+
+                    result['result'] = commitData()
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+
+gotCashFromCostumeBases.methods = ['POST']
 
