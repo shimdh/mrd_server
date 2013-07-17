@@ -24,26 +24,26 @@ def register():
                 not check_all_letters(nickname) or
                 not check_all_letters(password)
         ):
-            return false
+            return False
         else:
-            return true
+            return True
 
     def checkReservedNickname(nickname):
         reserved_nickname = [
             'system', 'admin', 'administrator', 'root'
         ]
         if nickname in reserved_nickname:
-            return false
+            return False
         else:
-            return true
+            return True
             
     def checkFindNickname(nickname):
         finding_user = User.query.filter_by(nickname=nickname).first()
 
         if finding_user:
-            return true
+            return True
         else:
-            return false
+            return False
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
