@@ -270,7 +270,7 @@ def gotCashFromCostumeBase():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_costumebase = result['costumebase']
+                got_costumebase = got_data['costumebase']
 
                 find_own_costumebase = OwnCostumebase.query.filter_by(
                     user_id=got_user.id, costumebase_index=got_costumebase.index).first()
