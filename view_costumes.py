@@ -276,6 +276,8 @@ def gotCashFromCostumeBase():
                     db_session.add(find_own_costumebase)
 
                     result['result'] = commitData()
+                    if result['result'] == ResultCodes.Success:
+                        result['costumebase_index'] = find_own_costumebase.costumebase_index
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -304,16 +306,23 @@ def gotCashFromCostumeBases():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
+                ok_bases = list()
                 for costume_base in got_data['costumebase_indexes']:
                     find_own_costumebase = OwnCostumebase.query.filter_by(
                         user_id=got_user.id, costumebase_index=costume_base).first()
                     if find_own_costumebase:
                         find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
                         db_session.add(find_own_costumebase)
+
+                        result['result'] = commitData()
+
+                        if result['result'] == ResultCodes.Success:
+                            ok_bases.append(find_own_costumebase.costumebase_index)
                     else:
                         result['result'] = ResultCodes.NoData
 
-                    result['result'] = commitData()
+                if len(ok_bases) > 0:
+                    result['costumebase_indexes'] = ok_bases
         else:
             result['result'] = ResultCodes.InputParamError
     else:
