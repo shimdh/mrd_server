@@ -263,19 +263,25 @@ def gotCashFromCostumeBase():
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id',
-            'costumebase_index']
+            'costumebase']
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
+                got_costumebase = result['costumebase']
+
                 find_own_costumebase = OwnCostumebase.query.filter_by(
-                    user_id=got_user.id, costumebase_index=got_data['costumebase_index']).first()
+                    user_id=got_user.id, costumebase_index=got_costumebase.index).first()
 
                 if find_own_costumebase:
                     find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
                     db_session.add(find_own_costumebase)
+                    
+                    got_user.cash += got_costumebase.cash
+                    db_session.add(got_user)
 
                     result['result'] = commitData()
+
                     if result['result'] == ResultCodes.Success:
                         result['costumebase_index'] = find_own_costumebase.costumebase_index
                 else:
@@ -301,18 +307,21 @@ def gotCashFromCostumeBases():
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id',
-            'costumebase_indexes']
+            'costumebases']
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
                 ok_bases = list()
-                for costume_base in got_data['costumebase_indexes']:
+                for costume_base in got_data['costumebases']:
                     find_own_costumebase = OwnCostumebase.query.filter_by(
-                        user_id=got_user.id, costumebase_index=costume_base).first()
+                        user_id=got_user.id, costumebase_index=costume_base.index).first()
                     if find_own_costumebase:
                         find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
                         db_session.add(find_own_costumebase)
+
+                        got_user.cash += costumebase.cash
+                        db_session.add(got_user)
 
                         result['result'] = commitData()
 
