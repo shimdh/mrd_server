@@ -260,6 +260,8 @@ def gotCashFromCostumeBase():
         type=ProtocolTypes.GotCashFromCostumeBase,
         result=ResultCodes.Success)
 
+    writeDirtyLog('gotCashFromCostumeBase: ' + request.form['data'])
+
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id',
@@ -303,6 +305,8 @@ def gotCashFromCostumeBases():
     result = dict(
         type=ProtocolTypes.GotCashFromCostumeBases,
         result=ResultCodes.Success)
+
+    writeDirtyLog('gotCashFromCostumeBases: ' + request.form['data'])
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
