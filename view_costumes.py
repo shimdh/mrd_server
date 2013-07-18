@@ -273,13 +273,13 @@ def gotCashFromCostumeBase():
                 got_costumebase = got_data['costumebase']
 
                 find_own_costumebase = OwnCostumebase.query.filter_by(
-                    user_id=got_user.id, costumebase_index=got_costumebase.index).first()
+                    user_id=got_user.id, costumebase_index=got_costumebase['index']).first()
 
                 if find_own_costumebase:
                     find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
                     db_session.add(find_own_costumebase)
                     
-                    got_user.cash += got_costumebase.cash
+                    got_user.cash += got_costumebase['cash']
                     db_session.add(got_user)
 
                     result['result'] = commitData()
@@ -319,12 +319,12 @@ def gotCashFromCostumeBases():
                 ok_bases = list()
                 for costume_base in got_data['costumebases']:
                     find_own_costumebase = OwnCostumebase.query.filter_by(
-                        user_id=got_user.id, costumebase_index=costume_base.index).first()
+                        user_id=got_user.id, costumebase_index=costume_base['index']).first()
                     if find_own_costumebase:
                         find_own_costumebase.lastdate_from_gotcash = datetime.datetime.now()
                         db_session.add(find_own_costumebase)
 
-                        got_user.cash += costumebase.cash
+                        got_user.cash += costume_base['cash']
                         db_session.add(got_user)
 
                         result['result'] = commitData()
