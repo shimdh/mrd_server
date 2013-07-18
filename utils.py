@@ -35,7 +35,7 @@ class ProtocolTypes(object):
         FindFriendByName, GetInventories, SetInventories,
         GetSlots, SetSlots, GetStats, SetStats, WriteMail, ReadMail,
         GetGiftMail, GetMailList, DeleteMails, SetOwnCostumes, GetOwnCostumes,
-        GetOwnCostumeBases, SetOwnCostumeBases, RequestFriend,
+        SetOwnCostumeBases, GetOwnCostumeBases,  RequestFriend,
         GetWaitingFriends, AcceptFriend, GetFriendCharacterInfo,
         AddCompletedEvent, GetFishing, AddOwnCostume, AddOwnCostumeBase,
         SendFriendShipPoint, ReceiveFriendShipPoint,
