@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"costu",
+				"costumebase"
+			],
+			[
+				"costume",
+				"costumebase"
+			],
+			[
+				"co",
+				"costumebase_index"
+			],
+			[
 				"find_own_co",
 				"find_own_costumebase"
 			],
@@ -179,7 +191,7 @@
 			"file": "utils.py",
 			"settings":
 			{
-				"buffer_size": 2858,
+				"buffer_size": 2859,
 				"line_ending": "Windows"
 			}
 		},
@@ -211,7 +223,7 @@
 			"file": "view_costumes.py",
 			"settings":
 			{
-				"buffer_size": 12094,
+				"buffer_size": 12981,
 				"line_ending": "Windows"
 			}
 		}
@@ -219,9 +231,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 357.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
 			[
 				"list",
 				"Package Control: List Packages"
@@ -287,15 +303,11 @@
 				"Package Control: Install Package"
 			],
 			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
 				"mini",
 				"View: Toggle Minimap"
 			]
 		],
-		"width": 536.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -312,6 +324,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/shimdh/sublime_Text_2.0.2.2221/Data/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
 		"/C/Users/shimdh/sublime_Text_2.0.2.2221/Data/Packages/ApplySyntax/ApplySyntax.sublime-settings",
 		"/C/Users/shimdh/sublime_Text_2.0.2.2221/Data/Packages/CTags/Default.sublime-keymap",
 		"/C/Users/shimdh/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
@@ -563,7 +576,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2170.0,
+						"translation.y": 1876.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -749,15 +762,15 @@
 					"file": "utils.py",
 					"settings":
 					{
-						"buffer_size": 2858,
+						"buffer_size": 2859,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2644,
-								2644
+								1023,
+								1023
 							]
 						],
 						"settings":
@@ -824,7 +837,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 811.0,
+						"translation.y": 808.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -841,8 +854,8 @@
 						"selection":
 						[
 							[
-								4217,
-								4217
+								4447,
+								4496
 							]
 						],
 						"settings":
@@ -909,7 +922,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 1737.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1089,15 +1102,15 @@
 					"file": "view_costumes.py",
 					"settings":
 					{
-						"buffer_size": 12094,
+						"buffer_size": 12981,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4651,
-								4651
+								12463,
+								12463
 							]
 						],
 						"settings":
@@ -1163,7 +1176,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1395.0,
+						"translation.y": 4142.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1305,7 +1318,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 211.0,
 	"status_bar_visible": true
 }
