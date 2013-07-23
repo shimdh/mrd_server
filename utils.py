@@ -84,6 +84,7 @@ def commitData():
     except exc.SQLAlchemyError:
         return ResultCodes.DBInputError
 
+
 def writeDirtyLog(all_string):
     write_log = DirtyLog(all_string)
     db_session.add(write_log)
