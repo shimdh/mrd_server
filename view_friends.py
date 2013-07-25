@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
+from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
+from utils import commitData
 import json
 
 from database import db_session
-from models import User, Friend, Character
-from sqlalchemy import exc
+from models import User, Friend, Character, Stat
 import datetime
 
 
@@ -33,7 +33,6 @@ def addFriend():
 
 addFriend.methods = ['POST']
 
-
 def getFriendsList():
     result = dict(
         type=ProtocolTypes.GetFriendsList,
@@ -54,10 +53,29 @@ def getFriendsList():
                     for find_friend in find_friends:
                         got_friend = User.query.filter_by(id=find_friend.friend_id).first()
                         if got_friend:
+                            friend_level = -1
+                            find_friend_stat = Stat.query.filter_by(
+                                user_id=find_friend.friend_id).first()
+                            if find_friend_stat:
+                                friend_level = find_friend_stat.level
+
+                            can_send_friendship = True
+                            can_receive_friendship = True
+
+                            if find_friend.friendship_sent_date.strftime(
+                                "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                                can_send_friendship = False
+                            if find_friend.friendship_received_date.strftime(
+                                "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                                can_receive_friendship = False
+
                             tmp_friend_info = dict(
                                 user_id=got_friend.id,
                                 name=got_friend.name,
-                                last_login=got_friend.login_date.strftime("%Y,%m,%d")
+                                last_login=got_friend.login_date.strftime("%Y,%m,%d"),
+                                can_send_friendship=can_send_friendship,
+                                can_receive_friendship=can_receive_friendship,
+                                level=friend_level,
                             )
                             friends_info.append(tmp_friend_info)
 
