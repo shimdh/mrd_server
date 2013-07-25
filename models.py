@@ -120,7 +120,7 @@ class OpenedPuzzlePiece(Base):
         self.puzzle_index = puzzle_index
         self.condition = condition
         self.created_date = datetime.datetime.now()
-                        
+
 
 class OpenedPuzzle(Base):
     """docstring for OpenedPuzzle"""
@@ -130,7 +130,7 @@ class OpenedPuzzle(Base):
     user_id = Column(Integer())
     puzzle_index = Column(Integer())
     opened = Column(Integer())
-    created_date = Column(DateTime(), default=datetime.datetime.now()) 
+    created_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, user_id, puzzle_index, opened):
         self.user_id = user_id
@@ -154,7 +154,7 @@ class Diary(Base):
         self.diary_index = diary_index
         self.created_date = datetime.datetime.now()
 
-        
+
 class WornCostume(Base):
     """docstring for WornCostume"""
     __tablename__ = 'worn_costumes'
@@ -167,7 +167,7 @@ class WornCostume(Base):
         super(WornCostume, self).__init__()
         self.user_id = user_id
         self.costumes = costumes
-        
+
 
 class Button(Base):
     """docstring for Button"""
@@ -196,7 +196,7 @@ class DirtyLog(Base):
     def __init__(self, all_string):
         self.all_string = all_string
         self.created_datetime = datetime.datetime.now()
-        
+
     def __repr__(self):
         return '<DirtyLog %s>' % self.id
 
