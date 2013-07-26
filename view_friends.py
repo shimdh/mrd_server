@@ -59,6 +59,21 @@ def getFriendsList():
                             if find_friend_stat:
                                 friend_level = find_friend_stat.level
 
+                            friend_character_info = dict()
+                            find_friend_character = Character.query.filter_by(user_id=find_friend.friend_id).first()
+                            if find_friend_character:
+                                friend_character_info = dict(
+                                    color_r=find_friend_character.color_r,
+                                    color_g=find_friend_character.color_g,
+                                    color_b=find_friend_character.color_b,
+                                    gender=find_friend_character.gender,
+                                    body_type=find_friend_character.body_type,
+                                    hair_type=find_friend_character.hair_type,
+                                    cloak_type=find_friend_character.cloak_type,
+                                    face_type=find_friend_character.face_type,
+                                    weapon_type=find_friend_character.weapon_type,
+                                )
+
                             can_send_friendship = True
                             can_receive_friendship = True
 
@@ -76,6 +91,7 @@ def getFriendsList():
                                 can_send_friendship=can_send_friendship,
                                 can_receive_friendship=can_receive_friendship,
                                 level=friend_level,
+                                character=friend_character_info,
                             )
                             friends_info.append(tmp_friend_info)
 
