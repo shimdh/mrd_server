@@ -79,12 +79,12 @@ def getFriendsList():
                             can_send_friendship = True
                             can_receive_friendship = True
 
-                            if not find_friend.friendship_sent_date == None:
+                            if find_friend.friendship_sent_date:
                                 if find_friend.friendship_sent_date.strftime(
                                     "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
                                     can_send_friendship = False
 
-                            if not find_friend.friendship_received_date == None:
+                            if find_friend.friendship_received_date:
                                 if find_friend.friendship_received_date.strftime(
                                     "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
                                     can_receive_friendship = False
