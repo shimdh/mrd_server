@@ -51,7 +51,8 @@ def getFriendsList():
                 if find_friends:
                     friends_info = list()
                     for find_friend in find_friends:
-                        got_friend = User.query.filter_by(id=find_friend.friend_id).first()
+                        got_friend = User.query.filter_by(
+                            id=find_friend.friend_id).first()
                         if got_friend:
                             friend_level = -1
                             find_friend_stat = Stat.query.filter_by(
@@ -60,7 +61,8 @@ def getFriendsList():
                                 friend_level = find_friend_stat.level
 
                             friend_character_info = dict()
-                            find_friend_character = Character.query.filter_by(user_id=find_friend.friend_id).first()
+                            find_friend_character = Character.query.filter_by(
+                                user_id=find_friend.friend_id).first()
                             if find_friend_character:
                                 friend_character_info = dict(
                                     color_r=find_friend_character.color_r,
@@ -77,12 +79,15 @@ def getFriendsList():
                             can_send_friendship = True
                             can_receive_friendship = True
 
-                            if find_friend.friendship_sent_date.strftime(
-                                "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
-                                can_send_friendship = False
-                            if find_friend.friendship_received_date.strftime(
-                                "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
-                                can_receive_friendship = False
+                            if find_friend.friendship_sent_date:
+                                if find_friend.friendship_sent_date.strftime(
+                                    "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                                    can_send_friendship = False
+
+                            if find_friend.friendship_received_date:
+                                if find_friend.friendship_received_date.strftime(
+                                    "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                                    can_receive_friendship = False
 
                             tmp_friend_info = dict(
                                 user_id=got_friend.id,
