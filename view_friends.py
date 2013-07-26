@@ -6,7 +6,7 @@ from utils import commitData
 import json
 
 from database import db_session
-from models import User, Friend, Character, Stat
+from models import User, Friend, Character, Stat, WornCostume
 import datetime
 
 
@@ -76,6 +76,13 @@ def getFriendsList():
                                     weapon_type=find_friend_character.weapon_type,
                                 )
 
+                            friend_costume_info = list()
+
+                            find_friend_costume = WornCostume.query.filter_by(
+                                user_id=find_friend.friend_id).first()
+                            if find_friend_costume:
+                                friend_costume_info = json.loads(find_friend_costume.costumes)
+
                             can_send_friendship = True
                             can_receive_friendship = True
 
@@ -95,6 +102,7 @@ def getFriendsList():
                                 can_receive_friendship=can_receive_friendship,
                                 level=friend_level,
                                 character=friend_character_info,
+                                costume=friend_costume_info,
                             )
                             friends_info.append(tmp_friend_info)
 
