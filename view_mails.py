@@ -184,6 +184,7 @@ def getMailList():
                                     'title': got_friend_char.name + u"로부터 메일",
                                     'got_item': got_mail.did_receive_item,
                                     'gift': temp_has_gift,
+                                    'request_friend': got_mail.request_friend,
                                 }
                                 result['mails'].append(temp_mail)
                         else:
@@ -196,6 +197,7 @@ def getMailList():
                                 'title': temp_mail_title,
                                 'got_item': got_mail.did_receive_item,
                                 'gift': temp_has_gift,
+                                'request_friend': got_mail.request_friend,
                             }
                             result['mails'].append(temp_mail)
 
