@@ -6,7 +6,7 @@ from utils import commitData
 import json
 
 from database import db_session
-from models import User, Friend, Character, Stat, WornCostume
+from models import User, Friend, Character, Stat, WornCostume, Mail
 import datetime
 
 
