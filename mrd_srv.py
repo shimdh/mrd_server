@@ -57,7 +57,7 @@ app.add_url_rule(
     '/get_friendslist', 'get_friendslist',
     view_friends.getFriendsList)
 app.add_url_rule(
-    '/find_friendbynickname', 'find_friendbynickname',
+    '/find_friendbyname', 'find_friendbyname',
     view_friends.findFriendByName)
 app.add_url_rule(
     '/get_inventories', 'get_inventories',
