@@ -187,7 +187,6 @@ def getMailList():
                                 }
                                 result['mails'].append(temp_mail)
                         else:
-                            if got_mail
                             temp_mail = {
                                 'mail_index': got_mail.id,
                                 'from_name': temp_mail_system_name
