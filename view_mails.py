@@ -7,6 +7,11 @@ import json
 from database import db_session
 from models import Mail
 
+lst_from_system_mails = [
+    -1, #System
+    -2, #Ship
+    -3,
+]
 
 def writeMail():
     result = dict(
@@ -52,16 +57,41 @@ def readMail():
                 got_mail = Mail.query.filter_by(
                     id=got_data['mail_index']).first()
                 if got_mail:
-                    result['mail_index'] = got_mail.id
-                    result['from_nickname'] = got_mail.from_nickname
-                    result['sent_date'] = got_mail.registered_date.strftime(
-                        "%Y,%m,%d,%H,%M")
-                    result['title'] = got_mail.from_nickname + u"로부터 메일"
-                    result['content'] = got_mail.content
-                    if not got_mail.items or got_mail.items == '':
-                        result['items'] = ''
+                    if not got_mail.from_user_id in lst_from_system_mails:
+                        from_user_char = Character.query.filter_by(user_id=got_mail.from_user_id).first()
+                        if from_user_char:
+                            result['mail_index'] = got_mail.id
+                            result['from_name'] = from_user_char.name
+                            result['from_user_id'] = got_mail.from_user_id
+                            result['sent_date'] = got_mail.registered_date.strftime(
+                                "%Y,%m,%d,%H,%M")
+                            result['title'] = got_mail.from_nickname + u"로부터 메일"
+                            result['content'] = got_mail.content
+                            if not got_mail.items or got_mail.items == '':
+                                result['items'] = ''
+                            else:
+                                result['items'] = got_mail.items
+                        else:
+                            result['result'] = ResultCodes.InputParamError
                     else:
-                        result['items'] = got_mail.items
+                        if got_mail.from_user_id == lst_from_system_mails[0]:
+                            temp_mail_system_name = u"시스템"
+                            temp_mail_title = u"시스템으로부터의 메일"
+                        if got_mail.from_user_id == lst_from_system_mails[1]:
+                            temp_mail_system_name = u"해적선"
+                            temp_mail_title = u"해적선으로부터의 메일"
+                        result['mail_index'] = got_mail.id
+                        result['from_name'] = temp_mail_system_name
+                        result['from_user_id'] = got_mail.from_user_id
+                        result['sent_date'] = got_mail.registered_date.strftime(
+                            "%Y,%m,%d,%H,%M")
+                        result['title'] = temp_mail_title
+                        result['content'] = got_mail.content
+                        if not got_mail.items or got_mail.items == '':
+                            result['items'] = ''
+                        else:
+                            result['items'] = got_mail.items
+
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -111,11 +141,6 @@ def getMailList():
         result=ResultCodes.Success
     )
 
-    system_mails = [
-        -1, #System
-        -2, #Ship
-        -3,
-    ]
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
@@ -132,15 +157,15 @@ def getMailList():
                         if not got_mail.items or got_mail.items == '':
                             temp_has_gift = 'N'
                         temp_mail_type = 'N'
-                        if got_mail.from_user_id == -1:
+                        if got_mail.from_user_id == lst_from_system_mails[0]:
                             temp_mail_type = 'S'
                             temp_mail_system_name = u"시스템"
                             temp_mail_title = u"시스템으로부터의 메일"
-                        if got_mail.from_user_id == -2:
+                        if got_mail.from_user_id == lst_from_system_mails[1]:
                             temp_mail_type = 'P'
                             temp_mail_system_name = u"해적선"
                             temp_mail_title = u"해적선으로부터의 메일"
-                        if not got_mail.from_user_id in system_mails:
+                        if not got_mail.from_user_id in lst_from_system_mails:
                             got_friend = User.query.filter_by(user_id=got_mail.from_user_id).first()
                             if got_friend:
                                 got_friend_char = Character.query.filter_by(user_id=got_mail.from_user_id).first()
