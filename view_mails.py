@@ -166,7 +166,7 @@ def getMailList():
                             temp_mail_system_name = u"해적선"
                             temp_mail_title = u"해적선으로부터의 메일"
                         if not got_mail.from_user_id in lst_from_system_mails:
-                            got_friend = User.query.filter_by(user_id=got_mail.from_user_id).first()
+                            got_friend = User.query.filter_by(id=got_mail.from_user_id).first()
                             if got_friend:
                                 got_friend_char = Character.query.filter_by(user_id=got_mail.from_user_id).first()
                                 find_friend = Friend.query.filter_by(
