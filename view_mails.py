@@ -189,7 +189,7 @@ def getMailList():
                         else:
                             temp_mail = {
                                 'mail_index': got_mail.id,
-                                'from_name': temp_mail_system_name
+                                'from_name': temp_mail_system_name,
                                 'mail_type': temp_mail_type,
                                 'sent_date': got_mail.registered_date.strftime(
                                     "%Y,%m,%d,%H,%M"),
