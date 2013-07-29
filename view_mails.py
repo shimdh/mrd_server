@@ -5,7 +5,7 @@ from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, 
 import json
 
 from database import db_session
-from models import Mail, User, Character
+from models import Mail, User, Character, Friend
 
 lst_from_system_mails = [
     -1, #System
