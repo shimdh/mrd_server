@@ -520,17 +520,19 @@ class Mail(Base):
     __tablename__ = 'mails'
 
     id = Column(Integer, primary_key=True)
-    from_nickname = Column(String(50))
-    to_user_id = Column(String(50))
+    from_user_id = Column(Integer())
+    to_user_id = Column(Integer())
     content = Column(Text())
     items = Column(Text())
+    did_receive_item = Column(Boolean(), default=False)
     registered_date = Column(DateTime(), default=datetime.datetime.now())
 
-    def __init__(self, from_nickname, to_user_id, content, items=None):
-        self.from_nickname = from_nickname
+    def __init__(self, from_user_id, to_user_id, content, items=None):
+        self.from_user_id = from_user_id
         self.to_user_id = to_user_id
         self.content = content
         self.items = items
+        self.registered_date = datetime.datetime.now()
 
     def __repr__(self):
         return "<Mail('%s')>" % (self.title)

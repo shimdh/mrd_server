@@ -6,7 +6,6 @@ import json
 
 from database import db_session
 from models import Mail
-from sqlalchemy import exc
 
 
 def writeMail():
@@ -21,10 +20,12 @@ def writeMail():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_mail = Mail(
-                    got_user.nickname, got_data['mail_to'], got_data['content'])
-                db_session.add(got_mail)
-                result['result'] = commitData()
+                got_friend = User.query.filter_by(user_id=got_data['mail_to']).first()
+                if got_friend:
+                    got_mail = Mail(
+                        got_user.user_id, got_friend.user_id, got_data['content'])
+                    db_session.add(got_mail)
+                    result['result'] = commitData()
         else:
             result['result'] = ResultCodes.InputParamError
     else:
@@ -109,6 +110,12 @@ def getMailList():
         type=ProtocolTypes.GetMailList,
         result=ResultCodes.Success
     )
+
+    system_mails = [
+        -1, #System
+        -2, #Ship
+        -3,
+    ]
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = ['session_id']
@@ -121,16 +128,53 @@ def getMailList():
                 if got_mails:
                     result['mails'] = list()
                     for got_mail in got_mails:
-                        temp_has_gift = 'N' if got_mail.items is None else 'Y'
-                        temp_mail = {
-                            'mail_index': got_mail.id,
-                            'from_nickname': got_mail.from_nickname,
-                            'sent_date': got_mail.registered_date.strftime(
-                                "%Y,%m,%d,%H,%M"),
-                            'title': got_mail.from_nickname + u"로부터 메일",
-                            'gift': temp_has_gift,
-                        }
-                        result['mails'].append(temp_mail)
+                        temp_has_gift = 'Y'
+                        if not got_mail.items or got_mail.items == '':
+                            temp_has_gift = 'N'
+                        temp_mail_type = 'N'
+                        if got_mail.from_user_id == -1:
+                            temp_mail_type = 'S'
+                            temp_mail_system_name = u"시스템"
+                            temp_mail_title = u"시스템으로부터의 메일"
+                        if got_mail.from_user_id == -2:
+                            temp_mail_type = 'P'
+                            temp_mail_system_name = u"해적선"
+                            temp_mail_title = u"해적선으로부터의 메일"
+                        if not got_mail.from_user_id in system_mails:
+                            got_friend = User.query.filter_by(user_id=got_mail.from_user_id).first()
+                            if got_friend:
+                                got_friend_char = Character.query.filter_by(user_id=got_mail.from_user_id).first()
+                                find_friend = Friend.query.filter_by(
+                                    user_id=got_user.id, friend_id=got_mail.from_user_id,
+                                    requested=True, accepted=True).first()
+                                if find_friend:
+                                    temp_mail_type = 'F'
+
+                                temp_mail = {
+                                    'mail_index': got_mail.id,
+                                    'from_name': got_friend_char.name,
+                                    'mail_type': temp_mail_type,
+                                    'sent_date': got_mail.registered_date.strftime(
+                                        "%Y,%m,%d,%H,%M"),
+                                    'title': got_friend_char.name + u"로부터 메일",
+                                    'got_item': got_mail.did_receive_item,
+                                    'gift': temp_has_gift,
+                                }
+                                result['mails'].append(temp_mail)
+                        else:
+                            if got_mail
+                            temp_mail = {
+                                'mail_index': got_mail.id,
+                                'from_name': temp_mail_system_name
+                                'mail_type': temp_mail_type,
+                                'sent_date': got_mail.registered_date.strftime(
+                                    "%Y,%m,%d,%H,%M"),
+                                'title': temp_mail_title,
+                                'got_item': got_mail.did_receive_item,
+                                'gift': temp_has_gift,
+                            }
+                            result['mails'].append(temp_mail)
+
                 else:
                     result['result'] = ResultCodes.NoData
         else:
