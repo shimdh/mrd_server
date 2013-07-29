@@ -525,6 +525,7 @@ class Mail(Base):
     content = Column(Text())
     items = Column(Text())
     did_receive_item = Column(Boolean(), default=False)
+    request_friend = Column(Boolean(), default=False)
     registered_date = Column(DateTime(), default=datetime.datetime.now())
 
     def __init__(self, from_user_id, to_user_id, content, items=None):

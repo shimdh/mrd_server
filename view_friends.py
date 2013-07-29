@@ -176,6 +176,9 @@ def requestFriend():
                 if not find_friend:
                     friend_data = Friend(got_user.id, got_data['request_friend'])
                     db_session.add(friend_data)
+                    write_mail = Mail(got_user.id, got_data['requestFriend'], u"친구 신청")
+                    write_mail.request_friend = True
+                    db_session.add(write_mail)
                     result['result'] = commitData()
                 else:
                     result['result'] = ResultCodes.DataExist
