@@ -127,7 +127,7 @@ def findFriendByName():
     if request.form['data']:
         got_data = json.loads(request.form['data'])
 
-        from_keys = ['session_id', 'friend_nickname']
+        from_keys = ['session_id', 'friend_name']
         if checkContainKeys(from_keys, got_data):
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
@@ -135,7 +135,7 @@ def findFriendByName():
                 # got_user_lists = db_session.query(User).filter(
                 #     User.name.like('%' + got_data['friend_nickname'] + '%')).all()
                 got_user_lists = User.query.filter(
-                    User.name.like('%' + got_data['friend_nickname'] + '%')).all()
+                    User.name.like('%' + got_data['friend_name'] + '%')).all()
                 if got_user_lists:
                     send_user_lists = []
                     for got_user_list in got_user_lists:
