@@ -149,7 +149,7 @@ def getMailList():
 
             if got_user:
                 got_mails = Mail.query.filter_by(
-                    to_user_id=got_user.nickname).all()
+                    to_user_id=got_user.id).all()
                 if got_mails:
                     result['mails'] = list()
                     for got_mail in got_mails:
