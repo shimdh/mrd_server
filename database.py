@@ -23,6 +23,7 @@ def init_db():
 
     if models.User.query.count() == 0:
         tara_user = models.User('Tara', 'tasdfha3ejcoqoqqi28av0xd')
+        tara_user.name = 'Tara'
         db_session.add(tara_user)
         db_session.commit()
 
@@ -124,4 +125,4 @@ def init_db():
 def del_db():
     import models
 
-    Base.metadata.drop_all(bind=engine)
+    Base.metadata.drop_all(bind=enginei
