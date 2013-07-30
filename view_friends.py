@@ -556,10 +556,10 @@ def getRecommendFriendsList():
                         )
                         got_user_list.append(temp_user_info)
 
-                if len(got_user_list) > 0:
-                    return got_user_list[:20]
-                else:
-                    return None
+            if len(got_user_list) > 0:
+                return got_user_list[:20]
+            else:
+                return None
         else:
             return None
 
