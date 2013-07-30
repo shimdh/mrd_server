@@ -15,6 +15,21 @@ def get_session_id(nickname):
     return nickname + ''.join(sample(SESS_CHARS, randrange(5, 20)))
 
 
+class Config(Base):
+    __tablename__ = 'configs'
+
+    id = Column(Integer(), primary_key=True)
+    str_key = Column(String(30))
+    str_value = Column(String(50))
+
+    def __init__(self, str_key, str_value):
+        self.str_key = str_key
+        self.str_value = str_value
+
+    def __repr__(self):
+        return '<Config %s>' % (self.str_key)
+
+
 class Info(Base):
     """docstring for Info"""
     __tablename__ = 'infos'

@@ -194,6 +194,12 @@ app.add_url_rule(
 app.add_url_rule(
     '/check_newmail', 'check_newmail',
     view_mails.checkNewMail)
+app.add_url_rule(
+    '/use_friendshippoint', 'use_friendshippoint',
+    view_friends.useFriendShipPoint)
+app.add_url_rule(
+    '/get_friendshippointinfo', 'get_friendshippointinfo',
+    view_friends.getFriendShipPointInfo)
 
 
 @app.route('/hello')

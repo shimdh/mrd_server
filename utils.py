@@ -44,8 +44,8 @@ class ProtocolTypes(object):
         AddPuzzlePiece, GetPuzzlePieces, AddPuzzle, GetPuzzles,
         AddDiary, GetDiaries, SetWornCostume, GetWornCostume,
         SetCash, GetCash, GotCashFromCostumeBase, GotCashFromCostumeBases,
-        OpenMail, CheckNewMail,
-    ) = range(100, 154)
+        OpenMail, CheckNewMail, UseFriendShipPoint, GetFriendShipPointInfo,
+    ) = range(100, 156)
 
 
 def checkSessionId(got_session_id):

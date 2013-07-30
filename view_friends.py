@@ -6,7 +6,7 @@ from utils import commitData, writeDirtyLog
 import json
 
 from database import db_session
-from models import User, Friend, Character, Stat, WornCostume, Mail
+from models import User, Friend, Character, Stat, WornCostume, Mail, Config
 import datetime
 
 
@@ -237,7 +237,7 @@ getWaitingFriends.methods = ['POST']
 
 
 def acceptFriend():
-    writeDirtyLog('acceptFriend: ' + request.form['data'])
+    #writeDirtyLog('acceptFriend: ' + request.form['data'])
     result = dict(
         type=ProtocolTypes.AcceptFriend,
         result=ResultCodes.Success)
@@ -358,6 +358,16 @@ def sendFriendShipPoint():
                         find_friend.friendship_sent_date = datetime.datetime.now()
 
                         db_session.add(find_friend)
+
+                        got_friend_user = User.query.filter_by(id=got_data['friend_id']).first()
+                        if got_friend_user:
+                            friend_point = Config.query.filter_by(str_key='sending_friendship_point').first()
+                            if friendship_point:
+                                got_friend_user.friendship_point += int(friendship_point.str_value)
+                                db_session.add(got_friend_user)
+                        else:
+                            result['result'] = ResultCodes.InputParamError
+
                         result['result'] = commitData()
                 else:
                     result['result'] = ResultCodes.NoData
@@ -397,11 +407,10 @@ def receiveFriendShipPoint():
 
                         db_session.add(find_me)
 
-                        if not got_user.friendship_point:
-                            got_user.friendship_point = 0
-                        got_user.friendship_point += 1
-
-                        db_session.add(got_user)
+                        friendship_point = Config.query.filter_by(str_key='receiving_friendship_point').first()
+                        if friendship_point:
+                            got_user.friendship_point += int(friendship_point.str_value)
+                            db_session.add(got_user)
                         result['result'] = commitData()
                     else:
                         result['result'] = ResultCodes.InputParamError
@@ -416,3 +425,63 @@ def receiveFriendShipPoint():
 
 
 receiveFriendShipPoint.methods = ['POST']
+
+
+def useFriendShipPoint():
+    result = dict(
+        type=ProtocolTypes.UseFriendShipPoint,
+        result=ResultCodes.Success
+    )
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                max_friendship_point = Config.query.filter_by(str_key='max_friendship_point').first()
+                if max_friendship_point:
+                    if got_user.friendship_point > int(max_friendship_point.str_value):
+                        got_user.friendship_point -= int(max_friendship_point.str_value)
+
+                        db_session.add(got_user)
+                        result['result'] = commitData()
+                    else:
+                        result['result'] = ResultCodes.InputParamError
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+useFriendShipPoint.methods = ['POST']
+
+
+def getFriendShipPointInfo():
+    result = dict(
+        type=ProtocolTypes.GetFriendShipPointInfo,
+        result=ResultCodes.Success
+    )
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                result['friendship_point'] = got_user.friendship_point
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+getFriendShipPointInfo.methods = ['POST']
