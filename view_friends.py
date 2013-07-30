@@ -99,13 +99,18 @@ def getFriendsList():
                             tmp_friend_info = dict(
                                 user_id=got_friend.id,
                                 name=got_friend.name,
-                                last_login=got_friend.login_date.strftime("%Y,%m,%d"),
                                 can_send_friendship=can_send_friendship,
                                 can_receive_friendship=can_receive_friendship,
                                 level=friend_level,
                                 character=friend_character_info,
                                 costume=friend_costume_info,
                             )
+
+                            if find_friend.friend_id == 1 or not got_friend.login_date:
+                                tmp_friend_info['last_login'] = datetime.datetime.now().strftime("%Y,%m,%d")
+                            else:
+                                tmp_friend_info['last_login'] = got_friend.login_date.strftime("%Y,%m,%d")
+
                             friends_info.append(tmp_friend_info)
 
                     result['friends'] = json.dumps(friends_info)
@@ -518,6 +523,11 @@ def acceptFriendWithTara(user_nickname):
         regist_friend.request = True
         regist_friend.accepted = True
         db_session.add(regist_friend)
+
+        tara_friend = Friend(1, got_user.id)
+        tara_friend.request = True
+        tara_friend.accepted = True
+        db_session.add(tara_friend)
 
         db_session.commit()
 
