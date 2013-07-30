@@ -258,6 +258,17 @@ def acceptFriend():
                     if find_friend:
                         find_friend.accepted = True
                         db_session.add(find_friend)
+                        my_friend = Friend.query.filter_by(
+                            user_id=got_user.id, friend_id=got_data['accept_friend']).first()
+                        if my_friend:
+                            my_friend.request = True
+                            my_friend.accepted = True
+                            db_session.add(my_friend)
+                        else:
+                            regist_friend = Friend(got_user.id, got_data['accept_friend'])
+                            regist_friend.request = True
+                            regist_friend.accepted = True
+                            db_session.add(regist_friend)
                         result['result'] = commitData()
                     else:
                         result['result'] = ResultCodes.NoData
