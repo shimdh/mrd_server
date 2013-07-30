@@ -519,7 +519,7 @@ getFriendShipPointInfo.methods = ['POST']
 
 def getRecommendFriendsList():
     result = dict(
-        type=ProtocolTypes.GetFriendsList,
+        type=ProtocolTypes.GetRecommendFriendsList,
         result=ResultCodes.Success)
 
     def getLastLoginUserLists(my_index, last_login_range):
