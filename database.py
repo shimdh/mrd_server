@@ -111,6 +111,7 @@ def init_db():
                 max_friendship_point,
             ]
         )
+        db_session.commit()
 
 
 def del_db():
