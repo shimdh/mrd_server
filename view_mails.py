@@ -25,10 +25,10 @@ def writeMail():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_friend = User.query.filter_by(user_id=got_data['mail_to']).first()
+                got_friend = User.query.filter_by(id=got_data['mail_to']).first()
                 if got_friend:
                     got_mail = Mail(
-                        got_user.user_id, got_friend.user_id, got_data['content'])
+                        got_user.id, got_friend.id, got_data['content'])
                     db_session.add(got_mail)
                     result['result'] = commitData()
         else:
