@@ -65,7 +65,7 @@ def readMail():
                             result['from_user_id'] = got_mail.from_user_id
                             result['sent_date'] = got_mail.registered_date.strftime(
                                 "%Y,%m,%d,%H,%M")
-                            result['title'] = got_mail.from_nickname + u"로부터 메일"
+                            result['title'] = from_user_char.name + u"로부터 메일"
                             result['content'] = got_mail.content
                             if not got_mail.items or got_mail.items == '':
                                 result['items'] = ''
