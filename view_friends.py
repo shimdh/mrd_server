@@ -51,6 +51,8 @@ def getFriendsList():
                 if find_friends:
                     friends_info = list()
                     for find_friend in find_friends:
+                        if find_friend.friend_id == 1:
+                            continue
                         got_friend = User.query.filter_by(
                             id=find_friend.friend_id).first()
                         if got_friend:
