@@ -19,7 +19,7 @@ class Config(Base):
     __tablename__ = 'configs'
 
     id = Column(Integer(), primary_key=True)
-    str_key = Column(String(30))
+    str_key = Column(String(50))
     str_value = Column(String(50))
 
     def __init__(self, str_key, str_value):

@@ -451,8 +451,25 @@ def useFriendShipPoint():
                     if got_user.friendship_point > int(max_friendship_point.str_value):
                         got_user.friendship_point -= int(max_friendship_point.str_value)
 
+
+                        import random
+
+                        got_cash_rates = [16] + [7] * 12
+                        found_rate = random.random() * 100
+                        rate_sum = 0
+                        got_cash_amount = 0
+
+                        for x in range(len(got_cash_rates)):
+                            rate_sum += got_cash_rates[x]
+
+                            if found_rate <= rate_sum:
+                                got_cash_amount = x + 1
+                                break
+
+                        got_user.cash += got_cash_amount
                         db_session.add(got_user)
                         result['result'] = commitData()
+                        result['cash_amount'] = got_cash_amount
                     else:
                         result['result'] = ResultCodes.InputParamError
                 else:
@@ -490,3 +507,38 @@ def getFriendShipPointInfo():
     return str(json.dumps(result))
 
 getFriendShipPointInfo.methods = ['POST']
+
+
+def acceptFriendWithTara(user_nickname):
+    got_user = User.query.filter_by(nickname=user_nickname).first()
+    if got_user:
+        regist_friend = Friend(got_user.id, 1)
+        regist_friend.request = True
+        regist_friend.accepted = True
+        db_session.add(regist_friend)
+
+        db_session.commit()
+
+
+def sendFriendShipPointFromTara(user_id):
+    find_tara = Friend.query.filter_by(
+        user_id=1, friend_id=user_id).first()
+    if find_tara:
+        if not find_tara.friendship_sent_date:
+            find_tara.friendship_sent_date = datetime.datetime.now()
+
+            db_session.add(find_tara)
+            db_session.commit()
+
+        else:
+            if find_tara.friendship_sent_date.strftime(
+                    "%Y,%m,%d") == datetime.datetime.now().strftime(
+                    "%Y,%m,%d") or find_tara.friendship_received_date.strftime(
+                    "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                pass
+            else:
+                find_tara.friendship_sent_date = datetime.datetime.now()
+
+                db_session.add(find_tara)
+                db_session.commit()
+

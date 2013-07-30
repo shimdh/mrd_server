@@ -8,6 +8,7 @@ import datetime
 from database import db_session
 from models import User, get_session_id
 from sqlalchemy import exc
+import view_friends
 
 
 def register():
@@ -36,7 +37,7 @@ def register():
             return False
         else:
             return True
-            
+
     def checkFindNickname(nickname):
         finding_user = User.query.filter_by(nickname=nickname).first()
 
@@ -61,7 +62,7 @@ def register():
                     result['result'] = ResultCodes.ShortPassword
                 else:
                     if (checkValidNicknamePassword(
-                        got_nickname, 
+                        got_nickname,
                         got_password
                         ) and checkReservedNickname(got_nickname)):
                         if checkFindNickname(got_nickname):
@@ -72,6 +73,9 @@ def register():
                                 got_password)
                             db_session.add(user_data)
                             result['result'] = commitData()
+
+                            if result['result'] == ResultCodes.Success:
+                                view_friends.acceptFriendWithTara(got_nickname)
                     else:
                         result["result"] = ResultCodes.InputParamError
         else:
@@ -110,6 +114,9 @@ def login():
                         try:
                             db_session.commit()
                             result['session_id'] = got_user.session_id
+
+                            if result['result'] == ResultCodes.Success:
+                                view_friends.sendFriendShipPointFromTara(got_user.id)
                         except exc.SQLAlchemyError:
                             result['result'] = ResultCodes.DBInputError
                     else:
@@ -137,7 +144,7 @@ def setCash():
     if request.form['data']:
         got_data = json.loads(request.form['data'])
         from_keys = [
-            'session_id', 
+            'session_id',
             'cash'
         ]
         if checkContainKeys(from_keys, got_data):

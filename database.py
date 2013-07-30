@@ -21,6 +21,11 @@ def init_db():
 
     Base.metadata.create_all(bind=engine)
 
+    if models.User.query.count() == 0:
+        tara_user = models.User('Tara', 'tasdfha3ejcoqoqqi28av0xd')
+        db_session.add(tara_user)
+        db_session.commit()
+
     if models.Info.query.count() == 0:
         temp_info = models.Info('1.0.0', '1.0.0')
         db_session.add(temp_info)
