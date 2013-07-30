@@ -239,3 +239,61 @@ def deleteMails():
     return str(json.dumps(result))
 
 deleteMails.methods = ['POST']
+
+
+def openMail():
+    result = dict(
+        type=ProtocolTypes.OpenMail,
+        result=ResultCodes.Success
+    )
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id', 'mail_index']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                got_mail = Mail.query.filter_by(id=got_data['mail_index'], to_user_id=got_user.id).first()
+                if got_mail:
+                    got_mail.opened = True
+                    db_session.add(got_mail)
+                    result['result'] = commitData()
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+openMail.methods = ['POST']
+
+
+def checkNewMail():
+    result = dict(
+        type=ProtocolTypes.CheckNewMail,
+        result=ResultCodes.Success
+    )
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                got_mail = Mail.query.filter_by(to_user_id=got_user.id, opened=False).first()
+                if got_mail:
+                    result['has_new_mail'] = True
+                else:
+                    result['has_new_mail'] = False
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+checkNewMail.methods = ['POST']
