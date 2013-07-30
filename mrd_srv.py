@@ -188,6 +188,12 @@ app.add_url_rule(
 app.add_url_rule(
     '/got_cashfromcostumebases', 'got_cashfromcostumebases',
     view_costumes.gotCashFromCostumeBases)
+app.add_url_rule(
+    '/open_mail', 'open_mail',
+    view_mails.openMail)
+app.add_url_rule(
+    '/check_newmail', 'check_newmail',
+    view_mails.checkNewMail)
 
 
 @app.route('/hello')
