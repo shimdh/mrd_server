@@ -2,7 +2,7 @@
 
 from flask import request
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
-from utils import commitData
+from utils import commitData, writeDirtyLog
 import json
 
 from database import db_session
@@ -237,6 +237,7 @@ getWaitingFriends.methods = ['POST']
 
 
 def acceptFriend():
+    writeDirtyLog('acceptFriend: ' + request.form['data'])
     result = dict(
         type=ProtocolTypes.AcceptFriend,
         result=ResultCodes.Success)
