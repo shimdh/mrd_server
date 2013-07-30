@@ -200,6 +200,9 @@ app.add_url_rule(
 app.add_url_rule(
     '/get_friendshippointinfo', 'get_friendshippointinfo',
     view_friends.getFriendShipPointInfo)
+app.add_url_rule(
+    '/get_recommendfriendslist', 'get_recommendfriendslist',
+    view_friends.getRecommendFriendsList)
 
 
 @app.route('/hello')

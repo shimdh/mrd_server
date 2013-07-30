@@ -113,7 +113,7 @@ def getFriendsList():
 
                             friends_info.append(tmp_friend_info)
 
-                    result['friends'] = json.dumps(friends_info)
+                    result['friends'] = friends_info
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -515,6 +515,77 @@ def getFriendShipPointInfo():
 
 getFriendShipPointInfo.methods = ['POST']
 
+
+def getRecommendFriendsList():
+    result = dict(
+        type=ProtocolTypes.GetFriendsList,
+        result=ResultCodes.Success)
+
+    def getLastLoginUserLists(my_index, last_login_range):
+        my_now = datetime.datetime.now()
+        find_users = User.query.filter(
+                and_(
+                    User.id != my_index,
+                    User.login_date >= my_now - datetime.timedelta(
+                        days=last_login_range),
+                    User.id != 1
+                )
+        ).all()
+
+        if find_users:
+            return find_users
+        else:
+            return None
+
+    def getUsersStatInRangeLevel(my_index, level_range, users_list):
+        my_stat = Stat.query.filter_by(user_id=my_index).first()
+        if my_stat:
+            got_user_list = list()
+
+            for temp_user in users_list:
+                temp_stat = Stat.query.filter_by(user_id=temp_user.id).first()
+                if temp_stat:
+                    if my_stat.level - level_range < temp_stat < my_stat.level + level_range:
+                        temp_user_info = dict(
+                            id=temp_user.id,
+                            name=temp_user.name,
+                            level=temp_stat.level,
+                            last_login=temp_user.login_date.strftime("%Y,%m,%d"),
+                        )
+                        got_user_list.append(temp_user_info)
+
+                if len(got_user_list) > 0:
+                    return got_user_list[:20]
+                else:
+                    return None
+        else:
+            return None
+
+    if request.form['data']:
+        got_data = json.loads(request.form['data'])
+
+        from_keys = ['session_id']
+        if checkContainKeys(from_keys, got_data):
+            result['result'], got_user = checkSessionId(got_data['session_id'])
+
+            if got_user:
+                find_users = getLastLoginUserLists(got_user.id, 7)
+                if find_users:
+                    find_range_users = getUsersStatInRangeLevel(got_user.id, 10, find_users)
+                    if find_range_users:
+                        result['users'] = find_range_users
+                    else:
+                        result['result'] = ResultCodes.NoData
+                else:
+                    result['result'] = ResultCodes.NoData
+        else:
+            result['result'] = ResultCodes.InputParamError
+    else:
+        result['result'] = ResultCodes.AccessError
+
+    return str(json.dumps(result))
+
+getRecommendFriendsList.methods = ['POST']
 
 def acceptFriendWithTara(user_nickname):
     got_user = User.query.filter_by(nickname=user_nickname).first()
