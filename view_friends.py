@@ -538,6 +538,7 @@ def getRecommendFriendsList():
         else:
             return None
 
+
     def getUsersStatInRangeLevel(my_index, level_range, users_list):
         my_stat = Stat.query.filter_by(user_id=my_index).first()
         if my_stat:
@@ -546,7 +547,7 @@ def getRecommendFriendsList():
             for temp_user in users_list:
                 temp_stat = Stat.query.filter_by(user_id=temp_user.id).first()
                 if temp_stat:
-                    if my_stat.level - level_range <= temp_stat <= my_stat.level + level_range:
+                    if my_stat.level - level_range <= temp_stat.level <= my_stat.level + level_range:
                         temp_user_info = dict(
                             id=temp_user.id,
                             name=temp_user.name,
