@@ -549,7 +549,7 @@ def getRecommendFriendsList():
                 if temp_stat:
                     if my_stat.level - level_range <= temp_stat.level <= my_stat.level + level_range:
                         temp_user_info = dict(
-                            id=temp_user.id,
+                            user_id=temp_user.id,
                             name=temp_user.name,
                             level=temp_stat.level,
                             last_login=temp_user.login_date.strftime("%Y,%m,%d"),
