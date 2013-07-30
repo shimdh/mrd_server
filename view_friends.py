@@ -8,6 +8,7 @@ import json
 from database import db_session
 from models import User, Friend, Character, Stat, WornCostume, Mail, Config
 import datetime
+from sqlalchemy import and_
 
 
 def addFriend():
