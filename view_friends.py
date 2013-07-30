@@ -545,7 +545,7 @@ def getRecommendFriendsList():
             for temp_user in users_list:
                 temp_stat = Stat.query.filter_by(user_id=temp_user.id).first()
                 if temp_stat:
-                    if my_stat.level - level_range < temp_stat < my_stat.level + level_range:
+                    if my_stat.level - level_range <= temp_stat <= my_stat.level + level_range:
                         temp_user_info = dict(
                             id=temp_user.id,
                             name=temp_user.name,
@@ -560,6 +560,7 @@ def getRecommendFriendsList():
                     return None
         else:
             return None
+
 
     if request.form['data']:
         got_data = json.loads(request.form['data'])
