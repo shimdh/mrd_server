@@ -365,6 +365,11 @@ def sendFriendShipPoint():
                             if friendship_point:
                                 got_friend_user.friendship_point += int(friendship_point.str_value)
                                 db_session.add(got_friend_user)
+
+                            got_point = Config.query.filter_by(str_key='sent_receiving_friendship_point').first()
+                            if got_point:
+                                got_user.friendship_point += int(got_point.str_value)
+                                db_session.add(got_point)
                         else:
                             result['result'] = ResultCodes.InputParamError
 

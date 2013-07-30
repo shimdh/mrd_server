@@ -103,12 +103,14 @@ def init_db():
         sending_friendship_point = models.Config('sending_friendship_point', str(10))
         receiving_friendship_point = models.Config('receiving_friendship_point', str(10))
         max_friendship_point = models.Config('max_friendship_point', str(100))
+        sent_receiving_friendship_point = models.Config('sent_receiving_friendship_point', str(5))
 
         db_session.add_all(
             [
                 sending_friendship_point,
                 receiving_friendship_point,
                 max_friendship_point,
+                sent_receiving_friendship_point,
             ]
         )
         db_session.commit()
