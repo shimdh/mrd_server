@@ -225,12 +225,19 @@ def deleteMails():
             result['result'], got_user = checkSessionId(got_data['session_id'])
 
             if got_user:
-                got_mails = Mail.query.filter(
-                    Mail.id.in_(got_data['mail_indexes'])).all()
-                if got_mails:
-                    for got_mail in got_mails:
+                if len(got_data['mail_indexes']) == 1:
+                    got_mail = Mail.query.filter_by(id=got_data['mail_indexes'][0]).first()
+                    if got_mail:
                         db_session.delete(got_mail)
-                    result['result'] = commitData()
+                        result['result'] = commitData()
+
+                else:
+                    got_mails = Mail.query.filter(
+                        Mail.id.in_(got_data['mail_indexes'])).all()
+                    if got_mails:
+                        for got_mail in got_mails:
+                            db_session.delete(got_mail)
+                        result['result'] = commitData()
         else:
             result['result'] = ResultCodes.InputParamError
     else:
