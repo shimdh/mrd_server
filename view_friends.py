@@ -370,8 +370,8 @@ def sendFriendShipPoint():
                         got_friend_user = User.query.filter_by(id=got_data['friend_id']).first()
                         if got_friend_user:
                             friend_point = Config.query.filter_by(str_key='sending_friendship_point').first()
-                            if friendship_point:
-                                got_friend_user.friendship_point += int(friendship_point.str_value)
+                            if friend_point:
+                                got_friend_user.friendship_point += int(friend_point.str_value)
                                 db_session.add(got_friend_user)
 
                             got_point = Config.query.filter_by(str_key='sent_receiving_friendship_point').first()
