@@ -364,7 +364,7 @@ def sendFriendShipPoint():
                     user_id=got_data['friend_id'], friend_id=got_user.id).first()
                 if find_friend:
                     if not find_friend.friendship_sent_date:
-                        find_friend.friendship_sent_date = datetime.datetime.now()
+                        find_friend.friendship_sent_date = datetime.date.today()
 
                         db_session.add(find_friend)
 
@@ -384,13 +384,10 @@ def sendFriendShipPoint():
 
                         result['result'] = commitData()
                     else:
-                        if find_friend.friendship_sent_date.strftime(
-                                "%Y,%m,%d") == datetime.datetime.now().strftime(
-                                "%Y,%m,%d") or find_friend.friendship_received_date.strftime(
-                                "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                        if find_friend.friendship_sent_date == datetime.date.today():
                             result['result'] = ResultCodes.InputParamError
                         else:
-                            find_friend.friendship_sent_date = datetime.datetime.now()
+                            find_friend.friendship_sent_date = datetime.date.today()
 
                             db_session.add(find_friend)
 
@@ -453,11 +450,10 @@ def receiveFriendShipPoint():
                                 db_session.add(got_user)
                             result['result'] = commitData()
                         else:
-                            if find_me.friendship_sent_date.strftime(
-                                    "%Y,%m,%d") == datetime.datetime.now().strftime( "%Y,%m,%d"):
-                                if not find_me.friendship_received_date or find_me.friendship_received_date.strftime(
-                                    "%Y,%m,%d") != datetime.datetime.now().strftime("%Y,%m,%d"):
-                                    find_me.friendship_received_date = datetime.datetime.now()
+                            if find_me.friendship_sent_date == datetime.date.today():
+                                if not find_me.friendship_received_date or (
+                                    find_me.friendship_received_date != datetime.date.today()):
+                                    find_me.friendship_received_date = datetime.date.today()
 
                                     db_session.add(find_me)
 
