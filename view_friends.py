@@ -89,13 +89,18 @@ def getFriendsList():
                             can_send_friendship = True
                             can_receive_friendship = True
 
-                            if find_friend.friendship_sent_date:
-                                if find_friend.friendship_sent_date == datetime.date.today():
+                            sent_friend = Friend.query.filter_by(user_id=find_friend.friend_id, friend_id=got_user.id).first()
+                            if sent_friend:
+                                if sent_friend.friendship_sent_date == datetime.date.today():
                                     can_send_friendship = False
 
-                            if find_friend.friendship_received_date:
-                                if find_friend.friendship_received_date == datetime.date.today():
-                                    can_receive_friendship = False
+                                if find_friend.friendship_received_date:
+                                    if find_friend.friendship_received_date == datetime.date.today():
+                                        can_receive_friendship = False
+
+
+                            else:
+                                result['result'] = ResultCodes.InputParamError
 
                             tmp_friend_info = dict(
                                 user_id=got_friend.id,
@@ -355,7 +360,7 @@ def sendFriendShipPoint():
 
             if got_user:
                 find_friend = Friend.query.filter_by(
-                    user_id=got_user.id, friend_id=got_data['friend_id']).first()
+                    user_id=got_data['friend_id'], friend_id=got_user.id).first()
                 if find_friend:
                     if not find_friend.friendship_sent_date:
                         find_friend.friendship_sent_date = datetime.datetime.now()
@@ -431,7 +436,7 @@ def receiveFriendShipPoint():
 
             if got_user:
                 find_me = Friend.query.filter_by(
-                    user_id=got_data['friend_id'], friend_id=got_user.id).first()
+                    user_id=got_user.id, friend_id=got_data['friend_id']).first()
                 if find_me:
                     if not find_me.friendship_sent_date:
                         result['result'] = ResultCodes.InputParamError
@@ -644,29 +649,20 @@ def acceptFriendWithTara(user_nickname):
 
 
 def sendFriendShipPointFromTara(user_id):
-    find_tara = Friend.query.filter_by(
-        user_id=1, friend_id=user_id).first()
+    my_friend = Friend.query.filter_by(
+        user_id=user_id, friend_id=1).first()
     if find_tara:
-        if not find_tara.friendship_sent_date:
-            find_tara.friendship_sent_date = datetime.datetime.now()
+        if not my_friend.friendship_sent_date:
+            my_friend.friendship_sent_date = datetime.datetime.now()
 
-            db_session.add(find_tara)
+            db_session.add(my_friend)
             db_session.commit()
 
         else:
-            if not find_tara.friendship_sent_date:
-                find_tara.friendship_sent_date = datetime.datetime.now()
-                db_session.add(find_tara)
-                db_session.commit()
-            else:
-                #if find_tara.friendship_sent_date.strftime(
-                        #"%Y,%m,%d") == datetime.datetime.now().strftime(
-                        #"%Y,%m,%d") or find_tara.friendship_received_date.strftime(
-                        #"%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
-                if find_tara.friendship_sent_date.strftime(
-                        "%Y,%m,%d") != datetime.datetime.now().strftime("%Y,%m,%d"):
-                    find_tara.friendship_sent_date = datetime.datetime.now()
+            if my_friend.friendship_sent_date.strftime(
+                    "%Y,%m,%d") != datetime.datetime.now().strftime("%Y,%m,%d"):
+                my_friend.friendship_sent_date = datetime.datetime.now()
 
-                    db_session.add(find_tara)
-                    db_session.commit()
+                db_session.add(my_friend)
+                db_session.commit()
 
