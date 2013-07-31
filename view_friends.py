@@ -651,7 +651,7 @@ def acceptFriendWithTara(user_nickname):
 def sendFriendShipPointFromTara(user_id):
     my_friend = Friend.query.filter_by(
         user_id=user_id, friend_id=1).first()
-    if find_tara:
+    if my_friend:
         if not my_friend.friendship_sent_date:
             my_friend.friendship_sent_date = datetime.datetime.now()
 
