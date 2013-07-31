@@ -517,10 +517,22 @@ def useFriendShipPoint():
                                 got_cash_amount = x + 1
                                 break
 
+                        except_amount = range(1, 13)
+                        except_amount.remove(got_cash_amount)
+
+                        dummy_amount = list()
+
+                        for num in range(4):
+                            got_num = random.choice(except_amount)
+                            except_amount.remove(got_num)
+                            dummy_amount.append(got_num)
+
+
                         got_user.cash += got_cash_amount
                         db_session.add(got_user)
                         result['result'] = commitData()
                         result['cash_amount'] = got_cash_amount
+                        result['dummy_amount'] = dummy_amount
                     else:
                         result['result'] = ResultCodes.InputParamError
                 else:
