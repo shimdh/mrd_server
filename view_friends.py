@@ -357,12 +357,7 @@ def sendFriendShipPoint():
                 find_friend = Friend.query.filter_by(
                     user_id=got_user.id, friend_id=got_data['friend_id']).first()
                 if find_friend:
-                    if find_friend.friendship_sent_date.strftime(
-                            "%Y,%m,%d") == datetime.datetime.now().strftime(
-                            "%Y,%m,%d") or find_friend.friendship_received_date.strftime(
-                            "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
-                        result['result'] = ResultCodes.InputParamError
-                    else:
+                    if not find_friend.friendship_sent_date:
                         find_friend.friendship_sent_date = datetime.datetime.now()
 
                         db_session.add(find_friend)
@@ -382,6 +377,32 @@ def sendFriendShipPoint():
                             result['result'] = ResultCodes.InputParamError
 
                         result['result'] = commitData()
+                    else:
+                        if find_friend.friendship_sent_date.strftime(
+                                "%Y,%m,%d") == datetime.datetime.now().strftime(
+                                "%Y,%m,%d") or find_friend.friendship_received_date.strftime(
+                                "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                            result['result'] = ResultCodes.InputParamError
+                        else:
+                            find_friend.friendship_sent_date = datetime.datetime.now()
+
+                            db_session.add(find_friend)
+
+                            got_friend_user = User.query.filter_by(id=got_data['friend_id']).first()
+                            if got_friend_user:
+                                friend_point = Config.query.filter_by(str_key='sending_friendship_point').first()
+                                if friendship_point:
+                                    got_friend_user.friendship_point += int(friendship_point.str_value)
+                                    db_session.add(got_friend_user)
+
+                                got_point = Config.query.filter_by(str_key='sent_receiving_friendship_point').first()
+                                if got_point:
+                                    got_user.friendship_point += int(got_point.str_value)
+                                    db_session.add(got_point)
+                            else:
+                                result['result'] = ResultCodes.InputParamError
+
+                            result['result'] = commitData()
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -412,21 +433,35 @@ def receiveFriendShipPoint():
                 find_me = Friend.query.filter_by(
                     user_id=got_data['friend_id'], friend_id=got_user.id).first()
                 if find_me:
-                    if find_me.friendship_sent_date.strftime(
-                            "%Y,%m,%d") == datetime.datetime.now().strftime(
-                            "%Y,%m,%d") and find_me.friendship_received_date.strftime(
-                            "%Y,%m,%d") != datetime.datetime.now().strftime("%Y,%m,%d"):
-                        find_me.friendship_received_date = datetime.datetime.now()
-
-                        db_session.add(find_me)
-
-                        friendship_point = Config.query.filter_by(str_key='receiving_friendship_point').first()
-                        if friendship_point:
-                            got_user.friendship_point += int(friendship_point.str_value)
-                            db_session.add(got_user)
-                        result['result'] = commitData()
-                    else:
+                    if not find_me.friendship_sent_date:
                         result['result'] = ResultCodes.InputParamError
+                    else:
+                        if not find_me.friendship_received_date:
+                            find_me.friendship_received_date = datetime.datetime.now()
+
+                            db_session.add(find_me)
+
+                            friendship_point = Config.query.filter_by(str_key='receiving_friendship_point').first()
+                            if friendship_point:
+                                got_user.friendship_point += int(friendship_point.str_value)
+                                db_session.add(got_user)
+                            result['result'] = commitData()
+                        else:
+                            if find_me.friendship_sent_date.strftime(
+                                    "%Y,%m,%d") == datetime.datetime.now().strftime(
+                                    "%Y,%m,%d") and find_me.friendship_received_date.strftime(
+                                    "%Y,%m,%d") != datetime.datetime.now().strftime("%Y,%m,%d"):
+                                find_me.friendship_received_date = datetime.datetime.now()
+
+                                db_session.add(find_me)
+
+                                friendship_point = Config.query.filter_by(str_key='receiving_friendship_point').first()
+                                if friendship_point:
+                                    got_user.friendship_point += int(friendship_point.str_value)
+                                    db_session.add(got_user)
+                                result['result'] = commitData()
+                            else:
+                                result['result'] = ResultCodes.InputParamError
                 else:
                     result['result'] = ResultCodes.NoData
         else:
@@ -617,14 +652,19 @@ def sendFriendShipPointFromTara(user_id):
             db_session.commit()
 
         else:
-            if find_tara.friendship_sent_date.strftime(
-                    "%Y,%m,%d") == datetime.datetime.now().strftime(
-                    "%Y,%m,%d") or find_tara.friendship_received_date.strftime(
-                    "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
-                pass
-            else:
+            if not find_tara.friendship_sent_date:
                 find_tara.friendship_sent_date = datetime.datetime.now()
-
                 db_session.add(find_tara)
                 db_session.commit()
+            else:
+                if find_tara.friendship_sent_date.strftime(
+                        "%Y,%m,%d") == datetime.datetime.now().strftime(
+                        "%Y,%m,%d") or find_tara.friendship_received_date.strftime(
+                        "%Y,%m,%d") == datetime.datetime.now().strftime("%Y,%m,%d"):
+                    pass
+                else:
+                    find_tara.friendship_sent_date = datetime.datetime.now()
+
+                    db_session.add(find_tara)
+                    db_session.commit()
 
