@@ -89,17 +89,21 @@ def getFriendsList():
                             can_send_friendship = True
                             can_receive_friendship = True
 
-                            sent_friend = Friend.query.filter_by(user_id=find_friend.friend_id, friend_id=got_user.id).first()
+                            sent_friend = Friend.query.filter_by(user_id=find_friend.friend_id,
+                                friend_id=got_user.id).first()
                             if sent_friend:
                                 if sent_friend.friendship_sent_date:
                                     if sent_friend.friendship_sent_date == datetime.date.today():
                                         can_send_friendship = False
 
-                                if find_friend.friendship_received_date:
-                                    if find_friend.friendship_received_date == datetime.date.today():
+                                if not find_friend.friendship_sent_date:
+                                    can_receive_friendship = False
+                                else:
+                                    if find_friend.friendship_sent_date != datetime.date.today():
                                         can_receive_friendship = False
-
-
+                                    else:
+                                        if find_friend.friendship_received_date == datetime.date.today():
+                                            can_receive_friendship = False
                             else:
                                 result['result'] = ResultCodes.InputParamError
 
