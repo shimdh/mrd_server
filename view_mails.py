@@ -7,11 +7,25 @@ import json
 from database import db_session
 from models import Mail, User, Character, Friend
 
+import datetime
+
 lst_from_system_mails = [
     -1, #System
     -2, #Ship
     -3,
 ]
+
+def getDaysAgoFromNow(date_time):
+    current_datetime = datetime.datetime.now()
+    delta = str(current_datetime - date_time)
+
+    if delta.find(',') > 0:
+        days, hours = delta.split(',')
+        days = int(days.split()[0].strip())
+    else:
+        days = 0
+
+    return days
 
 def writeMail():
     result = dict(
@@ -179,8 +193,8 @@ def getMailList():
                                     'mail_index': got_mail.id,
                                     'from_name': got_friend_char.name,
                                     'mail_type': temp_mail_type,
-                                    'sent_date': got_mail.registered_date.strftime(
-                                        "%Y,%m,%d,%H,%M"),
+                                    'sent_date': got_mail.registered_date.strftime("%Y,%m,%d,%H,%M"),
+                                    'days_ago': getDaysAgoFromNow(got_mail.registered_date),
                                     'title': got_friend_char.name + u"로부터 메일",
                                     'got_item': got_mail.did_receive_item,
                                     'gift': temp_has_gift,
