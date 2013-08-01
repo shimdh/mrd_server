@@ -520,7 +520,7 @@ def useFriendShipPoint():
                                 got_cash_amount = x + 1
                                 break
 
-                        except_amount = range(1, 13)
+                        except_amount = range(1, 14)
                         except_amount.remove(got_cash_amount)
 
                         dummy_amount = list()
