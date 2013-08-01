@@ -197,6 +197,7 @@ def getMailList():
                                 'mail_type': temp_mail_type,
                                 'sent_date': got_mail.registered_date.strftime(
                                     "%Y,%m,%d,%H,%M"),
+                                'days_ago': getDaysAgoFromNow(got_mail.registered_date),
                                 'title': temp_mail_title,
                                 'got_item': got_mail.did_receive_item,
                                 'gift': temp_has_gift,
