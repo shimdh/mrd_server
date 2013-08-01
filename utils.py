@@ -91,3 +91,15 @@ def writeDirtyLog(all_string):
     write_log = DirtyLog(all_string)
     db_session.add(write_log)
     db_session.commit()
+
+def getDaysAgoFromNow(date_time):
+    current_datetime = datetime.datetime.now()
+    delta = str(current_datetime - date_time)
+
+    if delta.find(',') > 0:
+        days, hours = delta.split(',')
+        days = int(days.split()[0].strip())
+    else:
+        days = 0
+
+    return days

@@ -2,7 +2,7 @@
 
 from flask import request
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys
-from utils import commitData, writeDirtyLog
+from utils import commitData, writeDirtyLog, getDaysAgoFromNow
 import json
 
 from database import db_session
@@ -119,8 +119,10 @@ def getFriendsList():
 
                             if find_friend.friend_id == 1 or not got_friend.login_date:
                                 tmp_friend_info['last_login'] = datetime.datetime.now().strftime("%Y,%m,%d")
+                                tmp_friend_info['last_login_ago'] = getDaysAgoFromNow(datetime.datetime.now())
                             else:
                                 tmp_friend_info['last_login'] = got_friend.login_date.strftime("%Y,%m,%d")
+                                tmp_friend_info['last_login_ago'] = getDaysAgoFromNow(got_friend.login_date)
 
                             friends_info.append(tmp_friend_info)
 

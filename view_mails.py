@@ -2,6 +2,7 @@
 
 from flask import request
 from utils import ProtocolTypes, ResultCodes, checkSessionId, checkContainKeys, commitData
+from utils import getDaysAgoFromNow
 import json
 
 from database import db_session
@@ -14,19 +15,6 @@ lst_from_system_mails = [
     -2, #Ship
     -3,
 ]
-
-def getDaysAgoFromNow(date_time):
-    current_datetime = datetime.datetime.now()
-    delta = str(current_datetime - date_time)
-
-    if delta.find(',') > 0:
-        days, hours = delta.split(',')
-        days = int(days.split()[0].strip())
-    else:
-        days = 0
-
-    return days
-
 
 def writeMail():
     result = dict(
