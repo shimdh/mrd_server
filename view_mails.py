@@ -27,6 +27,7 @@ def getDaysAgoFromNow(date_time):
 
     return days
 
+
 def writeMail():
     result = dict(
         type=ProtocolTypes.WriteMail,
