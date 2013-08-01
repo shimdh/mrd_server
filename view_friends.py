@@ -486,6 +486,7 @@ receiveFriendShipPoint.methods = ['POST']
 
 
 def useFriendShipPoint():
+    writeDirtyLog('useFriendShipPoint: ' + request.form['data'])
     result = dict(
         type=ProtocolTypes.UseFriendShipPoint,
         result=ResultCodes.Success
