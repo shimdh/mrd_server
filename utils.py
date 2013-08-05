@@ -55,7 +55,8 @@ def checkSessionId(got_session_id):
         return ResultCodes.SessionIdNonExist, None
     else:
         if got_user.session_date < (
-                datetime.datetime.now() - datetime.timedelta(minutes=20)):
+                #datetime.datetime.now() - datetime.timedelta(minutes=20)):
+                datetime.datetime.now() - datetime.timedelta(minutes=1)):
             got_user.session_id = ''
             db_session.add(got_user)
             try:
