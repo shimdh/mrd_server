@@ -502,7 +502,7 @@ def useFriendShipPoint():
             if got_user:
                 max_friendship_point = Config.query.filter_by(str_key='max_friendship_point').first()
                 if max_friendship_point:
-                    if got_user.friendship_point > int(max_friendship_point.str_value):
+                    if got_user.friendship_point >= int(max_friendship_point.str_value):
                         got_user.friendship_point -= int(max_friendship_point.str_value)
 
 
