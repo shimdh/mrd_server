@@ -385,6 +385,7 @@ def sendFriendShipPoint():
                             if got_point:
                                 got_user.friendship_point += int(got_point.str_value)
                                 db_session.add(got_point)
+                                result['added_friendship_point'] = int(got_point.str_value)
                         else:
                             result['result'] = ResultCodes.InputParamError
 
@@ -408,6 +409,7 @@ def sendFriendShipPoint():
                                 if got_point:
                                     got_user.friendship_point += int(got_point.str_value)
                                     db_session.add(got_point)
+                                    result['added_friendship_point'] = int(got_point.str_value)
                             else:
                                 result['result'] = ResultCodes.InputParamError
 
@@ -454,6 +456,7 @@ def receiveFriendShipPoint():
                             if friendship_point:
                                 got_user.friendship_point += int(friendship_point.str_value)
                                 db_session.add(got_user)
+                                result['added_friendship_point'] = int(friendship_point.str_value)
                             result['result'] = commitData()
                         else:
                             if find_me.friendship_sent_date == datetime.date.today():
@@ -467,6 +470,7 @@ def receiveFriendShipPoint():
                                     if friendship_point:
                                         got_user.friendship_point += int(friendship_point.str_value)
                                         db_session.add(got_user)
+                                        result['added_friendship_point'] = int(friendship_point.str_value)
                                     result['result'] = commitData()
                                 else:
                                     result['result'] = ResultCodes.InputParamError
